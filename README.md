@@ -9,6 +9,5 @@ Ta aplikacja umożliwia śledzenie treningów, dodawaj, edytuj i analizuj swoje 
     - analizowanie postępów( czas, kalorie, typ ćwiczeń ),
     - utrzymuj streak ćwiczeń,
     - dodanie motta,
-    - wyszukiwanie i filtrowanie treningów,
     - jasny i ciemny motyw,
     - pełna responsywność na urządzenia przenośne,
