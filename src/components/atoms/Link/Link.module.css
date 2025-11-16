@@ -1,0 +1,9 @@
+.link{
+    text-decoration: none;
+    transition: ease-in-out 300ms;
+    background-color: transparent;
+}
+.link:hover{
+    transform: scale(1.05);
+}
+

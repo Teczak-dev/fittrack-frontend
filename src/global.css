@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dark-mode, .dark-mode *{
+    background-color: #232425;
+    color: #FFF;
+}
+.light-mode, .light-mode *{
+    background-color: #F1F1F1;
+    color: #000;
+}
