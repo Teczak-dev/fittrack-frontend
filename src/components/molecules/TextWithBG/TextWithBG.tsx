@@ -1,10 +1,10 @@
-import { Label } from "../../atoms/Label/Label";
-import { Div } from "../../atoms/Div/Div";
+import { Typography } from "../../atoms/Typography/Typography";
+import styles from './TextWithBG.module.css';
 
-export const TextWithBG: React.FC<{text:string}> = ({text}) =>{
+export const TextWithBG: React.FC<{text: string, className?:string}> = ({text, className=styles.container}) => {
     return(
-	<Div>
-	    <Label text={text}/>
-	</Div>
+	<div className={className}>
+	    <Typography variant="body">{text}</Typography>
+	</div>
     );
 }

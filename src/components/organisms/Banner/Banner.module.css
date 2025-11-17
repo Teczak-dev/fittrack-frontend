@@ -1,0 +1,61 @@
+.banner{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.bannerText{
+    font-size: 48px;
+    font-weight: 700;
+    text-wrap: text-wrap;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20vh;
+    right: 10vw;
+}
+.bannerDark{
+    background-color: rgba(46,116,255,0.61);
+}
+.bannerLight{
+    background-color: #4E1BB4;
+}
+.bannerText p{
+    text-align: center;
+    color: #FFF;
+}
+.bannerImage{
+    width: 60vw;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 5vw;
+    left: 5vw;
+}
+.imageDark{
+    -webkit-box-shadow:0px 0px 170px 14px rgba(46,116,255,0.61);
+    -moz-box-shadow: 0px 0px 170px 14px rgba(46,116,255,0.61);
+    box-shadow: 0px 0px 170px 14px rgba(46,116,255,0.61);
+}
+.imageLight{
+    -webkit-box-shadow:0px 0px 170px 14px rgba(78,27,180,0.61);
+    -moz-box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
+    box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
+}
+
+@media (max-width: 768px) {
+    .bannerText{
+	top: 25vh;
+	right: 10vw;
+    }
+}
+@media (max-width: 480px) {
+    .bannerText{
+        width: 90vw;
+        height: 120px;
+	top: 20vh;
+	right: 5vw;
+    }
+}

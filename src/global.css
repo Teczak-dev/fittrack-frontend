@@ -9,11 +9,17 @@ div{
     justify-content: center;
     align-items: center;
 }
-.dark-mode, .dark-mode *{
+.dark-mode{
     background-color: #232425;
     color: #FFF;
 }
-.light-mode, .light-mode *{
+.dark-mode *{
+    color: #FFF;
+}
+.light-mode{
     background-color: #F1F1F1;
+    color: #000;
+}
+.light-mode *{
     color: #000;
 }

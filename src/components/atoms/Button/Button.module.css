@@ -1,0 +1,49 @@
+.button, .themeButton {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.primary:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.secondary {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: #d1d5db;
+}
+.themeButtonDark{
+    background-color: #f1f1f1;
+    color: #000;
+}
+.themeButtonDark:hover{
+    background-color: #e1e1e1;
+}
+.themeButtonLight{
+    background-color: #333;
+    color: #FFF;
+}
+.themeButtonLight:hover{
+    background-color: #444;
+}
+.themeButton:hover{
+    transform: scale(1.05);
+}

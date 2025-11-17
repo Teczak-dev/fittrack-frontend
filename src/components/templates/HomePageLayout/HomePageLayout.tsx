@@ -1,8 +1,10 @@
 import { HeaderHome } from "../../organisms/Header/Header";
+import { BannerHP as Banner } from "../../organisms/Banner/Banner";
 
-export default function HomePageLayout() {
+export const HomePageLayout = () => {
     return (
 	<>
+	    <Banner />
 	    <HeaderHome />
 	</>
     );
