@@ -23,3 +23,6 @@ div{
 .light-mode *{
     color: #000;
 }
+body{
+    background-color: #222;
+}

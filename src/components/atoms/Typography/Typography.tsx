@@ -12,7 +12,7 @@ export const Typography: React.FC<TypographyProps> = ({ variant, children, class
 
     return (
 	<Component className={`${styles.typography} ${styles[variant]} ${className}`}>
-	{children}
+	    {children}
 	</Component>
     );
 };

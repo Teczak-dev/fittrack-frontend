@@ -6,8 +6,8 @@ interface ImageProps {
     className?: string;
 }
 
-export const Image: React.FC<ImageProps> = ({src, alt, className = styles.Img}) =>{
+export const Image: React.FC<ImageProps> = ({src, alt, className}) =>{
     return(
-	<img src={src} alt={alt} className={className} style={styles}/>
+	<img src={src} alt={alt} className={`${styles.Img} ${className}`} style={styles}/>
     );
 }

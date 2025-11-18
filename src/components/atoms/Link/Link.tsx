@@ -8,9 +8,9 @@ interface LinkProps{
     style?: {};
 }
 
-export const Link: React.FC<LinkProps> = ({text, url, className=styles.link, style=styles}) =>{
+export const Link: React.FC<LinkProps> = ({text, url, className, style=styles}) =>{
     return(
-	<RouterLink to={url} className={className} style={style}>{text}</RouterLink> 
+	<RouterLink to={url} className={`${styles.link} ${className}`} style={style}>{text}</RouterLink> 
     );
 }
 

@@ -6,7 +6,7 @@ export const Home: React.FC = () => {
     const {theme} = useTheme();
 
     return (
-	<div style={{width: '100vw', height: '100vh'}} className={`${theme}-mode`}>
+	<div style={{width: '100vw', minHeight: '100vh'}} className={`${theme}-mode`}>
 	    <HomePageLayout />
 	</div>
     );
