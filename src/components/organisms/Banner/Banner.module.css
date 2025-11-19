@@ -65,6 +65,11 @@
 	top: 25vh;
 	right: 10vw;
     }
+    .bannerImage{
+	width: 80vw;
+	bottom: 5vw;
+	left: 5vw;
+    }
 }
 @media (max-width: 480px) {
     .bannerText{
@@ -72,5 +77,10 @@
         height: 120px;
 	top: 20vh;
 	right: 5vw;
+    }
+    .bannerImage{
+	width: 90vw;
+	bottom: 5vw;
+	left: 5vw;
     }
 }

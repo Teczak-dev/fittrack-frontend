@@ -42,4 +42,20 @@
     transform: scale(1.5);
     color: #888;
 }
-
+@media (max-width: 768px) {
+    .Footer{
+	height: auto;
+	padding: 30px 10px;
+    }
+    .list{
+	flex-direction: column;
+	gap: 15px;
+	position: static;
+	transform: none;
+    }
+}
+@media (max-width: 480px) {
+    .title{
+	font-size: 20px;
+    }
+}

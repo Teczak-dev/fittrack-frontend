@@ -1,10 +1,11 @@
-import { HeaderHome } from "../../organisms/Header/Header";
+import { HeaderHome, HeaderHomeMobile } from "../../organisms/Header/Header";
 import { BannerHP as Banner } from "../../organisms/Banner/Banner";
 import { Discover } from "../../organisms/Discover/Discover";
 import { Pricing } from "../../organisms/Pricing/Pricing";
 import { Footer } from "../../organisms/Footer/Footer";
 import type React from "react";
 import { useRef } from "react";
+import {BrowserView, MobileView} from 'react-device-detect';
 
 export const HomePageLayout: React.FC<{goToLogIn: () => void}> = ({goToLogIn}) => {
 
@@ -28,7 +29,12 @@ export const HomePageLayout: React.FC<{goToLogIn: () => void}> = ({goToLogIn}) =
 		<div ref={bannerSectionRef}>
 		    <Banner />
 		</div>
-		<HeaderHome home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>
+		<BrowserView>
+		    <HeaderHome home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>
+		</BrowserView>
+		<MobileView>
+		    <HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>
+		</MobileView>
 		<div ref={discoverSectionRef}>
 		    <Discover />
 		</div>

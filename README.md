@@ -1,5 +1,5 @@
 # Fittrack - Frontend solution
-// czas spędzony nad tym czymś: 5h
+// czas spędzony nad tym czymś: 10h
 
 
 Ta aplikacja umożliwia śledzenie treningów, dodawaj, edytuj i analizuj swoje dotychczasowe postępy.

@@ -37,3 +37,39 @@
     bottom: 0;
     right: 0;
 }
+@media (max-width: 768px) {
+    .textWBG{
+        font-size: 24px;
+        padding: 20px 20px;
+	text-align: center;
+    }
+    .discoverSectionLeftTop,
+    .discoverSectionRightTop,
+    .discoverSectionLeftBottom,
+    .discoverSectionRightBottom{
+        width: 100%;
+        height: 25%;
+        top: unset;
+        bottom: unset;
+        left: unset;
+        right: unset;
+    }
+    .discoverSectionLeftTop{
+        top: 0;
+    }
+    .discoverSectionRightTop{
+        top: 50%;
+    }
+    .discoverSectionLeftBottom{
+        bottom: 50%;
+    }
+    .discoverSectionRightBottom{
+        bottom: 0;
+    }
+}
+@media (max-width: 480px) {
+    .textWBG{
+	font-size: 18px;
+	padding: 10px 10px;
+    }
+}

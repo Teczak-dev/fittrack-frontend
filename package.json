@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "hamburger-react": "^2.5.2",
     "ogl": "^1.0.11",
     "react": "^19.2.0",
     "react-bits": "^1.0.5",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.5"
   },
