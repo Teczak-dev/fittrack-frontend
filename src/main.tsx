@@ -20,7 +20,8 @@ const router = createBrowserRouter([
 	}
 	]
     }
-]);
+], {basename: '/app/fittrack/'}
+);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

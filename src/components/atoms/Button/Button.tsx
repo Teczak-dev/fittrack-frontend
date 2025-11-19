@@ -14,11 +14,12 @@ export const Button: React.FC<ButtonProps> = ({
     onClick, 
     variant = 'primary',
     disabled = false,
-    className = `${styles.button} ${styles[variant]} `
+    className
 }) => {
-
+    const { theme } = useTheme();
+    const textColorClass = theme === 'dark' ? styles.buttonTextDark : styles.buttonTextLight;
     return (
-	<button className={className} onClick={onClick} disabled={disabled} >
+	<button className={`${styles.button} ${styles[variant]} ${textColorClass} ${className}`} onClick={onClick} disabled={disabled} >
 	{children}
 	</button>
     );

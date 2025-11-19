@@ -1,21 +1,28 @@
 import { Image } from '../../atoms/Image/Image';
-import { Link, LocalLink } from '../../atoms/Link/Link';
-import { ThemeButton } from '../../atoms/Button/Button';
+import { Link } from '../../atoms/Link/Link';
+import { Button, ThemeButton } from '../../atoms/Button/Button';
 
 import styles from './Header.module.css';
 import { useTheme } from '../../../context/ThemeContext';
 
-export const HeaderHome: React.FC = () => {
+export const HeaderHome: React.FC<{home:()=>void; discover:()=>void; price:()=>void}> = ({home, discover, price}) => {
     const { theme, toggleTheme } = useTheme();
-
+    const lightStyle = theme === 'light' ? styles.headerLight : '';
+    const buttonsColor = theme === 'light' ? styles.linksLight : styles.linksDark;
     return (
-	<header className={styles.header} style={styles}>
+	<header className={`${styles.header} ${lightStyle}`} style={styles}>
 	    <div className={styles.div} style={styles}>
-		<Image src="/logo.png" alt="Logo" />
+		<Image src="/logo.png" alt="Logo" className={styles.logo}/>
 		<div className={styles.navLinks} style={styles}>
-		    <LocalLink text="Home" url="#" />
-		    <LocalLink text="About" url="#" />
-		    <LocalLink text="Contact" url="#" />
+		    <Button onClick={home} className={`${styles.links} ${buttonsColor}`}>
+			Fit tracker
+		    </Button>
+		    <Button onClick={discover} className={`${styles.links} ${buttonsColor}`}>
+			Odkryj
+		    </Button>
+		    <Button onClick={price} className={`${styles.links} ${buttonsColor}`}>
+			Cena
+		    </Button>
 		</div>
 	    </div>
 	    <div className={`${styles.div} ${styles.rightDiv}`} style={styles}>

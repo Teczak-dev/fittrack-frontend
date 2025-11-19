@@ -18,18 +18,11 @@
   color: white;
 }
 
-.primary:hover:not(:disabled) {
-  background-color: #2563eb;
-}
-
 .secondary {
   background-color: #e5e7eb;
   color: #374151;
 }
 
-.secondary:hover:not(:disabled) {
-  background-color: #d1d5db;
-}
 .themeButtonDark{
     background-color: #f1f1f1;
     color: #000;
@@ -46,4 +39,10 @@
 }
 .themeButton:hover{
     transform: scale(1.05);
+}
+.buttontextDark{
+    color: #FFF;
+}
+.buttontextLight{
+    color: #000;
 }

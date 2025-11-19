@@ -1,0 +1,40 @@
+.PricingBox{
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+    gap: 30px;
+    background-color: rgba(46,116,255,0.61);
+    -webkit-box-shadow:0px 0px 170px 14px rgba(46,116,255,0.61);
+    -moz-box-shadow: 0px 0px 170px 14px rgba(46,116,255,0.61);
+    box-shadow: 0px 0px 170px 14px rgba(46,116,255,0.61);
+}
+.PricingBox p{
+    font-size: 25px;
+}
+.button{
+    background-color: #0D442F;
+}
+.button:hover{
+    background-color: #0B3A27;
+}
+.PricingBoxLight{
+    background-color: #4E1BB4;
+    -webkit-box-shadow:0px 0px 170px 14px rgba(78,27,180,0.61);
+    -moz-box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
+    box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
+}
+.PricingBoxLight .button{
+    background-color: #8250E5;
+}
+.PricingBoxLight .button:hover{
+    background-color: #6B3FCC;
+}
+.PricingBoxLight p, .PricingBoxLight h2{
+    color: #F1F1F1;
+}

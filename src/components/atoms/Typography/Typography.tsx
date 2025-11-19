@@ -11,7 +11,7 @@ export const Typography: React.FC<TypographyProps> = ({ variant, children, class
     const Component = variant.startsWith('h') ? variant as 'h1' | 'h2' | 'h3' : 'p';
 
     return (
-	<Component className={`${styles.typography} ${styles[variant]} ${className}`}>
+	<Component className={`${styles.typography} ${styles[variant]} ${className}`} >
 	    {children}
 	</Component>
     );

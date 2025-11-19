@@ -4,19 +4,20 @@
     position: relative;
 }
 .bannerText{
-    font-size: 48px;
     font-weight: 700;
     text-wrap: text-wrap;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    min-height: 200px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+    flex-direction: column;
     top: 20vh;
-    right: 10vw;
+    right: 7vw;
     border: none;
+    background-color: transparent;
 }
 .bannerDark{
     background-color: rgba(46,116,255,0.61);
@@ -24,9 +25,16 @@
 .bannerLight{
     background-color: #4E1BB4;
 }
-.bannerText p{
+.Text{
     text-align: center;
     color: #FFF;
+    font-size: 38px;
+}
+.appNameTextColorLight{
+    color: #4E1BB4;
+}
+.appNameTextColorDark{
+    color: rgba(46,116,255,0.61);
 }
 .bannerImage{
     width: 65vw;
@@ -34,6 +42,12 @@
     position: absolute;
     bottom: 3vw;
     left: 7vw;
+}
+.subtextColorLight{
+    color: #111;
+}
+.subtextColorDark{
+    color: #f1f1f1;
 }
 .imageDark{
     -webkit-box-shadow:0px 0px 170px 14px rgba(46,116,255,0.61);
