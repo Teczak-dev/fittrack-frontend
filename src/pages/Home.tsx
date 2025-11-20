@@ -1,6 +1,6 @@
 import React from 'react';
 import { HomePageLayout } from "../components/templates/HomePageLayout/HomePageLayout";
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/useTheme';
 import { useNavigate } from 'react-router-dom';
 
 export const Home: React.FC = () => {

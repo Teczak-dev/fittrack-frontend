@@ -1,4 +1,4 @@
-import { useTheme } from '../../../context/ThemeContext';
+import { useTheme } from '../../../context/useTheme';
 import { Link } from '../../atoms/Link/Link';
 import { ListElement } from '../../atoms/LinstElement/ListElement';
 import { Typography } from '../../atoms/Typography/Typography';

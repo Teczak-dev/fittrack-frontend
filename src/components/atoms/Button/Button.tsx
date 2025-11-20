@@ -1,4 +1,4 @@
-import { useTheme } from '../../../context/ThemeContext';
+import { useTheme } from '../../../context/useTheme';
 import styles from './Button.module.css';
 
 interface ButtonProps {
@@ -19,9 +19,9 @@ export const Button: React.FC<ButtonProps> = ({
     const { theme } = useTheme();
     const textColorClass = theme === 'dark' ? styles.buttonTextDark : styles.buttonTextLight;
     return (
-	<button className={`${styles.button} ${styles[variant]} ${textColorClass} ${className}`} onClick={onClick} disabled={disabled} >
-	{children}
-	</button>
+	    <button className={`${styles.button} ${styles[variant]} ${textColorClass} ${className}`} onClick={onClick} disabled={disabled} >
+	        {children}
+	    </button>
     );
 };
 
@@ -29,14 +29,17 @@ export const ThemeButton: React.FC<ButtonProps> = ({
     children, 
     onClick,
     disabled = false,
-    className = styles.themeButton
+    className
 }) => {
     const { theme } = useTheme();
+
+    const classNames = ` ${className} ${styles.themeButton}`;
+
     return (
-	<button 
-	    className={`${className} ${theme === 'dark' ? styles.themeButtonDark : styles.themeButtonLight}`} 
-	    onClick={onClick} disabled={disabled}>
-	    {children}
-	</button>
+	    <button 
+	        className={`${classNames} ${theme === 'dark' ? styles.themeButtonDark : styles.themeButtonLight}`} 
+	        onClick={onClick} disabled={disabled}>
+	        {children}
+	    </button>
     );
 }

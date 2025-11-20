@@ -1,0 +1,120 @@
+.loginForm{
+    width: 400px;
+    height: auto;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #4E1BB4;
+    position: relative;
+    border-radius: 10px;
+    -webkit-box-shadow: 20px 20px 19px 11px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 20px 20px 19px 11px rgba(0, 0, 0, 1);
+    box-shadow: 20px 20px 19px 11px rgba(0, 0, 0, 1);
+}
+.loginFormDark{
+    background-color: rgba(46,116,255,0.61);
+    
+}
+.loginFormLight{
+    background-color: #4E1BB4;
+}
+.title{
+    font-size: 32px;
+    font-weight: 700;
+    position: absolute;
+    top: -50px;
+    left: 20px;
+}
+.titleDark{
+    color: #f1f1f1;
+}
+.titleLight{
+    color: #111;
+}
+.label{
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFF;
+    width: 90%
+}
+.input{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.button{
+    width: fit-content;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #FFF;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.buttonDark{
+    background-color: #0D442F;
+}
+.buttonDark:hover{
+    background-color: #0B3A27;
+}
+.buttonLight{
+    background-color: #8250E5;
+}
+.buttonLight:hover{
+    background-color: #6B3FCC;
+}
+.forgotPassword{
+    font-size: 14px;
+    color: #FFF;
+    text-decoration: underline;
+    cursor: pointer;
+    align-self: flex-end;
+}
+.forgotPassword:hover{
+    color: #CCC;
+    transform: scale(1);
+}
+.registerText, .loginText{
+    font-size: 14px;
+    color: #FFF;
+    text-align: center;
+}
+.registerLink, .loginLink{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #FFF;
+    transition: ease-in-out 0.3s;
+}
+.registerLink:hover, .loginLink:hover{
+    color: #CCC;
+}
+@media (max-width: 480px) {
+    .loginForm{
+	width: 90%;
+    }
+}
+
+.inputError {
+    border-color: #dc2626 !important;
+    background-color: #fef2f2 !important;
+}
+
+.inputError:focus {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+}
+
+.errorText {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
