@@ -6,11 +6,7 @@ import { useState } from 'react';
 import styles from './Forms.module.css';
 import { useTheme } from '../../../context/useTheme';
 import { Link } from '../../atoms/Link/Link';
-
-// Proste funkcje walidacji
-const isValidEmail = (email: string) => email.includes('@') && email.length > 3;
-const isValidPassword = (password: string) => password.length >= 6;
-const isValidUsername = (username: string) => username.length >= 3;
+import { validateEmail, validatePassword, validateUsername, validatePasswordConfirm } from '../../../utils/validation';
 
 interface LoginFormProps{
     login: (email:string, pass:string) => void;
@@ -29,16 +25,18 @@ export const LoginForm: React.FC<LoginFormProps> = ({login}) => {
 
 
     const handleEmailBlur = () => {
-        if (!isValidEmail(email)) {
-            setEmailError('Podaj poprawny email');
+        const emailValidation = validateEmail(email);
+        if (!emailValidation.isValid) {
+            setEmailError(emailValidation.error || 'Podaj poprawny email');
         } else {
             setEmailError('');
         }
     };
 
     const handlePasswordBlur = () => {
-        if (!isValidPassword(password)) {
-            setPasswordError('Hasło musi mieć minimum 6 znaków');
+        const passwordValidation = validatePassword(password);
+        if (!passwordValidation.isValid) {
+            setPasswordError(passwordValidation.error || 'Hasło musi mieć minimum 6 znaków');
         } else {
             setPasswordError('');
         }
@@ -47,13 +45,15 @@ export const LoginForm: React.FC<LoginFormProps> = ({login}) => {
     const handleLogin = () => {
         let hasErrors = false;
         
-        if (!isValidEmail(email)) {
-            setEmailError('Podaj poprawny email');
+        const emailValidation = validateEmail(email);
+        if (!emailValidation.isValid) {
+            setEmailError(emailValidation.error || 'Podaj poprawny email');
             hasErrors = true;
         }
         
-        if (!isValidPassword(password)) {
-            setPasswordError('Hasło musi mieć minimum 6 znaków');
+        const passwordValidation = validatePassword(password);
+        if (!passwordValidation.isValid) {
+            setPasswordError(passwordValidation.error || 'Hasło musi mieć minimum 6 znaków');
             hasErrors = true;
         }
 
@@ -113,60 +113,67 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
 
     
     const handleEmailBlur = () => {
-        if (!isValidEmail(email)) {
-            setEmailError('Podaj poprawny email');
+        const emailValidation = validateEmail(email);
+        if (!emailValidation.isValid) {
+            setEmailError(emailValidation.error || 'Podaj poprawny email');
         } else {
             setEmailError('');
         }
     };
 
     const handlePasswordBlur = () => {
-        if (!isValidPassword(password)) {
-            setPasswordError('Hasło musi mieć minimum 6 znaków');
+        const passwordValidation = validatePassword(password);
+        if (!passwordValidation.isValid) {
+            setPasswordError(passwordValidation.error || 'Hasło musi mieć minimum 6 znaków');
         } else {
             setPasswordError('');
         }
     };
 
     const handleConfirmBlur = () => {
-        if (password !== confirmPassword) {
-            setConfirmError('Hasła nie są identyczne');
+        const confirmValidation = validatePasswordConfirm(password, confirmPassword);
+        if (!confirmValidation.isValid) {
+            setConfirmError(confirmValidation.error || 'Hasła nie są identyczne');
         } else {
             setConfirmError('');
         }
     };
 
     const handleUsernameBlur = () => {
-        if (!isValidUsername(username)) {
-            setUsernameError('Nazwa musi mieć minimum 3 znaki');
+        const usernameValidation = validateUsername(username);
+        if (!usernameValidation.isValid) {
+            setUsernameError(usernameValidation.error || 'Nazwa musi mieć minimum 3 znaki');
         } else {
             setUsernameError('');
         }
     };
 
     const handleRegister = () => {
+        // Sprawdzamy każde pole osobno
+        const emailValidation = validateEmail(email);
+        const passwordValidation = validatePassword(password);
+        const usernameValidation = validateUsername(username);
+        const confirmValidation = validatePasswordConfirm(password, confirmPassword);
+        
         let hasErrors = false;
         
-        if (!isValidEmail(email)) {
-            setEmailError('Podaj poprawny email');
+        if (!emailValidation.isValid) {
+            setEmailError(emailValidation.error || 'Podaj poprawny email');
+            hasErrors = true;
+        }
+        if (!passwordValidation.isValid) {
+            setPasswordError(passwordValidation.error || 'Hasło musi mieć minimum 6 znaków');
+            hasErrors = true;
+        }
+        if (!usernameValidation.isValid) {
+            setUsernameError(usernameValidation.error || 'Nazwa musi mieć minimum 3 znaki');
+            hasErrors = true;
+        }
+        if (!confirmValidation.isValid) {
+            setConfirmError(confirmValidation.error || 'Hasła nie są identyczne');
             hasErrors = true;
         }
         
-        if (!isValidPassword(password)) {
-            setPasswordError('Hasło musi mieć minimum 6 znaków');
-            hasErrors = true;
-        }
-
-        if (!isValidUsername(username)) {
-            setUsernameError('Nazwa musi mieć minimum 3 znaki');
-            hasErrors = true;
-        }
-
-        if (password !== confirmPassword) {
-            setConfirmError('Hasła nie są identyczne');
-            hasErrors = true;
-        }
-
         if (!hasErrors) {
             register(email, password, username);
         }
@@ -236,16 +243,18 @@ export const ForgotPasswordForm: React.FC<{resetPassword: (email: string) => voi
 
 	
 	const handleEmailBlur = () => {
-        if (!isValidEmail(email)) {
-            setEmailError('Podaj poprawny email');
+        const emailValidation = validateEmail(email);
+        if (!emailValidation.isValid) {
+            setEmailError(emailValidation.error || 'Podaj poprawny email');
         } else {
             setEmailError('');
         }
     };
 
     const handleResetPassword = () => {
-        if (!isValidEmail(email)) {
-            setEmailError('Podaj poprawny email');
+        const emailValidation = validateEmail(email);
+        if (!emailValidation.isValid) {
+            setEmailError(emailValidation.error || 'Podaj poprawny email');
         } else {
             resetPassword(email);
         }
