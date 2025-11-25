@@ -54,11 +54,13 @@ export const NavigationMobile: React.FC = () => {
     const {theme, toggleTheme} = useTheme();
     const navigation = useNavigate();
 
-    const SettingsSrc = theme === 'light' ? settingsBlack : settingsWhite;
     const [openSettings, setOpenSettings] = useState(false);
+    
+
+    const navBackgroundClass = theme === 'dark' ? styles.navMDark : styles.navMLight;
+    const SettingsSrc = theme === 'light' ? settingsBlack : settingsWhite;
     const settingsMenuActive = openSettings ? styles.buttonAppActive : '';
     const selectedLinkClass = theme === 'dark' ? styles.navLinkActiveDark : styles.navLinkActiveLight;
-    
     const dashboardImgSrc = theme === 'dark' ? dashboardLight : dashboardDark;
     const workoutsImgSrc = theme === 'dark' ? workoutsLight : workoutsDark;
     const analizeImgSrc = theme === 'dark' ? analizeLight : analizeDark;
@@ -67,7 +69,7 @@ export const NavigationMobile: React.FC = () => {
 
     return(
 	<>
-	    <nav className={styles.navMobile}>
+	    <nav className={` ${styles.navMobile} ${navBackgroundClass}`}>
 		<NavigationLink url='/me/dashboard' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `} >
 		    <Image src={dashboardImgSrc} alt="" className={styles.navImg}/>
 		</NavigationLink>

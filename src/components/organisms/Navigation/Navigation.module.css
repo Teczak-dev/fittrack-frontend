@@ -53,10 +53,15 @@
     flex-direction: row;
     gap: 10px;
     position: absolute;
-    background-color: #232425;
     bottom: 0;
     left:0;
     padding: 20px 20px;
+}
+.navMDark{
+    background-color: #232425;
+}
+.navMLight{
+    background-color: #F1F1F1;
 }
 .buttonApp{
     width: fit-content;
