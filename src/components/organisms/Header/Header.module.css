@@ -176,3 +176,66 @@
 .headerLightM{
     background-color: #F1F1F1;
 }
+
+.headerApp{
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #232425;
+    padding: 10px 20px;
+    flex-direction: row;
+    position: absolute;
+    top: 10px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+.headerAppLight{
+    background-color: #F1F1F1;
+}
+.avatarApp{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    background-color: #1Af;
+    margin-left: 10px;
+}
+.avatarApp:hover{
+    transform: scale(0.9);
+}
+.buttonApp{
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+.buttonAppActive{
+    transform: rotate(90deg) !important;
+}
+.buttonApp:hover{
+    transform: scale(0.9);
+}
+.settingsIcon{
+    width: 40px;
+    height: 40px;
+}
+.settingsMenu{
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 150px;
+    background-color: transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    border: 1px solid #f1f1f1;
+    gap: 20px;
+    padding: 10px;
+}

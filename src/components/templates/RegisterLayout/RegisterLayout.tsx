@@ -14,7 +14,7 @@ interface RegisterLayoutProps {
 export const RegisterLayout: React.FC<RegisterLayoutProps> = ({register}) => {
     const { theme, toggleTheme } = useTheme();
     
-    const containerStyle = theme === 'light' ? {backgroundColor: '#f1f1f1'} : {backgroundColor: '#121212'};
+    const containerStyle = theme === 'light' ? {backgroundColor: '#f1f1f1'} : {backgroundColor: '#232425'};
     const logoSelected = theme === 'light' ? logoBlack : logoWhite;
     const navigate = useNavigate();
     

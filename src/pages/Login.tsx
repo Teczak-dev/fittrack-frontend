@@ -7,7 +7,7 @@ export const Login: React.FC = () => {
 
     const loginFunction = (email: string, password: string) => {
 	console.log("Login function called with email:", email, "and password:", password);
-	navigate('/me/dashboard');
+	navigate('/me');
     }
 
     return(

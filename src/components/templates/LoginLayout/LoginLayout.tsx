@@ -9,17 +9,18 @@ import { useNavigate } from "react-router-dom";
 
 interface LoginLayoutProps {
     login: (email: string, pass: string) => void;
+    className?: string;
 }
 
-export const LoginLayout: React.FC<LoginLayoutProps> = ({login}) => {
+export const LoginLayout: React.FC<LoginLayoutProps> = ({login, className}) => {
     const { theme, toggleTheme } = useTheme();
     
-    const containerStyle = theme === 'light' ? {backgroundColor: '#f1f1f1'} : {backgroundColor: '#121212'};
+    const containerStyle = theme === 'light' ? {backgroundColor: '#f1f1f1'} : {backgroundColor: '#232425'};
     const logoSelected = theme === 'light' ? logoBlack : logoWhite;
     const navigate = useNavigate();
     
     return(
-        <div className={styles.container} style={containerStyle}>
+        <div className={` ${styles.container} ${className}`} style={containerStyle}>
             <Image src={logoSelected} alt="Logo" className={styles.logo} onClick={() => navigate('/')} />
             <LoginForm login={login} />
             <ThemeButton className={styles.buttonTheme} onClick={toggleTheme}>{theme === "dark" ? "Jasny" : "Ciemny"}</ThemeButton>

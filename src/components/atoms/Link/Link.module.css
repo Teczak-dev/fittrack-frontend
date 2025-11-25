@@ -6,4 +6,13 @@
 .link:hover{
     transform: scale(1.05);
 }
-
+.navLink{
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 30px;
+    transition: ease-in-out 0.3s;
+}
+.navLink:hover{
+    transform: scale(1.05);
+}

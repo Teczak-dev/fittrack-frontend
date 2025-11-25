@@ -3,8 +3,8 @@
 
 // interface ValidationResult definiuje strukturę wyniku walidacji
 export interface ValidationResult {
-  isValid: boolean;
-  error: string;
+    isValid: boolean;
+    error: string;
 }
 
 // Walidacja emaila zwraca obiekt ValidationResult

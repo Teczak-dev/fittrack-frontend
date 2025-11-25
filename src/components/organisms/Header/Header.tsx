@@ -10,7 +10,11 @@ import { useState } from 'react';
 
 import logoBlack from '../../../assets/images/logo_black.png';
 import logoWhite from '../../../assets/images/logo_white.png';
+import settingsBlack from '../../../assets/images/settings_black.png';
+import settingsWhite from '../../../assets/images/settings_white.png';
+
 import { useNavigate } from 'react-router-dom';
+import { Navigation } from '../Navigation/Navigation';
 
 export const HeaderHome: React.FC<{home:()=>void; discover:()=>void; price:()=>void}> = ({home, discover, price}) => {
     const { theme, toggleTheme } = useTheme();
@@ -78,5 +82,44 @@ export const HeaderHomeMobile: React.FC<{home:()=>void; discover:()=>void; price
 			</div>): null}
 		</header>
 
+    );
+}
+
+
+export const HeaderApp: React.FC = () => {
+
+    const { theme, toggleTheme } = useTheme();
+    
+    const ImageSrc = theme === 'light' ? logoBlack : logoWhite;
+    const lightStyle = theme === 'light' ? styles.headerAppLight : '';
+    const SettingsSrc = theme === 'light' ? settingsBlack : settingsWhite;
+    const [openSettings, setOpenSettings] = useState(false);
+    const settingsMenuActive = openSettings ? styles.buttonAppActive : '';
+    const navigation = useNavigate();
+
+
+
+    return(
+	<header className={` ${styles.headerApp} ${lightStyle}`}>
+	    <Image src={ImageSrc} alt="Logo" className={styles.logoApp} onClick={() => navigation('/me')}/>
+	    <Navigation />
+	    <div>
+		<span>Hi, user! 👋🏻</span>
+		<Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
+		<Button onClick={() => setOpenSettings(!openSettings)} className={` ${styles.buttonApp} ${settingsMenuActive}`}>
+		    <Image src={SettingsSrc} alt="Settings" className={styles.settingsIcon} />
+		</Button>
+	    </div>
+	    {openSettings ? 
+		(
+		    <div className={styles.settingsMenu}>
+			<ThemeButton onClick={toggleTheme} className={styles.buttonThemeApp}>
+			    {theme === "dark" ? "Jasny" : "Ciemny"}
+			</ThemeButton>
+			<Button onClick={() => navigation('/login')}>Logout</Button>
+		    </div>
+
+		) : null}
+	</header>
     );
 }
