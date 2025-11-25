@@ -123,3 +123,25 @@ export const HeaderApp: React.FC = () => {
 	</header>
     );
 }
+
+
+export const HeaderAppMobile: React.FC = () => {
+
+    const { theme } = useTheme();
+    
+    const ImageSrc = theme === 'light' ? logoBlack : logoWhite;
+    const lightStyle = theme === 'light' ? styles.headerAppLight : '';
+    const navigation = useNavigate();
+
+
+
+    return(
+	<header className={` ${styles.headerApp} ${lightStyle}`}>
+	    <Image src={ImageSrc} alt="Logo" className={styles.logoApp} onClick={() => navigation('/me')}/>
+	    <div>
+		<span>Hi, user! 👋🏻</span>
+		<Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
+	    </div>
+	</header>
+    );
+}

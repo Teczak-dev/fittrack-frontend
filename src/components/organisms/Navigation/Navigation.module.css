@@ -41,3 +41,53 @@
     width: 25px;
     height: 25px;
 }
+
+
+
+.navMobile{
+    width: 100vw;
+    height: 40px;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    position: absolute;
+    background-color: #232425;
+    bottom: 0;
+    left:0;
+    padding: 20px 20px;
+}
+.buttonApp{
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+.buttonAppActive{
+    transform: rotate(90deg) !important;
+}
+.buttonApp:hover{
+    transform: scale(0.9);
+}
+.settingsIcon{
+    width: 25px;
+    height: 25px;
+}
+.settingsMenu{
+    position: absolute;
+    bottom: 70px;
+    left: 5%;
+    width: 90%;
+    background-color: transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    border: 1px solid #f1f1f1;
+    gap: 20px;
+    padding: 10px;
+}
