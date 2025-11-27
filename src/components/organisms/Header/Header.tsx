@@ -14,7 +14,8 @@ import settingsBlack from '../../../assets/images/settings_black.png';
 import settingsWhite from '../../../assets/images/settings_white.png';
 
 import { useNavigate } from 'react-router-dom';
-import { Navigation } from '../Navigation/Navigation';
+import { Navigation, NavigationDesktopMedium } from '../Navigation/Navigation';
+import { useScreenWidth } from '../../../context/useScreenWidth';
 
 export const HeaderHome: React.FC<{home:()=>void; discover:()=>void; price:()=>void}> = ({home, discover, price}) => {
     const { theme, toggleTheme } = useTheme();
@@ -89,6 +90,7 @@ export const HeaderHomeMobile: React.FC<{home:()=>void; discover:()=>void; price
 export const HeaderApp: React.FC = () => {
 
     const { theme, toggleTheme } = useTheme();
+    const { width } = useScreenWidth();
     const navigation = useNavigate();
     const [openSettings, setOpenSettings] = useState(false);
     
@@ -99,10 +101,12 @@ export const HeaderApp: React.FC = () => {
     const settingsMenuActive = openSettings ? styles.buttonAppActive : '';
     const settingsMenuBG = theme === 'light' ? {backgroundColor: '#f1f1f1', border: '1px solid #ccc'} : {backgroundColor: '#333', border: '1px solid #555'};;
 
+    
+
     return(
 	<header className={` ${styles.headerApp} ${lightStyle}`}>
 	    <Image src={ImageSrc} alt="Logo" className={styles.logoApp} onClick={() => navigation('/me')}/>
-	    <Navigation />
+	    {width > 1200 ? (<Navigation />):(<NavigationDesktopMedium />) }
 	    <div>
 		<span>Hi, user! 👋🏻</span>
 		<Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />

@@ -5,6 +5,7 @@ import './global.css';
 import App from './App.tsx'
 import { Home } from './pages/Home.tsx'
 import { ThemeProvider } from './context/ThemeContext.tsx';
+import { ScreenWidthProvider } from './context/ScreenWidthContext.tsx';
 import { Login } from './pages/Login.tsx';
 import { Register } from './pages/Register.tsx';
 import { ForgotPassword } from './pages/ForgotPassword.tsx';
@@ -76,7 +77,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
 	<ThemeProvider>
-	    <RouterProvider router={router}/>
+	    <ScreenWidthProvider>
+		<RouterProvider router={router}/>
+	    </ScreenWidthProvider>
 	</ThemeProvider>
   </StrictMode>,
 )

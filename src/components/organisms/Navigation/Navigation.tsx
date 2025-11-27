@@ -49,6 +49,38 @@ export const Navigation: React.FC = () => {
     );
 }
 
+export const NavigationDesktopMedium: React.FC = () => {
+    const {theme} = useTheme();
+
+    const navBackgroundClass = theme === 'dark' ? styles.navDark : styles.navLight;
+    const selectedLinkClass = theme === 'dark' ? styles.navLinkActiveDark : styles.navLinkActiveLight;
+    
+    const dashboardImgSrc = theme === 'dark' ? dashboardLight : dashboardDark;
+    const workoutsImgSrc = theme === 'dark' ? workoutsLight : workoutsDark;
+    const analizeImgSrc = theme === 'dark' ? analizeLight : analizeDark;
+    const caloriesImgSrc = theme === 'dark' ? caloriesLight : caloriesDark;
+
+
+    return (
+	<nav className={`${styles.nav} ${navBackgroundClass}`}>
+
+	    <NavigationLink url='/me/dashboard' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `} >
+		<Image src={dashboardImgSrc} alt="" className={styles.navImg}/>
+	    </NavigationLink>
+	    <NavigationLink url='/me/workouts' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `} >
+		<Image src={workoutsImgSrc} alt="" className={styles.navImg}/>
+	    </NavigationLink>
+	    <NavigationLink url='/me/analize' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `}>
+		<Image src={analizeImgSrc} alt="" className={styles.navImg}/>
+	    </NavigationLink>
+	    <NavigationLink url='/me/calories' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `}>
+		<Image src={caloriesImgSrc} alt="" className={styles.navImg}/> 
+	    </NavigationLink>
+	</nav>
+    );
+}
+
+
 
 export const NavigationMobile: React.FC = () => {
     const {theme, toggleTheme} = useTheme();

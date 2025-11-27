@@ -1,7 +1,8 @@
 .banner{
     width: 100svw;
-    height: 100svh;
+    height: 110svh;
     position: relative;
+    background-color: transparent;
 }
 .bannerText{
     font-weight: 700;
@@ -40,7 +41,7 @@
     width: 65vw;
     border-radius: 10px;
     position: absolute;
-    bottom: 3vw;
+    bottom: 13vw;
     left: 7vw;
 }
 .subtextColorLight{
@@ -62,6 +63,7 @@
 @media (max-width: 868px){
     .bannerImage{
 	width: 80svw;
+	bottom: 30vw;
     }
 }
 @media (max-width: 480px) {
@@ -73,7 +75,7 @@
     }
     .bannerImage{
 	width: 90svw;
-	bottom: 5vw;
+	bottom: 50vw;
 	left: 5vw;
     }
 }

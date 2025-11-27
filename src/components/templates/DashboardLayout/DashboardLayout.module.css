@@ -22,7 +22,7 @@
 
 .content{
     width: 100%;
-    min-height: 80%;
+    height: 80vsh;
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
     grid-template-rows: repeat(3, minmax(200px, 1.5fr));

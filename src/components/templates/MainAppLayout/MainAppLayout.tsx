@@ -3,20 +3,41 @@ import { HeaderApp, HeaderAppMobile } from "../../organisms/Header/Header"
 import { useTheme } from "../../../context/useTheme";
 import { BrowserView, MobileView } from "react-device-detect";
 import { NavigationMobile} from "../../organisms/Navigation/Navigation";
+import { useScreenWidth } from "../../../context/useScreenWidth";
 
+const DesktopBigLayout: React.FC = () => {
+    return(
+	<>
+	    <HeaderApp />
+	    <main>
+		<Outlet />
+	    </main>
+	</>
+    );
+}
+
+const DesktopSmallLayout: React.FC = () => {
+    return(
+	<>
+	    <HeaderAppMobile />
+	    <NavigationMobile />
+	    <main>
+		<Outlet />
+	    </main>
+	</>
+    );
+}
 export const MainAppLayout: React.FC = () => {
     
     const {theme} = useTheme();
-
-
-
+    const {width} = useScreenWidth();    
+    
     return (
-	<div style={{width: '100vw', minHeight: '100vh'}} className={`${theme}-mode`}>
+	<div style={{width: '100svw', minHeight: '100svh'}} className={`${theme}-mode`}>
 	    <BrowserView>    
-		<HeaderApp />
-		<main>
-		    <Outlet />
-		</main>
+		{width > 850?
+		    ( <DesktopBigLayout/>) : ( <DesktopSmallLayout/>)
+		}
 	    </BrowserView>
 	    <MobileView>
 		<HeaderAppMobile />
@@ -29,4 +50,5 @@ export const MainAppLayout: React.FC = () => {
 	</div>
     );
 }
-	
+
+

@@ -2,6 +2,7 @@
     width: 100svw;
     height: 100svh;
     position: relative;
+    background-color: transparent;
 }
 .discover div{
     position: absolute;
