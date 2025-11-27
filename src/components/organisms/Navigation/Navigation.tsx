@@ -67,6 +67,8 @@ export const NavigationMobile: React.FC = () => {
     const caloriesImgSrc = theme === 'dark' ? caloriesLight : caloriesDark;
 
 
+    const settingsMenuBG = theme === 'light' ? {backgroundColor: '#f1f1f1', border: '1px solid #ccc'} : {backgroundColor: '#333', border: '1px solid #555'};;
+
     return(
 	<>
 	    <nav className={` ${styles.navMobile} ${navBackgroundClass}`}>
@@ -83,13 +85,13 @@ export const NavigationMobile: React.FC = () => {
 		    <Image src={caloriesImgSrc} alt="" className={styles.navImg}/> 
 		</NavigationLink>
 
-		<Button onClick={() => setOpenSettings(!openSettings)} className={` ${styles.buttonApp} ${settingsMenuActive}`}>
-		    <Image src={SettingsSrc} alt="Settings" className={styles.settingsIcon} />
+		<Button onClick={() => setOpenSettings(!openSettings)} className={styles.buttonApp}>
+		    <Image src={SettingsSrc} alt="Settings" className={` ${styles.settingsIcon} ${settingsMenuActive}`} />
 		</Button>
 	    </nav>
 	    {openSettings ? 
 		(
-		    <div className={styles.settingsMenu}>
+		    <div className={styles.settingsMenu} style={settingsMenuBG}>
 			<ThemeButton onClick={toggleTheme} className={styles.buttonThemeApp}>
 			    {theme === "dark" ? "Jasny" : "Ciemny"}
 			</ThemeButton>

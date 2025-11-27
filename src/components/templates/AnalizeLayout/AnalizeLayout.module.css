@@ -24,20 +24,19 @@
     width: 100%;
     min-height: 80%;
     display: grid;
-    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, minmax(150px, 2fr));
     grid-template-rows: repeat(3, minmax(200px, 1.5fr));
     gap: 16px;
     padding: 16px;
     grid-template-areas: 
-	"today today motto streak"
-	"data last_workout stats stats"
-	"limit_cal food stats stats"
+	"today year"
+	"thisW lastW"
+	"thisM lastM"
 	;
 }
 .gridItem{
     width: 100%;
     height: 100%;
-    background-color: #213043;
     border-radius: 30px;
     color: #f1f1f1;
 }
@@ -47,16 +46,14 @@
 	padding-bottom: 50px;
     }
     .content{
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	grid-template-rows: repeat(6, minmax(150px, 1fr));
 	grid-template-areas:
-	    "today today"
-	    "motto streak"
-	    "data last_workout"
-	    "stats stats"
-	    "stats stats"
-	    "limit_cal food";
+	    "today"
+	    "year"
+	    "thisW"
+	    "lastW"
+	    "thisM"
+	    "lastM";
     }
-    
 }
-

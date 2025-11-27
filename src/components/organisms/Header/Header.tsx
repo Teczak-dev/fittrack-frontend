@@ -89,15 +89,15 @@ export const HeaderHomeMobile: React.FC<{home:()=>void; discover:()=>void; price
 export const HeaderApp: React.FC = () => {
 
     const { theme, toggleTheme } = useTheme();
+    const navigation = useNavigate();
+    const [openSettings, setOpenSettings] = useState(false);
     
+
     const ImageSrc = theme === 'light' ? logoBlack : logoWhite;
     const lightStyle = theme === 'light' ? styles.headerAppLight : '';
     const SettingsSrc = theme === 'light' ? settingsBlack : settingsWhite;
-    const [openSettings, setOpenSettings] = useState(false);
     const settingsMenuActive = openSettings ? styles.buttonAppActive : '';
-    const navigation = useNavigate();
-
-
+    const settingsMenuBG = theme === 'light' ? {backgroundColor: '#f1f1f1', border: '1px solid #ccc'} : {backgroundColor: '#333', border: '1px solid #555'};;
 
     return(
 	<header className={` ${styles.headerApp} ${lightStyle}`}>
@@ -106,13 +106,13 @@ export const HeaderApp: React.FC = () => {
 	    <div>
 		<span>Hi, user! 👋🏻</span>
 		<Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
-		<Button onClick={() => setOpenSettings(!openSettings)} className={` ${styles.buttonApp} ${settingsMenuActive}`}>
-		    <Image src={SettingsSrc} alt="Settings" className={styles.settingsIcon} />
+		<Button onClick={() => setOpenSettings(!openSettings)} className={styles.buttonApp}>
+		    <Image src={SettingsSrc} alt="Settings" className={` ${styles.settingsIcon} ${settingsMenuActive}`} />
 		</Button>
 	    </div>
 	    {openSettings ? 
 		(
-		    <div className={styles.settingsMenu}>
+		    <div className={styles.settingsMenu} style={settingsMenuBG}>
 			<ThemeButton onClick={toggleTheme} className={styles.buttonThemeApp}>
 			    {theme === "dark" ? "Jasny" : "Ciemny"}
 			</ThemeButton>
