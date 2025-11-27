@@ -4,7 +4,7 @@ import { Discover } from "../../organisms/Discover/Discover";
 import { Pricing } from "../../organisms/Pricing/Pricing";
 import { Footer } from "../../organisms/Footer/Footer";
 import type React from "react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {BrowserView, MobileView} from 'react-device-detect';
 
 export const HomePageLayout: React.FC<{goToLogIn: () => void}> = ({goToLogIn}) => {
@@ -22,15 +22,26 @@ export const HomePageLayout: React.FC<{goToLogIn: () => void}> = ({goToLogIn}) =
     const scrollToPricing = () => {
     	pricingSectionRef.current?.scrollIntoView({ behavior: "smooth" });
     }
+    const [width, setWidth] = useState(window.innerWidth);
+    
+    const handleResize = () => {
+	setWidth(window.innerWidth);
+    }
+
+    useEffect(()=>{
+	window.addEventListener('resize', handleResize);
+    });
 
     return (
 	<>
-	    <div style={{width: '100vw', minHeight: '100vh', flexDirection: 'column', display: 'flex'}}>
+	    <div style={{width: '100svw', minHeight: '100svh', flexDirection: 'column', display: 'flex'}}>
 		<div ref={bannerSectionRef}>
 		    <Banner />
 		</div>
 		<BrowserView>
-		    <HeaderHome home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>
+		    {width > 900 ?
+		    (<HeaderHome home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>) :
+		    (<HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>)}
 		</BrowserView>
 		<MobileView>
 		    <HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>

@@ -273,7 +273,7 @@ npm run lint
 ├── 6 stron aplikacji
 ├── 3 contexty
 ├── 1 utility library
-└── ~2,500 linii kodu
+└── 487 faktycznych linii kodu (TS/TSX)
 
 🧩 Breakdown komponentów:
 ├── Atoms: 8 komponentów

@@ -266,6 +266,7 @@ export const ForgotPasswordForm: React.FC<{resetPassword: (email: string) => voi
 
 	return(
 		<div className={` ${styles.loginForm} ${loginFormThemeColor} `}>
+			<Typography variant="body" className={styles.loginBack}><Link url='/login' text='Powrót do logowania' className={styles.loginLink} /></Typography>
 			<Typography variant="h1" className={`${styles.title} ${titleThemeColor}`}>Resetowanie hasła</Typography>
 			<label className={styles.label}>
 				<Typography variant="body">Email:</Typography>
@@ -279,6 +280,9 @@ export const ForgotPasswordForm: React.FC<{resetPassword: (email: string) => voi
 				{emailError && <Typography variant="small" className={styles.errorText}>{emailError}</Typography>}
 			</label>
 			<Button className={` ${styles.button} ${buttonTheme} `} onClick={handleResetPassword}>Wyślij link do resetowania hasła</Button>
+			
+
+			
 		</div>
 	);
 }

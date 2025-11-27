@@ -7,6 +7,9 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
+.themeButton{
+    width: 100px;
+}
 
 .button:disabled {
   opacity: 0.6;
