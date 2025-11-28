@@ -1,6 +1,6 @@
 # Fittrack - Frontend Solution
 
-> **Czas spędzony nad projektem:** ~15h💀
+> **Czas spędzony nad projektem:** ~30h💀
 
 ## 📋 Opis Projektu
 
