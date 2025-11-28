@@ -1,4 +1,4 @@
-import { useTheme } from '../../../context/useTheme';
+import { useTheme } from '../../../hooks/useTheme';
 import styles from './WorkoutsLayout.module.css';
 
 export const WorkoutsLayout: React.FC = () => {

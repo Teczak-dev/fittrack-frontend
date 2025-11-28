@@ -7,6 +7,7 @@ interface LinkProps{
     className?: string;
     style?: React.CSSProperties;
 }
+
 interface NavigationLinkProps{
     children: React.ReactNode;
     url: string;

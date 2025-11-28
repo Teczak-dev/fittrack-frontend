@@ -1,16 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { LoginLayout } from "../components/templates/LoginLayout/LoginLayout";
+import { login } from "../api/auth";
+import { useState } from "react";
 
 export const Login: React.FC = () => {
-
     const navigate = useNavigate();
-
-    const loginFunction = (email: string, password: string) => {
-	console.log("Login function called with email:", email, "and password:", password);
-	navigate('/me');
+    const [error, setError] = useState('');
+    const loginFunction = async(email: string, password: string) => {
+	try{
+	    await login(email, password);
+	    navigate('/me');
+	}catch(err: any){
+	    setError(err.message);
+	}
     }
 
     return(
-	<LoginLayout login={loginFunction} />
+	<LoginLayout login={loginFunction} error={error} />
     );
 }

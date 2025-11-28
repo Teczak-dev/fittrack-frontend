@@ -6,6 +6,8 @@ import App from './App.tsx'
 import { Home } from './pages/Home.tsx'
 import { ThemeProvider } from './context/ThemeContext.tsx';
 import { ScreenWidthProvider } from './context/ScreenWidthContext.tsx';
+import { ProtectedRoute } from './components/organisms/ProtectedRoute/ProtectedRoute.tsx';
+import { UserProvider } from './context/UserContext.tsx';
 import { Login } from './pages/Login.tsx';
 import { Register } from './pages/Register.tsx';
 import { ForgotPassword } from './pages/ForgotPassword.tsx';
@@ -15,6 +17,8 @@ import { Me } from './pages/Me.tsx';
 import { Workouts } from './pages/Workouts.tsx';
 import { Analize } from './pages/Analize.tsx';
 import { Calories } from './pages/Calories.tsx';
+import VerifyAccount from './pages/VerifyAccont.tsx';
+import { ResetPassword } from './pages/ResetPassword.tsx';
 
 const router = createBrowserRouter([
     {
@@ -40,13 +44,27 @@ const router = createBrowserRouter([
 	{
 	    path: '/forgot-password',
 	    element: <ForgotPassword />
+	},
+	{
+	    path: '/verify/:token',
+	    element: <VerifyAccount />
+	},
+	{
+	    path: '/reset-password/:token',
+	    element: <ResetPassword />
 	}
 	    
 	]
     },
     {
 	path: "/me",
-	element: <MainAppLayout />,
+	element: (
+		<ProtectedRoute>
+		    <UserProvider> 
+			<MainAppLayout />
+		    </UserProvider>
+		    </ProtectedRoute>
+		) ,
 	errorElement: <div>Oops! An error occurred.</div>,
 	children: [
 	    {

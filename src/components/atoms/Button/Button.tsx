@@ -1,4 +1,4 @@
-import { useTheme } from '../../../context/useTheme';
+import { useTheme } from '../../../hooks/useTheme';
 import styles from './Button.module.css';
 
 interface ButtonProps {

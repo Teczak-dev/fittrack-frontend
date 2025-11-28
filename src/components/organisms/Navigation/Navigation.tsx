@@ -1,4 +1,4 @@
-import { useTheme } from "../../../context/useTheme";
+import { useTheme } from "../../../hooks/useTheme";
 import { NavigationLink } from "../../atoms/Link/Link";
 import { Button, ThemeButton } from "../../atoms/Button/Button";
 import { useState } from "react";
@@ -17,6 +17,7 @@ import caloriesLight from '../../../assets/images/navigation_icons/calories_whit
 import settingsBlack from '../../../assets/images/settings_black.png';
 import settingsWhite from '../../../assets/images/settings_white.png';
 import { useNavigate } from "react-router-dom";
+import { logout } from "../../../api/auth";
 
 export const Navigation: React.FC = () => {
     const {theme} = useTheme();
@@ -88,6 +89,11 @@ export const NavigationMobile: React.FC = () => {
 
     const [openSettings, setOpenSettings] = useState(false);
     
+    const handleLogout = () => {
+	logout();
+	navigation("/login");
+    };
+
 
     const navBackgroundClass = theme === 'dark' ? styles.navMDark : styles.navMLight;
     const SettingsSrc = theme === 'light' ? settingsBlack : settingsWhite;
@@ -127,7 +133,7 @@ export const NavigationMobile: React.FC = () => {
 			<ThemeButton onClick={toggleTheme} className={styles.buttonThemeApp}>
 			    {theme === "dark" ? "Jasny" : "Ciemny"}
 			</ThemeButton>
-			<Button onClick={() => navigation('/login')}>Logout</Button>
+			<Button onClick={handleLogout}>Logout</Button>
 		    </div>
 
 		) : null}

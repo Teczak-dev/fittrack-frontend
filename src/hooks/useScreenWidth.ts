@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ScreenWidthContext } from "./ScreenWidthContextDefinition";
+import { ScreenWidthContext } from "../context/ScreenWidthContext";
 
 export function useScreenWidth() {
     const context = useContext(ScreenWidthContext);

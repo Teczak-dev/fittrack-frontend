@@ -6,7 +6,7 @@ import { Footer } from "../../organisms/Footer/Footer";
 import type React from "react";
 import { useRef} from "react";
 import {BrowserView, MobileView} from 'react-device-detect';
-import { useScreenWidth } from "../../../context/useScreenWidth";
+import { useScreenWidth } from "../../../hooks/useScreenWidth";
 
 export const HomePageLayout: React.FC<{goToLogIn: () => void}> = ({goToLogIn}) => {
 

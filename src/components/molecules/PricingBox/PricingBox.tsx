@@ -1,6 +1,6 @@
 import { Button } from '../../atoms/Button/Button';
 import { Typography } from '../../atoms/Typography/Typography';
-import { useTheme } from '../../../context/useTheme';
+import { useTheme } from '../../../hooks/useTheme';
 import styles from './PricingBox.module.css';
 
 interface PricingBoxProps {

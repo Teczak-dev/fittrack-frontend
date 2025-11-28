@@ -1,5 +1,5 @@
 
-import { useTheme } from '../../../context/useTheme';
+import { useTheme } from '../../../hooks/useTheme';
 import styles from './AnalizeLayout.module.css';
 
 export const AnalizeLayout: React.FC = () => {

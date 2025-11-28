@@ -4,19 +4,21 @@ import { Typography } from '../../atoms/Typography/Typography';
 
 import { useState } from 'react';
 import styles from './Forms.module.css';
-import { useTheme } from '../../../context/useTheme';
+import { useTheme } from '../../../hooks/useTheme';
 import { Link } from '../../atoms/Link/Link';
 import { validateEmail, validatePassword, validateUsername, validatePasswordConfirm } from '../../../utils/validation';
 
 interface LoginFormProps{
     login: (email:string, pass:string) => void;
+    error?: string;
 }
 
 interface RegisterFormProps{	
     register: (email:string, pass:string, username: string) => void;
+    error?: string;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({login}) => {
+export const LoginForm: React.FC<LoginFormProps> = ({login, error}) => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [emailError, setEmailError] = useState<string>('');
@@ -91,6 +93,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({login}) => {
 				/>
 				{passwordError && <Typography variant="small" className={styles.errorText}>{passwordError}</Typography>}
 			</label>
+			{error && <Typography variant="small" className={styles.errorText}>Błędny adress e-mail lub hasło</Typography>}
 			<Button className={` ${styles.button} ${buttonTheme} `} onClick={handleLogin}>Zaloguj się</Button>
 			<Typography variant="body" className={styles.registerText}>Nie masz konta? <Link url='/register' text='Zarejestruj się' className={styles.registerLink} /></Typography>
 			<Link url='/forgot-password' className={styles.forgotPassword} text='Nie pamiętasz hasła?' />
@@ -100,6 +103,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({login}) => {
 
 export const RegisterForm: React.FC<RegisterFormProps> = ({
     register,
+    error
    }) => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -230,13 +234,18 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
 				/>
 				{confirmError && <Typography variant="small" className={styles.errorText}>{confirmError}</Typography>}
 			</label>
+			{error && <Typography variant="small" className={styles.errorText}>{error}</Typography>}
+
 			<Button className={` ${styles.button} ${buttonTheme} `} onClick={handleRegister}>Zarejestruj się</Button>
 			<Typography variant="body" className={styles.loginText}>Masz konto? <Link url='/login' text='Zaloguj się' className={styles.loginLink} /></Typography>
 		</div>
     );
 }
 
-export const ForgotPasswordForm: React.FC<{resetPassword: (email: string) => void}> = ({resetPassword}) => {
+export const ForgotPasswordForm: React.FC<{resetPassword: (email: string) => void; msg?:string}> = ({
+    resetPassword,
+    msg
+}) => {
 	const [email, setEmail] = useState<string>('');
 	const [emailError, setEmailError] = useState<string>('');
 	const { theme } = useTheme();
@@ -279,10 +288,85 @@ export const ForgotPasswordForm: React.FC<{resetPassword: (email: string) => voi
 				/>
 				{emailError && <Typography variant="small" className={styles.errorText}>{emailError}</Typography>}
 			</label>
+			{msg && <Typography variant="small" className={styles.errorText}>{msg}</Typography>}
 			<Button className={` ${styles.button} ${buttonTheme} `} onClick={handleResetPassword}>Wyślij link do resetowania hasła</Button>
 			
 
 			
+		</div>
+	);
+}
+
+
+export const ResetPasswordForm: React.FC<{handleReset: (newPassword: string) => void; msg:string}> = ({
+    handleReset,
+    msg
+}) => {
+    	const [password, setPassword] = useState<string>('');
+    	const [password2, setPassword2] = useState<string>('');
+	const [passwordError, setPasswordError] = useState<string>('');
+	const { theme } = useTheme();
+
+	const handlePasswordBlur = () => {
+	    const passwordValidation = validatePassword(password);
+	    if (!passwordValidation.isValid) {
+		setPasswordError(passwordValidation.error || 'Hasło musi mieć minimum 6 znaków');
+	    } else {
+		setPasswordError('');
+	    }
+	}
+
+	const handleSecondPasswordBlur = () => {
+	    const passwordValidation = validatePassword(password2);
+	    if (!passwordValidation.isValid) {
+		setPasswordError(passwordValidation.error || 'Hasło musi mieć minimum 6 znaków');
+	    } else {
+		setPasswordError('');
+	    }
+	}
+
+	const handleResetPassword = () => {
+	    const passwordValidation = validatePassword(password);
+	    const password2Validation = validatePassword(password2);
+	    if (!passwordValidation.isValid || !password2Validation.isValid || password !== password2) {
+		setPasswordError(passwordValidation.error || 'Hasło musi mieć minimum 6 znaków oraz muszą być identyczne');
+	    } else {
+		handleReset(password);
+	    }
+	}
+
+	const titleThemeColor = theme === 'dark' ? styles.titleDark : styles.titleLight;
+	const loginFormThemeColor = theme === 'dark' ? styles.loginFormDark : styles.loginFormLight;
+	const buttonTheme = theme === 'dark' ? styles.buttonDark : styles.buttonLight;
+
+	return(
+		<div className={` ${styles.loginForm} ${loginFormThemeColor} `}>
+			<Typography variant="body" className={styles.loginBack}><Link url='/login' text='Powrót do logowania' className={styles.loginLink} /></Typography>
+			<Typography variant="h1" className={`${styles.title} ${titleThemeColor}`}>Ustaw nowe hasło</Typography>
+			<label className={styles.label}>
+				<Typography variant="body">Nowe hasło:</Typography>
+				<Input 
+					type="password" 
+					className={styles.input} 
+					value={password} 
+					onChange={setPassword}
+					onBlur={handlePasswordBlur}
+				/>
+				{passwordError && <Typography variant="small" className={styles.errorText}>{passwordError}</Typography>}
+			</label>
+			<label className={styles.label}>
+				<Typography variant="body">Powtórz nowe hasło:</Typography>
+				<Input 
+					type="password" 
+					className={styles.input} 
+					value={password2} 
+					onChange={setPassword2}
+					onBlur={handleSecondPasswordBlur}
+				/>
+				{passwordError && <Typography variant="small" className={styles.errorText}>{passwordError}</Typography>}
+			</label>
+			{msg && <Typography variant="small" className={styles.errorText}>{msg}</Typography>}
+			<Button className={` ${styles.button} ${buttonTheme} `} onClick={handleResetPassword}>Zresetuj hasło</Button>
 		</div>
 	);
 }

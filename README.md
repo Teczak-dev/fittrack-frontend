@@ -1,6 +1,6 @@
 # Fittrack - Frontend Solution
 
-> **Czas spędzony nad projektem:** ~15h💀
+> **Czas spędzony nad projektem:** ~35h💀
 
 ## 📋 Opis Projektu
 
@@ -273,7 +273,7 @@ npm run lint
 ├── 6 stron aplikacji
 ├── 3 contexty
 ├── 1 utility library
-└── 487 faktycznych linii kodu (TS/TSX)
+└── ~ 3500 linijek kodu
 
 🧩 Breakdown komponentów:
 ├── Atoms: 8 komponentów

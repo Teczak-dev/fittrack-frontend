@@ -1,126 +1,195 @@
-import { Image } from '../../atoms/Image/Image';
-import { Link } from '../../atoms/Link/Link';
-import { Button, ThemeButton } from '../../atoms/Button/Button';
+import { Image } from "../../atoms/Image/Image";
+import { Link } from "../../atoms/Link/Link";
+import { Button, ThemeButton } from "../../atoms/Button/Button";
 
-import styles from './Header.module.css';
-import { useTheme } from '../../../context/useTheme';
+import styles from "./Header.module.css";
+import { useTheme } from "../../../hooks/useTheme";
 
-import Hamburger from 'hamburger-react';
-import { useState } from 'react';
+import Hamburger from "hamburger-react";
+import { useEffect, useState } from "react";
 
-import logoBlack from '../../../assets/images/logo_black.png';
-import logoWhite from '../../../assets/images/logo_white.png';
-import settingsBlack from '../../../assets/images/settings_black.png';
-import settingsWhite from '../../../assets/images/settings_white.png';
+import logoBlack from "../../../assets/images/logo_black.png";
+import logoWhite from "../../../assets/images/logo_white.png";
+import settingsBlack from "../../../assets/images/settings_black.png";
+import settingsWhite from "../../../assets/images/settings_white.png";
 
-import { useNavigate } from 'react-router-dom';
-import { Navigation, NavigationDesktopMedium } from '../Navigation/Navigation';
-import { useScreenWidth } from '../../../context/useScreenWidth';
+import { useNavigate } from "react-router-dom";
+import { Navigation, NavigationDesktopMedium } from "../Navigation/Navigation";
+import { useScreenWidth } from "../../../hooks/useScreenWidth";
+import { useUser } from "../../../hooks/useUser";
+import { getProfile, logout } from "../../../api/auth";
 
-export const HeaderHome: React.FC<{home:()=>void; discover:()=>void; price:()=>void}> = ({home, discover, price}) => {
-    const { theme, toggleTheme } = useTheme();
-    const lightStyle = theme === 'light' ? styles.headerLight : '';
-    const buttonsColor = theme === 'light' ? styles.linksLight : styles.linksDark;
-    const imageSrc = theme === 'light' ? logoBlack : logoWhite;
-    const navigation = useNavigate();
-    return (
-		<header className={`${styles.header} ${lightStyle}`} style={styles}>
-			<div className={styles.div} style={styles}>
-			<Image src={imageSrc} alt="Logo" className={styles.logo} onClick={() => navigation('/')} />
-			<div className={styles.navLinks} style={styles}>
-				<Button onClick={home} className={`${styles.links} ${buttonsColor}`}>
-				Fit tracker
-				</Button>
-				<Button onClick={discover} className={`${styles.links} ${buttonsColor}`}>
-				Odkryj
-				</Button>
-				<Button onClick={price} className={`${styles.links} ${buttonsColor}`}>
-				Cena
-				</Button>
-			</div>
-			</div>
-			<div className={`${styles.div} ${styles.rightDiv}`} style={styles}>
-			<ThemeButton onClick={toggleTheme}>{theme === "dark" ? "Jasny" : "Ciemny"}</ThemeButton>
-			<Link text="Rejestracja" url="/register" className={`${styles.Register} ${theme === 'dark' ? styles.RegisterDark : styles.RegisterLight}`} style={styles} />
-			<Link text="Login" url="/login" className={`${styles.Login} ${theme === 'dark' ? styles.LoginDark : styles.LoginLight}`} style={styles} />
-			</div>
-		</header>
-    );
-}
-export const HeaderHomeMobile: React.FC<{home:()=>void; discover:()=>void; price:()=>void}> = ({home, discover, price}) => {
-    const { theme, toggleTheme } = useTheme();
-    const lightStyle = theme === 'light' ? styles.headerLightM : '';
-    const buttonsColor = theme === 'light' ? styles.linksLight : styles.linksDark; 
-    const imageSrc = theme === 'light' ? logoBlack : logoWhite;
-    const navigation = useNavigate();
+export const HeaderHome: React.FC<{
+  home: () => void;
+  discover: () => void;
+  price: () => void;
+}> = ({ home, discover, price }) => {
+  const { theme, toggleTheme } = useTheme();
+  const lightStyle = theme === "light" ? styles.headerLight : "";
+  const buttonsColor = theme === "light" ? styles.linksLight : styles.linksDark;
+  const imageSrc = theme === "light" ? logoBlack : logoWhite;
+  const navigation = useNavigate();
+  return (
+    <header className={`${styles.header} ${lightStyle}`} style={styles}>
+      <div className={styles.div} style={styles}>
+        <Image
+          src={imageSrc}
+          alt="Logo"
+          className={styles.logo}
+          onClick={() => navigation("/")}
+        />
+        <div className={styles.navLinks} style={styles}>
+          <Button onClick={home} className={`${styles.links} ${buttonsColor}`}>
+            Fit tracker
+          </Button>
+          <Button
+            onClick={discover}
+            className={`${styles.links} ${buttonsColor}`}
+          >
+            Odkryj
+          </Button>
+          <Button onClick={price} className={`${styles.links} ${buttonsColor}`}>
+            Cena
+          </Button>
+        </div>
+      </div>
+      <div className={`${styles.div} ${styles.rightDiv}`} style={styles}>
+        <ThemeButton onClick={toggleTheme}>
+          {theme === "dark" ? "Jasny" : "Ciemny"}
+        </ThemeButton>
+        <Link
+          text="Rejestracja"
+          url="/register"
+          className={`${styles.Register} ${theme === "dark" ? styles.RegisterDark : styles.RegisterLight}`}
+          style={styles}
+        />
+        <Link
+          text="Login"
+          url="/login"
+          className={`${styles.Login} ${theme === "dark" ? styles.LoginDark : styles.LoginLight}`}
+          style={styles}
+        />
+      </div>
+    </header>
+  );
+};
+export const HeaderHomeMobile: React.FC<{
+  home: () => void;
+  discover: () => void;
+  price: () => void;
+}> = ({ home, discover, price }) => {
+  const { theme, toggleTheme } = useTheme();
+  const lightStyle = theme === "light" ? styles.headerLightM : "";
+  const buttonsColor = theme === "light" ? styles.linksLight : styles.linksDark;
+  const imageSrc = theme === "light" ? logoBlack : logoWhite;
+  const navigation = useNavigate();
 
-    const [isOpen, setOpen] = useState(false);
-    
-    return (
-		<header className={`${styles.headerM} ${lightStyle}`} style={styles}>
-			<div className={styles.navOverlay}>
-			<Hamburger toggled={isOpen} toggle={setOpen} />
-			<Image src={imageSrc} alt="Logo" className={styles.logo} onClick={() => navigation('/')}/>
-			<Link text="Login" url="/login" className={`${styles.Login} ${theme === 'dark' ? styles.LoginDark : styles.LoginLight}`} style={styles} />
-			</div>
-			{isOpen ? (
-			<div className={styles.burger} onClick={() => setOpen(false)}>
-			<div className={styles.navLinksM} style={styles}>
-				<Button onClick={home} className={`${styles.links} ${buttonsColor}`}>
-				Fit tracker
-				</Button>
-				<Button onClick={discover} className={`${styles.links} ${buttonsColor}`}>
-				Odkryj
-				</Button>
-				<Button onClick={price} className={`${styles.links} ${buttonsColor}`}>
-				Cena
-				</Button>
-			</div>
-			<div className={styles.buttonsBurgerM} >
-				<ThemeButton onClick={toggleTheme}>{theme === "dark" ? "Jasny" : "Ciemny"}</ThemeButton>
-				<Link text="Rejestracja" url="/register" className={`${styles.Register} ${theme === 'dark' ? styles.RegisterDark : styles.RegisterLight}`} style={styles} />
-			</div>
-			</div>): null}
-		</header>
+  const [isOpen, setOpen] = useState(false);
 
-    );
-}
-
+  return (
+    <header className={`${styles.headerM} ${lightStyle}`} style={styles}>
+      <div className={styles.navOverlay}>
+        <Hamburger toggled={isOpen} toggle={setOpen} />
+        <Image
+          src={imageSrc}
+          alt="Logo"
+          className={styles.logo}
+          onClick={() => navigation("/")}
+        />
+        <Link
+          text="Login"
+          url="/login"
+          className={`${styles.Login} ${theme === "dark" ? styles.LoginDark : styles.LoginLight}`}
+          style={styles}
+        />
+      </div>
+      {isOpen ? (
+        <div className={styles.burger} onClick={() => setOpen(false)}>
+          <div className={styles.navLinksM} style={styles}>
+            <Button
+              onClick={home}
+              className={`${styles.links} ${buttonsColor}`}
+            >
+              Fit tracker
+            </Button>
+            <Button
+              onClick={discover}
+              className={`${styles.links} ${buttonsColor}`}
+            >
+              Odkryj
+            </Button>
+            <Button
+              onClick={price}
+              className={`${styles.links} ${buttonsColor}`}
+            >
+              Cena
+            </Button>
+          </div>
+          <div className={styles.buttonsBurgerM}>
+            <ThemeButton onClick={toggleTheme}>
+              {theme === "dark" ? "Jasny" : "Ciemny"}
+            </ThemeButton>
+            <Link
+              text="Rejestracja"
+              url="/register"
+              className={`${styles.Register} ${theme === "dark" ? styles.RegisterDark : styles.RegisterLight}`}
+              style={styles}
+            />
+          </div>
+        </div>
+      ) : null}
+    </header>
+  );
+};
 
 export const HeaderApp: React.FC = () => {
+  const { user, updateUser } = useUser();
+  const { theme, toggleTheme } = useTheme();
+  const { width } = useScreenWidth();
+  const navigation = useNavigate();
+  const [openSettings, setOpenSettings] = useState(false);
 
-    const { theme, toggleTheme } = useTheme();
-    const { width } = useScreenWidth();
-    const navigation = useNavigate();
-    const [openSettings, setOpenSettings] = useState(false);
-    
+  useEffect(() => {
+    getProfile()
+      .then(updateUser)
+      .catch(() => navigation("/login"));
+  }, []);
 
-    const ImageSrc = theme === 'light' ? logoBlack : logoWhite;
-    const lightStyle = theme === 'light' ? styles.headerAppLight : '';
-    const SettingsSrc = theme === 'light' ? settingsBlack : settingsWhite;
-    const settingsMenuActive = openSettings ? styles.buttonAppActive : '';
-    const settingsMenuBG = theme === 'light' ? {backgroundColor: '#f1f1f1', border: '1px solid #ccc'} : {backgroundColor: '#333', border: '1px solid #555'};;
+  const handleLogout = () => {
+    console.log("Logging out...");
+    logout();
+    navigation("/login");
+  };
 
-    
+  const ImageSrc = theme === "light" ? logoBlack : logoWhite;
+  const lightStyle = theme === "light" ? styles.headerAppLight : "";
+  const SettingsSrc = theme === "light" ? settingsBlack : settingsWhite;
+  const settingsMenuActive = openSettings ? styles.buttonAppActive : "";
+  const settingsMenuBG =
+    theme === "light"
+      ? { backgroundColor: "#f1f1f1", border: "1px solid #ccc" }
+      : { backgroundColor: "#333", border: "1px solid #555" };
+
+
 
     return(
 	<header className={` ${styles.headerApp} ${lightStyle}`}>
 	    <Image src={ImageSrc} alt="Logo" className={styles.logoApp} onClick={() => navigation('/me')}/>
 	    {width > 1200 ? (<Navigation />):(<NavigationDesktopMedium />) }
 	    <div>
-		<span>Hi, user! 👋🏻</span>
+		<span>Hi, {user?.name}! 👋🏻</span>
 		<Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
 		<Button onClick={() => setOpenSettings(!openSettings)} className={styles.buttonApp}>
 		    <Image src={SettingsSrc} alt="Settings" className={` ${styles.settingsIcon} ${settingsMenuActive}`} />
 		</Button>
 	    </div>
-	    {openSettings ? 
+	    {openSettings ?
 		(
 		    <div className={styles.settingsMenu} style={settingsMenuBG}>
 			<ThemeButton onClick={toggleTheme} className={styles.buttonThemeApp}>
 			    {theme === "dark" ? "Jasny" : "Ciemny"}
 			</ThemeButton>
-			<Button onClick={() => navigation('/login')}>Logout</Button>
+			<Button onClick={handleLogout}>Logout</Button>
 		    </div>
 
 		) : null}
@@ -130,22 +199,34 @@ export const HeaderApp: React.FC = () => {
 
 
 export const HeaderAppMobile: React.FC = () => {
-
     const { theme } = useTheme();
+    const { user, updateUser } = useUser();
     
-    const ImageSrc = theme === 'light' ? logoBlack : logoWhite;
-    const lightStyle = theme === 'light' ? styles.headerAppLight : '';
+    const ImageSrc = theme === "light" ? logoBlack : logoWhite;
+    const lightStyle = theme === "light" ? styles.headerAppLight : "";
     const navigation = useNavigate();
 
 
+    useEffect(() => {
+	getProfile()
+	    .then(updateUser)
+	    .catch(() => navigation("/login"));
+    }, []);
 
-    return(
+    
+
+    return (
 	<header className={` ${styles.headerApp} ${lightStyle}`}>
-	    <Image src={ImageSrc} alt="Logo" className={styles.logoApp} onClick={() => navigation('/me')}/>
-	    <div>
-		<span>Hi, user! 👋🏻</span>
-		<Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
-	    </div>
+	    <Image
+		src={ImageSrc}
+		alt="Logo"
+		className={styles.logoApp}
+		onClick={() => navigation("/me")}
+	    />
+	<div>
+	    <span>Hi, {user?.name}! 👋🏻</span>
+	    <Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
+	</div>
 	</header>
     );
-}
+};

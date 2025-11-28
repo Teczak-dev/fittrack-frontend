@@ -22,9 +22,6 @@
 .title{
     font-size: 32px;
     font-weight: 700;
-    position: absolute;
-    top: -50px;
-    left: 20px;
 }
 .titleDark{
     color: #f1f1f1;
@@ -118,7 +115,9 @@
 }
 
 .errorText {
-    color: #dc2626;
+    width: 90%;
+    text-wrap: wrap;
+    color: #f1f1f1;
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: block;

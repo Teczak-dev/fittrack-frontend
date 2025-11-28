@@ -1,4 +1,4 @@
-import { useTheme } from '../../../context/useTheme';
+import { useTheme } from '../../../hooks/useTheme';
 import { Image } from '../../atoms/Image/Image';
 import { Typography } from '../../atoms/Typography/Typography';
 import styles from './Banner.module.css';

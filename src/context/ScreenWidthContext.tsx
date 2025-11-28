@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { ScreenWidthContext } from "./ScreenWidthContextDefinition";
+import { createContext } from "react";
+
+interface ScreenWidthContextType {
+    width: number;
+    handleResize: () => void;
+}
+
+export const ScreenWidthContext = createContext<ScreenWidthContextType | undefined>(undefined);
 
 export const ScreenWidthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [width, setWidth] = useState(window.innerWidth);

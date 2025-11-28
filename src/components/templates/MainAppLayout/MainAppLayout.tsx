@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom"
 import { HeaderApp, HeaderAppMobile } from "../../organisms/Header/Header"
-import { useTheme } from "../../../context/useTheme";
+import { useTheme } from "../../../hooks/useTheme";
 import { BrowserView, MobileView } from "react-device-detect";
 import { NavigationMobile} from "../../organisms/Navigation/Navigation";
-import { useScreenWidth } from "../../../context/useScreenWidth";
+import { useScreenWidth } from "../../../hooks/useScreenWidth";
 
 const DesktopBigLayout: React.FC = () => {
     return(
