@@ -1,4 +1,5 @@
 import { useTheme } from '../../../hooks/useTheme';
+import { TodaySummary } from '../../organisms/Widgets/TodaySummary';
 import styles from './DashboardLayout.module.css';
 
 interface DashboardLayoutProps {
@@ -9,7 +10,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ className }) =
     
     const {theme} = useTheme();
 
-    const gridItemBG = theme === 'dark' ? '#213043' : '#4E1BB4';
+    const gridItemBG = theme === 'dark' ? '#0D442F' : '#4E1BB4';
 
 
     return (
@@ -23,7 +24,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ className }) =
             </div>
             
             <div className={styles.content}>
-		<div className={styles.gridItem} style={{gridArea: 'today', backgroundColor: gridItemBG}}>Dzisiaj</div>
+		<div className={styles.gridItem} style={{gridArea: 'today', backgroundColor: gridItemBG}}> <TodaySummary/> </div>
 		<div className={styles.gridItem} style={{gridArea: 'motto', backgroundColor: gridItemBG}} >Motto</div>
 		<div className={styles.gridItem} style={{gridArea: 'streak', backgroundColor: gridItemBG}}>Streak</div>
 		{/* Wiersz 2*/}

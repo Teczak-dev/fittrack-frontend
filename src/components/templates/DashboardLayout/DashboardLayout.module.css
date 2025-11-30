@@ -25,19 +25,19 @@
     height: 80vsh;
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
-    grid-template-rows: repeat(3, minmax(200px, 1.5fr));
+    grid-template-rows: repeat(3, minmax(200px, 1fr));
     gap: 16px;
     padding: 16px;
     grid-template-areas: 
-	"today today motto streak"
-	"data last_workout stats stats"
+	"today last_workout last_workout streak"
+	"data motto stats stats"
 	"limit_cal food stats stats"
 	;
 }
 .gridItem{
     width: 100%;
     height: 100%;
-    background-color: #213043;
+    background-color: #0D442F;
     border-radius: 30px;
     color: #f1f1f1;
 }

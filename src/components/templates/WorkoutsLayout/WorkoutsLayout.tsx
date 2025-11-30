@@ -5,7 +5,7 @@ export const WorkoutsLayout: React.FC = () => {
 
     const {theme} = useTheme();
 
-    const bgColor = theme === 'dark' ? '#213043' : '#4E1BB4';
+    const bgColor = theme === 'dark' ? '#0D442F' : '#4E1BB4';
     
     const testData: any = ['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'test9', 'test10', 'test11', 'test12','test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'test9', 'test10', 'test11', 'test12' ];
 

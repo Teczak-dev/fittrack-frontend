@@ -6,7 +6,7 @@ export const AnalizeLayout: React.FC = () => {
 
     const {theme} = useTheme();
 
-    const bgColor = theme === 'dark' ? '#213043' : '#4E1BB4';
+    const bgColor = theme === 'dark' ? '#0D442F' : '#4E1BB4';
 
     return(
 	<div className={styles.container}>
