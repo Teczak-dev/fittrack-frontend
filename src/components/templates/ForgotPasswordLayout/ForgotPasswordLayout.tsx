@@ -25,7 +25,7 @@ export const ForgotPasswordLayout: React.FC<ForgotPasswordLayoutProps> = ({
 
     return(
         <div className={styles.container} style={containerStyle}>
-            <Image src={logoSelected} alt="Logo" className={styles.logo} onClick={() => navigate('/')} />
+            <Image src={logoSelected} alt="Logo" className={styles.logo} onClick={() => navigate('/home')} />
             <ForgotPasswordForm resetPassword={sendResetLink} msg={msg} />
             <ThemeButton className={styles.buttonTheme} onClick={toggleTheme}>{theme === "dark" ? "Jasny" : "Ciemny"}</ThemeButton>
         </div>

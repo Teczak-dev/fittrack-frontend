@@ -21,7 +21,7 @@ export const RegisterLayout: React.FC<RegisterLayoutProps> = ({register, error})
     
     return(
         <div className={styles.container} style={containerStyle}>
-            <Image src={logoSelected} alt="Logo" className={styles.logo} onClick={() => navigate('/')} />
+            <Image src={logoSelected} alt="Logo" className={styles.logo} onClick={() => navigate('/home')} />
             <RegisterForm register={register} error={error}/>
             <ThemeButton className={styles.buttonTheme} onClick={toggleTheme}>{theme === "dark" ? "Jasny" : "Ciemny"}</ThemeButton>
         </div>

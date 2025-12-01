@@ -1,0 +1,27 @@
+.mottoContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.mottoText{
+    color: #f1f1f1;
+    font-size: 18px;
+    text-align: center;
+}
+
+@media (max-width: 960px){
+    .mottoContainer{
+	height: fit-content;
+    }
+    .mottoText{
+	font-size: 16px;
+    }
+}
+
+@media (max-width: 500px){
+    .mottoText{
+	font-size: 14px;
+    }
+}

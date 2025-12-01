@@ -1,0 +1,21 @@
+.streakContainer{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.streakText{
+    font-size: 22px;
+}
+
+@media (max-width: 450px){
+    .streakContainer{
+	position: relative;
+	height: 60%;
+    }
+    .streakText{
+	font-size: 16px;
+    }
+}

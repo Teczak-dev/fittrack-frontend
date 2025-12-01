@@ -22,7 +22,7 @@ export const LoginLayout: React.FC<LoginLayoutProps> = ({login, className, error
     
     return(
         <div className={` ${styles.container} ${className}`} style={containerStyle}>
-            <Image src={logoSelected} alt="Logo" className={styles.logo} onClick={() => navigate('/')} />
+            <Image src={logoSelected} alt="Logo" className={styles.logo} onClick={() => navigate('/home')} />
             <LoginForm login={login} error={error}/>
             <ThemeButton className={styles.buttonTheme} onClick={toggleTheme}>{theme === "dark" ? "Jasny" : "Ciemny"}</ThemeButton>
         </div>
