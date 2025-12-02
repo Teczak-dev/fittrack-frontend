@@ -41,10 +41,10 @@ export const MainAppLayout: React.FC = () => {
 	    </BrowserView>
 	    <MobileView>
 		<HeaderAppMobile />
-		<NavigationMobile />
 		<main>
 		    <Outlet />
 		</main>
+		<NavigationMobile />
 	    </MobileView>
 		
 	</div>

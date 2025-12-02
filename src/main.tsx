@@ -8,6 +8,7 @@ import { ThemeProvider } from './context/ThemeContext.tsx';
 import { ScreenWidthProvider } from './context/ScreenWidthContext.tsx';
 import { ProtectedRoute } from './components/organisms/ProtectedRoute/ProtectedRoute.tsx';
 import { UserProvider } from './context/UserContext.tsx';
+import { WorkoutsProvider } from './context/WorkoutsContext.tsx';
 import { Login } from './pages/Login.tsx';
 import { Register } from './pages/Register.tsx';
 import { ForgotPassword } from './pages/ForgotPassword.tsx';
@@ -19,6 +20,7 @@ import { Analize } from './pages/Analize.tsx';
 import { Calories } from './pages/Calories.tsx';
 import VerifyAccount from './pages/VerifyAccont.tsx';
 import { ResetPassword } from './pages/ResetPassword.tsx';
+import { Account } from './pages/Account.tsx';
 
 const router = createBrowserRouter([
     {
@@ -61,9 +63,11 @@ const router = createBrowserRouter([
 	element: (
 		<ProtectedRoute>
 		    <UserProvider> 
-			<MainAppLayout />
+			<WorkoutsProvider>
+			    <MainAppLayout />
+			</WorkoutsProvider>
 		    </UserProvider>
-		    </ProtectedRoute>
+		</ProtectedRoute>
 		) ,
 	errorElement: <div>Oops! An error occurred.</div>,
 	children: [
@@ -86,6 +90,10 @@ const router = createBrowserRouter([
 	    { 
 		path: '/me/calories',
 		element: <Calories />
+	    },
+	    {
+		path: '/me/account',
+		element: <Account />
 	    }
 	]
     }

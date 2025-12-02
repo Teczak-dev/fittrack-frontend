@@ -10,14 +10,14 @@ export const Stats = () => {
 	{ name: 'Wto', kalorie: 1000, minuty: 100},
 	{ name: 'Śro', kalorie: 1500, minuty: 200 },
 	{ name: 'Czw', kalorie: 200, minuty: 20},
-	{ name: 'Piątek', kalorie: 200, minuty: 20},
-	{ name: 'Sobota', kalorie: 200, minuty: 20},
-	{ name: 'Niedziela', kalorie: 200, minuty: 20 },
+	{ name: 'Pią', kalorie: 200, minuty: 20},
+	{ name: 'Sob', kalorie: 200, minuty: 20},
+	{ name: 'Nie', kalorie: 200, minuty: 20 },
     ]
 
     return (
 	<div className={mainStyles.container}>
-	    <Typography variant='h2' className={mainStyles.header}>Statystyki</Typography>
+	    <Typography variant='h2' className={mainStyles.header}>Ten tydzień</Typography>
 	    <div className={styles.statsContainer}>
 		<BarChart className={styles.barInfo} responsive data={data}>
 		    <CartesianGrid strokeDasharray="3 3" />
@@ -26,7 +26,7 @@ export const Stats = () => {
 		    <Tooltip itemStyle={{backgroundColor:'#222'}}  wrapperStyle={{borderRadius:'20px', backgroundColor:'#222'}} labelStyle={{backgroundColor:'#222'}} contentStyle={{backgroundColor:'#222', borderRadius:'20px'}} />
 		    <Legend  />
 		    <Bar dataKey="kalorie" fill="#f41" isAnimationActive={true}/>
-		    <Bar dataKey="minuty" fill="#14F" isAnimationActive={true}/>
+		    <Bar dataKey="minuty" fill="#28f" isAnimationActive={true}/>
 		</BarChart>
 	    </div>
 	</div>

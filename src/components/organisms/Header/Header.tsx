@@ -78,27 +78,27 @@ export const HeaderHomeMobile: React.FC<{
   discover: () => void;
   price: () => void;
 }> = ({ home, discover, price }) => {
-  const { theme, toggleTheme } = useTheme();
-  const lightStyle = theme === "light" ? styles.headerLightM : "";
-  const buttonsColor = theme === "light" ? styles.linksLight : styles.linksDark;
-  const imageSrc = theme === "light" ? logoBlack : logoWhite;
-  const navigation = useNavigate();
+    const { theme, toggleTheme } = useTheme();
+    const lightStyle = theme === "light" ? styles.headerLightM : "";
+    const buttonsColor = theme === "light" ? styles.linksLight : styles.linksDark;
+    const imageSrc = theme === "light" ? logoBlack : logoWhite;
+    const navigation = useNavigate();
 
-  const [isOpen, setOpen] = useState(false);
+    const [isOpen, setOpen] = useState(false);
 
-  return (
-    <header className={`${styles.headerM} ${lightStyle}`} style={styles}>
-      <div className={styles.navOverlay}>
-        <Hamburger toggled={isOpen} toggle={setOpen} />
-        <Image
-          src={imageSrc}
-          alt="Logo"
-          className={styles.logo}
-          onClick={() => navigation("/")}
-        />
-        <Link
-          text="Login"
-          url="/login"
+    return (
+	<header className={`${styles.headerM} ${lightStyle}`} style={styles}>
+	    <div className={styles.navOverlay}>
+		<Hamburger toggled={isOpen} toggle={setOpen} />
+		<Image
+		    src={imageSrc}
+		    alt="Logo"
+		    className={styles.logo}
+		    onClick={() => navigation("/")}
+		/>
+		<Link
+		    text="Login"
+		    url="/login"
           className={`${styles.Login} ${theme === "dark" ? styles.LoginDark : styles.LoginLight}`}
           style={styles}
         />
@@ -155,11 +155,19 @@ export const HeaderApp: React.FC = () => {
       .catch(() => navigation("/login"));
   }, []);
 
+    const handleToggleTheme = () => {
+	setOpenSettings(false);
+	toggleTheme();
+  }
+
   const handleLogout = () => {
     console.log("Logging out...");
     logout();
     navigation("/login");
   };
+    const handleAccount = () => {
+	navigation("/me/account");
+    };
 
   const ImageSrc = theme === "light" ? logoBlack : logoWhite;
   const lightStyle = theme === "light" ? styles.headerAppLight : "";
@@ -169,7 +177,7 @@ export const HeaderApp: React.FC = () => {
     theme === "light"
       ? { backgroundColor: "#f1f1f1", border: "1px solid #ccc" }
       : { backgroundColor: "#333", border: "1px solid #555" };
-
+    const settingsButtonsColor = theme === "light" ? styles.settingsButtonLight : '';
 
 
     return(
@@ -177,7 +185,7 @@ export const HeaderApp: React.FC = () => {
 	    <Image src={ImageSrc} alt="Logo" className={styles.logoApp} onClick={() => navigation('/me')}/>
 	    {width > 1200 ? (<Navigation />):(<NavigationDesktopMedium />) }
 	    <div>
-		<span>Hi, {user?.name}! 👋🏻</span>
+		<span>Hej, {user?.name}! 👋🏻</span>
 		<Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
 		<Button onClick={() => setOpenSettings(!openSettings)} className={styles.buttonApp}>
 		    <Image src={SettingsSrc} alt="Settings" className={` ${styles.settingsIcon} ${settingsMenuActive}`} />
@@ -185,12 +193,21 @@ export const HeaderApp: React.FC = () => {
 	    </div>
 	    {openSettings ?
 		(
-		    <div className={styles.settingsMenu} style={settingsMenuBG}>
-			<ThemeButton onClick={toggleTheme} className={styles.buttonThemeApp}>
-			    {theme === "dark" ? "Jasny" : "Ciemny"}
-			</ThemeButton>
-			<Button onClick={handleLogout}>Logout</Button>
-		    </div>
+		    <>
+			<div className={styles.placeholderForCloseSettings} onClick={() => setOpenSettings(false)}>
+			</div>
+			<div className={styles.settingsMenu} style={settingsMenuBG}>
+			    <Button onClick={handleAccount} className={settingsButtonsColor}>
+				Konto
+			    </Button>
+			    <Button onClick={handleToggleTheme} className={settingsButtonsColor}>
+				Zmień motyw na {theme === "dark" ? "jasny" : "ciemny"}
+			    </Button>
+			    <Button onClick={handleLogout} className={` ${settingsButtonsColor} ${styles.settingsButtonLast}`}>
+				Logout
+			    </Button>
+			</div>
+		    </>
 
 		) : null}
 	</header>
@@ -213,7 +230,6 @@ export const HeaderAppMobile: React.FC = () => {
 	    .catch(() => navigation("/login"));
     }, []);
 
-    
 
     return (
 	<header className={` ${styles.headerApp} ${lightStyle}`}>
@@ -224,7 +240,7 @@ export const HeaderAppMobile: React.FC = () => {
 		onClick={() => navigation("/me")}
 	    />
 	<div>
-	    <span>Hi, {user?.name}! 👋🏻</span>
+	    <span>Hej, {user?.name}! 👋🏻</span>
 	    <Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
 	</div>
 	</header>

@@ -34,6 +34,7 @@
     height: fit-content;
     color: #f1f1f1;
     font-size: 16px;
+    overflow: hidden;
 }
 
 
@@ -50,5 +51,12 @@
     }
     .workoutContainer p{
 	font-size: 11px;
+    }
+}
+@media (max-width: 370px){
+    .workoutContainer{
+	padding-top: 20px;
+	justify-content: flex-end;
+	align-items: flex-start;
     }
 }

@@ -1,4 +1,5 @@
 import { useTheme } from '../../../hooks/useTheme';
+import { Typography } from '../../atoms/Typography/Typography';
 import { Data } from '../../organisms/Widgets/Data';
 import { LastWorkout } from '../../organisms/Widgets/LastWorkout';
 import { Motto } from '../../organisms/Widgets/Motto';
@@ -11,21 +12,24 @@ import styles from './DashboardLayout.module.css';
 interface DashboardLayoutProps {
     className?: string;
 }
-
+const getCurrentDate = ():string => {
+	const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
+	return new Date().toLocaleDateString(undefined, options);
+}
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ className }) => {
     
     const {theme} = useTheme();
-
+    const currentDate = getCurrentDate();
     const gridItemBG = theme === 'dark' ? '#0D442F' : '#4E1BB4';
 
 
     return (
         <div className={`${styles.container} ${className || ''}`}>
             <div className={styles.header}>
-                <h1>Pulpit</h1>
+                <Typography variant='h2'>Pulpit</Typography>
                 <div>
-                    <p style={{marginRight: '10px'}}>Edit</p>
-                    <p>day, Month</p>
+                    <p style={{marginRight: '20px', cursor: 'pointer', textDecoration: 'underline'}}>Edytuj (prace wciąż trwają)</p>
+                    <p>{currentDate}</p>
                 </div>
             </div>
             

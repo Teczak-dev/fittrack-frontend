@@ -8,7 +8,7 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 99999 !important;
 }
 .navLink{
     text-decoration: none;
@@ -46,23 +46,36 @@
 
 .navMobile{
     width: 100svw;
-    height: 40px;   
+    height: 70px;   
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
     position: fixed;
     bottom: 0;
     left:0;
     padding: 20px 20px;
     overflow: hidden;
+    z-index: 9999 !important;
 }
 .navMDark{
     background-color: #232425;
 }
 .navMLight{
     background-color: #F1F1F1;
+}
+.navSmallText{
+    font-size: 9px !important;
+}
+.mobileNavLink{
+    width: 80px !important;
+    flex-direction: column;
+    gap: 2px !important;
+    color: #f1f1f1;
+}
+.mobileNavLinkLight{
+    color: #000 !important;
 }
 .buttonApp{
     width: fit-content;
@@ -76,8 +89,8 @@
     transform: rotate(90deg) !important;
 }
 .settingsIcon{
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     transition: ease-in-out 0.3s;
 }
 .settingsMenu{
@@ -92,6 +105,38 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1001;
     border: 1px solid #f1f1f1;
-    gap: 20px;
-    padding: 10px;
+}
+.settingsMenu button{
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    background-color: transparent;
+    color: #f1f1f1;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+.settingsButtonLight{
+    color: #000 !important;
+    border-bottom: 1px solid #000 !important;
+}
+.settingsMenu button:hover{
+    background-color: #555;
+}
+.settingsButtonLight:hover{
+    background-color: #DDD !important;
+}
+.settingsButtonLast{
+    border-radius: 0 0 10px 10px !important;
+}
+
+.placeholderForCloseSettings{
+    width: 100svw;
+    height: 100svh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }

@@ -12,7 +12,6 @@ export const TodaySummary = () => {
     return (
 	<div className={mainStyles.container}>
 	    <div className={styles.texts}>
-		<Typography variant='h2' className={styles.header} >Dzisiaj</Typography>
 		<Typography variant='body'>Kcal: {caloriesBurned}/{caloriesGoal}</Typography>
 	    </div>
 	    <div className={styles.progressbar}>
@@ -20,6 +19,7 @@ export const TodaySummary = () => {
 		    <CircularProgressbar value={percentage} styles={buildStyles({pathColor:'#f14', trailColor: '#611', textSize: '10px', textColor: '#fff' })} text={`kcal: ${caloriesBurned}`} />
 		</div>
 	    </div>
+	    <Typography variant='h2' className={mainStyles.header} >Dzisiaj</Typography>
 	</div>
     );
 }

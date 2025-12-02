@@ -1,5 +1,6 @@
 
 import { useTheme } from '../../../hooks/useTheme';
+import { Stats } from '../../organisms/Widgets/Stats';
 import styles from './AnalizeLayout.module.css';
 
 export const AnalizeLayout: React.FC = () => {
@@ -14,27 +15,19 @@ export const AnalizeLayout: React.FC = () => {
 
 	    {/* grid layout */}
 	    <div className={styles.content}>
-		{/* lewa strona */}
-		<div className={styles.gridItem} style={{gridArea: 'today' , backgroundColor: bgColor}}>
-		    Dzisiaj
+		<div className={styles.gridItem} style={{gridArea: 'TypesWheel', backgroundColor: bgColor}}>
+		    Koło typów treningów
+		</div>
+		<div className={styles.gridItem} style={{gridArea: 'TypesRadar', backgroundColor: bgColor}}>
+		    Preferencje typów treningów
 		</div>
 		<div className={styles.gridItem} style={{gridArea: 'thisW', backgroundColor: bgColor}}>
-		    Ten tydzień
+		    <Stats />
 		</div>
 		<div className={styles.gridItem} style={{gridArea: 'thisM', backgroundColor: bgColor}}>
 		    Ten miesiąc
 		</div>
 
-		{/* prawa strona*/}
-		<div className={styles.gridItem} style={{gridArea: 'year', backgroundColor: bgColor}}>
-		    Rok 2025
-		</div>
-		<div className={styles.gridItem} style={{gridArea: 'lastW', backgroundColor: bgColor}}>
-		    Ostatni tydzień
-		</div>
-		<div className={styles.gridItem} style={{gridArea: 'lastM', backgroundColor: bgColor}}>
-		    Ostatni miesiąc
-		</div>
 	    </div>
 	</div>
     );

@@ -1,6 +1,6 @@
 import { useTheme } from "../../../hooks/useTheme";
 import { NavigationLink } from "../../atoms/Link/Link";
-import { Button, ThemeButton } from "../../atoms/Button/Button";
+import { Button } from "../../atoms/Button/Button";
 import { useState } from "react";
 import { Image } from "../../atoms/Image/Image";
 import styles from './Navigation.module.css';
@@ -18,6 +18,7 @@ import settingsBlack from '../../../assets/images/settings_black.png';
 import settingsWhite from '../../../assets/images/settings_white.png';
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../../api/auth";
+import { Typography } from "../../atoms/Typography/Typography";
 
 export const Navigation: React.FC = () => {
     const {theme} = useTheme();
@@ -88,11 +89,19 @@ export const NavigationMobile: React.FC = () => {
     const navigation = useNavigate();
 
     const [openSettings, setOpenSettings] = useState(false);
-    
+    const handleToggleTheme = () => {
+	setOpenSettings(false);
+	toggleTheme();
+    }
     const handleLogout = () => {
 	logout();
 	navigation("/login");
     };
+
+    const handleAccount = () => {
+	navigation("/me/account");
+    };
+
 
 
     const navBackgroundClass = theme === 'dark' ? styles.navMDark : styles.navMLight;
@@ -103,24 +112,29 @@ export const NavigationMobile: React.FC = () => {
     const workoutsImgSrc = theme === 'dark' ? workoutsLight : workoutsDark;
     const analizeImgSrc = theme === 'dark' ? analizeLight : analizeDark;
     const caloriesImgSrc = theme === 'dark' ? caloriesLight : caloriesDark;
-
+    const settingsButtonsColor = theme === "light" ? styles.settingsButtonLight : '';
+    const mobileNavColor = theme === 'light' ? styles.mobileNavLinkLight : '';
 
     const settingsMenuBG = theme === 'light' ? {backgroundColor: '#f1f1f1', border: '1px solid #ccc'} : {backgroundColor: '#333', border: '1px solid #555'};;
 
     return(
 	<>
 	    <nav className={` ${styles.navMobile} ${navBackgroundClass}`}>
-		<NavigationLink url='/me/dashboard' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `} >
+		<NavigationLink url='/me/dashboard' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${styles.mobileNavLink} ${isActive ? selectedLinkClass : ""} `} >
 		    <Image src={dashboardImgSrc} alt="" className={styles.navImg}/>
+		    <Typography variant="body" className={`${styles.navSmallText} ${mobileNavColor} `}>Pulpit</Typography>
 		</NavigationLink>
-		<NavigationLink url='/me/workouts' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `} >
+		<NavigationLink url='/me/workouts' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${styles.mobileNavLink} ${isActive ? selectedLinkClass : ""} `} >
 		    <Image src={workoutsImgSrc} alt="" className={styles.navImg}/>
+		    <Typography variant="body" className={`${styles.navSmallText} ${mobileNavColor} `}>Ćwiczenia</Typography>
 		</NavigationLink>
-		<NavigationLink url='/me/analize' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `}>
+		<NavigationLink url='/me/analize' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${styles.mobileNavLink} ${isActive ? selectedLinkClass : ""} `}>
 		    <Image src={analizeImgSrc} alt="" className={styles.navImg}/>
+		    <Typography variant="body" className={`${styles.navSmallText} ${mobileNavColor} `}>Analizuj</Typography>
 		</NavigationLink>
-		<NavigationLink url='/me/calories' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `}>
+		<NavigationLink url='/me/calories' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${styles.mobileNavLink} ${isActive ? selectedLinkClass : ""} `}>
 		    <Image src={caloriesImgSrc} alt="" className={styles.navImg}/> 
+		    <Typography variant="body" className={`${styles.navSmallText} ${mobileNavColor} `}>Kalorie</Typography>
 		</NavigationLink>
 
 		<Button onClick={() => setOpenSettings(!openSettings)} className={styles.buttonApp}>
@@ -129,13 +143,21 @@ export const NavigationMobile: React.FC = () => {
 	    </nav>
 	    {openSettings ? 
 		(
-		    <div className={styles.settingsMenu} style={settingsMenuBG}>
-			<ThemeButton onClick={toggleTheme} className={styles.buttonThemeApp}>
-			    {theme === "dark" ? "Jasny" : "Ciemny"}
-			</ThemeButton>
-			<Button onClick={handleLogout}>Logout</Button>
-		    </div>
-
+		    <>
+			<div className={styles.placeholderForCloseSettings} onClick={() => setOpenSettings(false)}>
+			</div>
+			<div className={styles.settingsMenu} style={settingsMenuBG}>
+			    <Button onClick={handleAccount} className={settingsButtonsColor}>
+				Konto
+			    </Button>
+			    <Button onClick={handleToggleTheme} className={settingsButtonsColor}>
+				Zmień motyw na {theme === "dark" ? "jasny" : "ciemny"}
+			    </Button>
+			    <Button onClick={handleLogout} className={` ${settingsButtonsColor} ${styles.settingsButtonLast}`}>
+				Logout
+			    </Button>
+			</div>
+		    </>
 		) : null}
 	</>
 

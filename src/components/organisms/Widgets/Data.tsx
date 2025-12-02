@@ -13,7 +13,7 @@ export const Data = () => {
 
     return (
 	<div className={mainStyles.container}>
-	    <Typography variant='h2' className={mainStyles.header}>Dane użytkownika</Typography>
+	    <Typography variant='h2' className={mainStyles.header}>Dane</Typography>
 	    <div className={styles.dataContainer}>
 		<Typography variant='body' className={styles.dataText}>Wiek: {userData.age} lat</Typography>
 		<Typography variant='body' className={styles.dataText}>Wzrost: {userData.height} cm</Typography>

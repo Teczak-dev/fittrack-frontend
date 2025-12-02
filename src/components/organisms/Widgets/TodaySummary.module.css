@@ -1,5 +1,5 @@
 .texts{
-    width: 50%;
+    width: fit-content;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -12,15 +12,8 @@
 .texts p{
     font-size: 20px;
 }
-.header{
-    font-size: 30px;
-    font-weight: 600;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
 .progressbar{
-    width: 50%;
+    min-width: 50%;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -30,10 +23,5 @@
 @media (max-width: 968px) {
     .texts p{
 	font-size: 16px;
-    }
-}
-@media (max-width: 450px){
-    .header{
-	font-size: 24px;
     }
 }

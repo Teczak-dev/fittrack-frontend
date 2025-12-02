@@ -180,7 +180,7 @@
 }
 
 
-
+/* *** Header for App Page *** */
 
 
 .headerApp{
@@ -242,6 +242,37 @@
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border: 1px solid #f1f1f1;
-    gap: 20px;
+    z-index: 9999;
+}
+.settingsMenu button{
+    width: 100%;
     padding: 10px;
+    background-color: transparent;
+    color: #f1f1f1;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+.settingsButtonLight{
+    color: #000 !important;
+    border-bottom: 1px solid #000 !important;
+}
+.settingsMenu button:hover{
+    background-color: #555;
+}
+.settingsButtonLight:hover{
+    background-color: #DDD !important;
+}
+.settingsButtonLast{
+    border-radius: 0 0 10px 10px !important;
+}
+.placeholderForCloseSettings{
+    width: 100svw;
+    height: 100svh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
 }

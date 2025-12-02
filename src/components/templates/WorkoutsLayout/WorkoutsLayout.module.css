@@ -9,10 +9,33 @@
     padding: 20px;
     box-sizing: border-box;
 }
-.container h1{
+.header{
     width: 100%;
-    text-align: left;
-    padding-left: 20px;
+    height: fit-content;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.addWorkoutBtn{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: #0D442F;
+    color: #f1f1f1;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.addWorkoutBtn:hover{
+    background-color: #0A2E20;
+}
+.addWorkoutBtnLight{
+    background-color: #4E1BB4;
+}
+.addWorkoutBtnLight:hover{
+    background-color: #3A1280;
 }
 .content{
     width: 100%;

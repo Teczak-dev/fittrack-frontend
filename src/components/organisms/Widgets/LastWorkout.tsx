@@ -3,15 +3,7 @@ import { useScreenWidth } from '../../../hooks/useScreenWidth';
 import { Typography } from '../../atoms/Typography/Typography';
 import styles from './LastWorkout.module.css';
 import mainStyles from './Widgets.module.css';
-
-interface Workout {
-    id: number;
-    name: string;
-    date: string;
-    duration: number;
-    caloriesBurned: number;
-    workoutType: string;
-}
+import type { Workout } from '../../../types/workout';
 
 export const LastWorkout = () => {
     const {width} = useScreenWidth();
