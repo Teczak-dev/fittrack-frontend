@@ -1,4 +1,4 @@
-import { Legend, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, Tooltip } from "recharts";
+import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, Tooltip } from "recharts";
 import mainStyles from './Widgets.module.css';
 import { Typography } from "../../atoms/Typography/Typography";
 import { useTheme } from "../../../hooks/useTheme";
@@ -15,13 +15,16 @@ export const RadarOfWorkouts = () => {
 
     return (
 	<div className={mainStyles.container} style={{alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
-	    <div className={mainStyles.header}>
-		<Typography variant="h2">Radar Treningów</Typography>
-	    </div>
-	    <RadarChart style={{ width: '300px', minHeight: '300px', maxHeight: '500px' , aspectRatio: 1 }} responsive data={data}>
+	    <Typography variant="h2" className={mainStyles.header}>Radar Treningów</Typography>
+	    { data.length === 0 ? (
+		<div style={{width: '100%', height: '100%', textAlign: 'center', marginTop: '50px'}}>
+		    <Typography variant='body'>Brak danych do wyświetlenia. Dodaj kilka treningów, aby zobaczyć radar treningów.</Typography>
+		</div>
+	    ) : (
+	    <RadarChart style={{ width: '90%', height: '200px',aspectRatio: 1 }} responsive data={data}>
 		<PolarGrid />
 		<PolarAngleAxis dataKey="name" tick={{fill: 'white'}} />
-		<PolarRadiusAxis angle={30} domain={[0, data.sort((a:any,b:any) => b.value - a.value)[0].value]} tick={{fill: 'white'}} />
+		<PolarRadiusAxis angle={60} domain={[0, data.sort((a:any,b:any) => b.value - a.value)[0].value]} tick={{fill: 'white'}} />
 		<Radar
 		    name="Typ"
 		    dataKey="value"
@@ -31,7 +34,6 @@ export const RadarOfWorkouts = () => {
 		    isAnimationActive={true}
 		/>
 
-		<Legend />
 		<Tooltip
 		    itemStyle={{backgroundColor:bgColor}}
 		    wrapperStyle={{borderRadius:'20px', backgroundColor:bgColor}}
@@ -39,6 +41,7 @@ export const RadarOfWorkouts = () => {
 		    contentStyle={{backgroundColor:bgColor, borderRadius:'20px'}}
 		/>
 	    </RadarChart>
+	    )}
 	</div>
     );
 };

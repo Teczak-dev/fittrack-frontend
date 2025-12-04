@@ -3,6 +3,7 @@
     height: 110svh;
     position: relative;
     background-color: transparent;
+    margin-top: 20vsh;
 }
 .bannerText{
     font-weight: 700;

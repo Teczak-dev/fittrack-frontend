@@ -1,0 +1,157 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100svh;
+    width: 100svw;
+    padding-top: 10svh
+}
+.textDark{
+    color: #f1f1f1 !important;
+}
+.textLight{
+    color: #000 !important;
+}
+.header{
+    height: 10svh;
+    width: 100svw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+}
+.content{
+    width: 100svw;
+    height: 80%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.section{
+    width: 50%;
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+.userInfo{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+}
+.veryficationText{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #f1f1f1;
+}
+.content button{
+    min-width: 100px;
+    max-width: 150px;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    color: #f1f1f1;
+    padding: 0 15px;
+}
+.content button:hover{
+    transform: scale(1.05);
+}
+
+.editButtonLight{
+    background-color: #4E1BB4;
+}
+.editButtonDark{
+    background-color: #0D442F;
+}
+.deleteButton{
+    background-color: #FF4C4C;
+}
+
+.collectedData{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+}
+.dataItem{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+.workoutList{
+    gap: 20px;
+    overflow-y: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+@media (max-width: 768px){
+    .section{
+	width: 100%;
+	height: 80svh;
+	padding: 10px 0;
+    }
+    .section *{
+	font-size: 14px;
+	text-align: center;
+	overflow: hidden;
+    }
+    .collectedData{
+	height: 300px;
+	margin-bottom: 40px;
+    }
+    .dataItem .sectionText{
+	font-size: 12px;
+	height: 30px;
+    }
+    .content{
+	flex-direction: column;
+    }
+    .sectionHeader{
+	font-size: 20px;
+	height: fit-content;
+	padding: 20px;
+    }
+    .sectionText{
+	font-size: 14px;
+	height: 100px;
+	padding: 10px;
+    }
+    .userInfo{
+	height: fit-content;
+	padding: 20px;
+    }
+    .content button{
+	margin: 20 px;
+    }
+}
+@media (max-width: 480px){
+    .sectionDecription{
+	height: 300px;
+    }
+}

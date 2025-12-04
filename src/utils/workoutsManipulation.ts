@@ -1,3 +1,4 @@
+import { useWorkoutCategory } from "../hooks/useWorkoutCategory";
 import type { Workout } from "../types/workout";
 
 const getMonday = () : Date => {
@@ -70,11 +71,26 @@ export const getMostRecentWorkout = (workouts: any[]): Workout[] => {
 };
 
 export const getTotalWorkoutsPerCategoty = (workouts: any[]): any => {
-    const categories = new Set(workouts.map((workout) => workout.category));
+    const { workoutCategory } = useWorkoutCategory(); 
+    if (workouts.length === 0) return [];
+    const categories = new Set(workoutCategory.map((item) => item.category));
     const data = [];
     for (let category of categories) {
 	const total = workouts.filter((workout) => workout.category === category).length;
-	data.push({ name: category, value: total });
+	const newCat = { name:category, value: total };
+	data.push(newCat);
+    }
+    return data;
+}
+
+export const getTotalWorkoutsPerKind = (workouts: any[]): any  => {
+    if (workouts.length === 0) return [];
+    const kinds = new Set(workouts.map((item) => item.name));
+    const data = [];
+    for (let kind of kinds) {
+	const total = workouts.filter((workout) => workout.name === kind).length;
+	const newKind = { name:kind, value: total };
+	data.push(newKind);
     }
     return data;
 }

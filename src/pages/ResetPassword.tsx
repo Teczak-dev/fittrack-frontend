@@ -15,7 +15,7 @@ export const ResetPassword : React.FC = () => {
     
     const handleSubmit = (password:string) => {
 	try{
-	    resetPassword(token!, password);
+	    resetPassword(password);
 	    setError('Hasło zostało zresetowane pomyślnie. Za chwilę nastąpi przekierowanie do strony logowania.');
 	    setTimeout(()=>{ navigate('/login'); }, 2000);
 	}catch(err: any){

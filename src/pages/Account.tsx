@@ -1,8 +1,10 @@
+import { AccountLayout } from "../components/templates/AccountLayout/AccountLayout";
 
 export const Account: React.FC = () => {
+
     return (
 	<div>
-	    <h1>Account Page</h1>
+	    <AccountLayout />
 	</div>
     );
 }

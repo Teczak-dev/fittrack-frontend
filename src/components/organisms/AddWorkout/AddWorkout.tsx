@@ -1,7 +1,7 @@
 import {  useState } from 'react';
 import { useWorkoutCategory } from '../../../hooks/useWorkoutCategory';
 import styles from './AddWorkout.module.css';
-import { addWorkoutToDB } from '../../../api/workouts';
+import { addWorkoutToDB, getUserWorkouts } from '../../../api/workouts';
 import { Button } from 'react-bootstrap';
 import { Typography } from '../../atoms/Typography/Typography';
 import { useWorkouts } from '../../../hooks/useWorkouts';
@@ -17,7 +17,7 @@ export const AddWorkout: React.FC<{switchDisplay:() => void}> = ({
     switchDisplay
 }) => {
     
-    const { addWorkout } = useWorkouts();
+    const { updateWorkouts } = useWorkouts();
     const {workoutCategory} = useWorkoutCategory();
 
     const [minutes, setMinutes] = useState<number>(0);
@@ -33,16 +33,20 @@ export const AddWorkout: React.FC<{switchDisplay:() => void}> = ({
     };
 
     const handleMinutes = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const targetValue = e.target.value;
+	if (targetValue[0] === '0') targetValue.replace('0','');
 	setMinutesError(null);
-	const value = parseInt(e.target.value, 10);
+	const value = parseInt(targetValue);
 	if (!validateMinutes(value)) 
 	    setMinutesError('Czas trwania musi być większy niż 0');
 	setMinutes(value);
     }
 
     const handleCalories = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const targetValue = e.target.value;
+	if (targetValue[0] === '0') targetValue.replace('0','');
 	setCaloriesError(null);
-	const value = parseInt(e.target.value, 10);
+	const value = parseInt(targetValue);
 	if (!validateCalories(value)) 
 	    setCaloriesError('Liczba spalonych kalorii musi być większa niż 0');
 	setCalories(value);
@@ -65,7 +69,10 @@ export const AddWorkout: React.FC<{switchDisplay:() => void}> = ({
 	    date: new Date().toISOString().split('T')[0],
 	};
 	await addWorkoutToDB(newWorkout);
-	addWorkout(newWorkout);
+	await getUserWorkouts().then( (workouts) => {
+	    updateWorkouts(workouts);
+	});
+	window.location.reload();
 	clearValues();
 	switchDisplay();
     }

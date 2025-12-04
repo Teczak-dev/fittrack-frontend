@@ -1,42 +1,71 @@
 .discover{
     width: 100svw;
-    height: 100svh;
+    height: 200svh;
     position: relative;
     background-color: transparent;
+}
+.discover *{
+    overflow: hidden;
 }
 .discover div{
     position: absolute;
 }
 .textWBG{
-    padding: 50px 50px;
     text-wrap: wrap;
-    font-size: 36px;
+    font-size: 20px;
     background-color: transparent;
     border: none;
+}
+.discoverImage{
+    width: 40%;
 }
 .discoverSectionLeftTop{
     width: 40%;
     height: 30%;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
 }
 .discoverSectionRightTop{
     width: 60%;
     height: 30%;
     top: 0;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+.discoverSectionRightTop .discoverImage{
+    width: 25%;
 }
 .discoverSectionLeftBottom{
     width: 60%;
     height: 70%;
     bottom: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
 }
 .discoverSectionRightBottom{
     width: 40%;
     height: 70%;
     bottom: 0;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+
 }
 @media (max-width: 1078px) {
     .textWBG{
@@ -67,10 +96,19 @@
     .discoverSectionRightBottom{
         bottom: 0;
     }
+    .discoverImage{
+	width: 25%;
+    }
 }
 @media (max-width: 480px) {
     .textWBG{
 	font-size: 18px;
 	padding: 10px 10px;
+    }
+    .discoverImage{
+	width: 60%;
+    }
+    .discoverSectionRightTop .discoverImage{
+	width: 60%;
     }
 }

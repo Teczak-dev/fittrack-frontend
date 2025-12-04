@@ -1,6 +1,16 @@
 const motta:string[] = [
     "Sukces to suma małych wysiłków powtarzanych dzień po dniu.",
     "Nie czekaj na idealny moment, chwyć chwilę i uczyn ją idealną.",
+    "Twoje ciało może więcej niż myślisz. Udowodnij to.",
+    "Każdy trening to inwestycja w lepszą wersję siebie.",
+    "Nie chodzi o to, by być najlepszym. Chodzi o to, by być lepszym niż wczoraj.",
+    "Ból jest tymczasowy, duma zostaje na zawsze.",
+    "Nie zatrzymuj się, dopóki nie będziesz dumny.",
+    "Twoja jedyna konkurencja to Ty sprzed tygodnia.",
+    "Silne ciało, silny umysł. Zacznij od pierwszego kroku.",
+    "Wymówki spalają zero kalorii.",
+    "Dziś boli, jutro działa, pojutrze błyszczy.",
+    "Nie czekaj na motywację. Bądź dyscypliną.",
 ];
 
 interface Motto {

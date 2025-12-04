@@ -42,7 +42,8 @@ export const forgotPassword = async (email: string): Promise<void> => {
     if (!response.ok) throw new Error(data.message || 'Server error');
 
 }
-export const resetPassword = async (token: string, newPassword: string): Promise<void> => {
+export const resetPassword = async (newPassword: string): Promise<void> => {
+    const token = localStorage.getItem("token");
     const response = await fetch(`/api/users/reset-password/${token}`, {
 	method: 'POST',
 	headers,
@@ -69,3 +70,33 @@ export const getProfile = async (): Promise<User> => {
 export const logout = (): void => {
     localStorage.removeItem("token");
 };
+
+
+// delete and resend email verification
+
+export const resendVerificationEmail = async () => {
+    const token = localStorage.getItem("token");
+    const response = await fetch('/api/users/resend-verification', {
+	method: 'POST',
+	headers: {
+	    Authorization: `Bearer ${token}`,
+	    ...headers,
+	},
+    });
+    const data = await safeParseJSON(response);
+    if (!response.ok) throw new Error(data.message || 'Server error');
+}
+
+export const deleteAccount = async (password:string) => {
+    const token = localStorage.getItem("token");
+    const response = await fetch('/api/users/me',{
+    	method: 'DELETE',
+	headers: {
+	    Authorization: `Bearer ${token}`,
+	    ...headers,
+	},
+	body: JSON.stringify({ password }),
+    });
+    const data = await safeParseJSON(response);
+    if (!response.ok) throw new Error(data.message || 'Server error');
+}
