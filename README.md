@@ -1,6 +1,6 @@
 # Fittrack - Frontend Solution
 
-> **Czas spędzony nad projektem:** ~53h💀
+> **Czas spędzony nad projektem:** ~60h💀
 
 ## 📋 Opis Projektu
 
@@ -268,19 +268,19 @@ npm run lint
 
 ```
 📁 Struktura:
-├── 28 komponentów React
-├── 15 plików stylów CSS
-├── 6 stron aplikacji
-├── 3 contexty
-├── 1 utility library
-└── ~ 3500 linijek kodu
+├── ~45 komponentów React
+├── ~100 plików stylów CSS
+├── 16 stron aplikacji
+├── 5 contextów
+├── x utility library
+└── ~ 4500 linijek kodu
 
 🧩 Breakdown komponentów:
 ├── Atoms: 8 komponentów
 ├── Molecules: 2 komponenty  
-├── Organisms: 6 komponentów
-├── Templates: 4 komponenty
-└── Pages: 6 stron
+├── Organisms: 22 komponentów
+├── Templates: 12 komponenty
+└── Pages: 13 stron
 ```
 
 ---
