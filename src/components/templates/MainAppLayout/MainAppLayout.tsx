@@ -31,11 +31,11 @@ export const MainAppLayout: React.FC = () => {
     
     const {theme} = useTheme();
     const {width} = useScreenWidth();    
-    
+
     return (
 	<div style={{width: '100svw', minHeight: '100svh'}} className={`${theme}-mode`}>
 	    <BrowserView>    
-		{width > 850?
+		{width > 950?
 		    ( <DesktopBigLayout/>) : ( <DesktopSmallLayout/>)
 		}
 	    </BrowserView>
@@ -50,5 +50,4 @@ export const MainAppLayout: React.FC = () => {
 	</div>
     );
 }
-
 

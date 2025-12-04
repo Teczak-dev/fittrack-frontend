@@ -1,7 +1,7 @@
 import type { User } from "../types/user";
 const headers = { "Content-Type": "application/json" };
 
-const safeParseJSON = async (response: Response) => {
+export const safeParseJSON = async (response: Response) => {
     const text = await response.text();
     return text ? JSON.parse(text) : {};
 };

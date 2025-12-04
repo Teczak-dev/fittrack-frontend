@@ -1,6 +1,9 @@
 
 import { useTheme } from '../../../hooks/useTheme';
+import { RadarOfWorkouts } from '../../organisms/Widgets/RadarOfWorkouts';
 import { Stats } from '../../organisms/Widgets/Stats';
+import { StatsMonth } from '../../organisms/Widgets/StatsMonth';
+import { WheelOfWorkouts } from '../../organisms/Widgets/WheelOfWorkouts';
 import styles from './AnalizeLayout.module.css';
 
 export const AnalizeLayout: React.FC = () => {
@@ -16,16 +19,16 @@ export const AnalizeLayout: React.FC = () => {
 	    {/* grid layout */}
 	    <div className={styles.content}>
 		<div className={styles.gridItem} style={{gridArea: 'TypesWheel', backgroundColor: bgColor}}>
-		    Koło typów treningów
+		    <WheelOfWorkouts />
 		</div>
 		<div className={styles.gridItem} style={{gridArea: 'TypesRadar', backgroundColor: bgColor}}>
-		    Preferencje typów treningów
+		    <RadarOfWorkouts />
 		</div>
 		<div className={styles.gridItem} style={{gridArea: 'thisW', backgroundColor: bgColor}}>
 		    <Stats />
 		</div>
 		<div className={styles.gridItem} style={{gridArea: 'thisM', backgroundColor: bgColor}}>
-		    Ten miesiąc
+		    <StatsMonth />
 		</div>
 
 	    </div>

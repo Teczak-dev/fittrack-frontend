@@ -1,8 +1,8 @@
 export interface Workout {
-    id: number;
+    id: number | null;
     name: string;
-    date: string;
+    category: string;
     duration: number;
-    caloriesBurned: number;
-    workoutType: string;
+    calories: number;
+    date: string;
 }

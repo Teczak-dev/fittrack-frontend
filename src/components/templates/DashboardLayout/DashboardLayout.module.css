@@ -19,10 +19,23 @@
     margin-bottom: 20px;
     margin-top: 100px;
 } 
-
+.headerDark *{
+    color: #f1f1f1;
+}
+.headerLight *{
+    color: #000000;
+}
+.editBtn{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline
+}
 .content{
     width: 100%;
-    height: 80vsh;
+    height: 90vsh;
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
     grid-template-rows: repeat(3, minmax(200px, 1fr));
@@ -30,7 +43,7 @@
     padding: 16px;
     grid-template-areas: 
 	"today last_workout last_workout streak"
-	"data motto stats stats"
+	"motto motto stats stats"
 	"limit_cal food stats stats"
 	;
 }
@@ -40,6 +53,9 @@
     background-color: #0D442F;
     border-radius: 30px;
     color: #f1f1f1;
+    -webkit-box-shadow: 0px 10px 6px -1px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 10px 6px -1px rgba(0, 0, 0, 1);
+    box-shadow: 0px 10px 6px -1px rgba(0, 0, 0, 1);
 }
 
 @media (max-width: 930px){
@@ -51,11 +67,16 @@
 	grid-template-rows: repeat(6, minmax(150px, 1fr));
 	grid-template-areas:
 	    "today today"
-	    "motto streak"
-	    "data last_workout"
+	    "last_workout streak"
+	    "motto motto"
 	    "stats stats"
 	    "stats stats"
 	    "limit_cal food";
     }
     
+}
+@media (max-width: 500px){
+    .editBtn{
+	display: none;
+    }
 }

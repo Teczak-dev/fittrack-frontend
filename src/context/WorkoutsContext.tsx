@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import type { Workout } from "../types/workout";
+import { getUserWorkouts } from "../api/workouts";
+import { filterWorkoutByDay } from "../utils/workoutsManipulation";
 
 export interface WorkoutsContextType{
     workouts: Workout[] | [];
@@ -13,18 +15,30 @@ export const WorkoutsContext = createContext<WorkoutsContextType | undefined>(un
 
 export const WorkoutsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [workouts, setWorkout] = useState<Workout[] | []>([]);
-    
+
+    useEffect(() => {
+	const token = localStorage.getItem('token');
+	if (token) {
+	    getUserWorkouts().then( (workouts) => {
+		updateWorkouts(workouts);
+	    });
+	}
+
+    }, []);
+
     const updateWorkouts = (newWorkouts: Workout[]) => {
 	setWorkout(newWorkouts);
     }
 
     const addWorkout = (newWorkout: Workout) => {
-	setWorkout( [...workouts, newWorkout]);
+	const filteredWorkouts = filterWorkoutByDay([...workouts, newWorkout]);
+	setWorkout( filteredWorkouts);
     }
 
-    const deleteWorkout = (workoutId: number) => {
+    const deleteWorkout = (workoutId: number ) => {
+	if (workoutId === null) return;
 	const updatedWorkouts = workouts.filter(workout => workout.id !== workoutId);
-	setWorkout(updatedWorkouts);
+	setWorkout( filterWorkoutByDay(updatedWorkouts) );
     }
 
     return (

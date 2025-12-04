@@ -10,7 +10,7 @@ export const Motto = () => {
 	<div className={mainStyles.container}>
 	    <Typography variant='h2' className={mainStyles.header}>Motto dnia</Typography>
 	    <div className={styles.mottoContainer}>
-	    	    <Typography variant='body' className={styles.mottoText}><i style={{color:'#f1f1f1'}}>"{motto}"</i></Typography>
+	    	    <Typography variant='body' className={styles.mottoText}>"{motto}"</Typography>
 	    </div>
 	</div>
     );

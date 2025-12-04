@@ -16,6 +16,14 @@
 	height: 60%;
     }
     .streakText{
-	font-size: 16px;
+	font-size: 14px;
+    }
+}
+@media (max-width: 350px){
+    .streakContainer{
+	height: 50%;
+    }
+    .streakText{
+	font-size: 11px;
     }
 }

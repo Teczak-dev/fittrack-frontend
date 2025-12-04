@@ -77,6 +77,9 @@
 .mobileNavLinkLight{
     color: #000 !important;
 }
+.navLinkActiveLight .mobileNavLinkLight{
+    color: #f1f1f1 !important;
+}
 .buttonApp{
     width: fit-content;
     height: fit-content;

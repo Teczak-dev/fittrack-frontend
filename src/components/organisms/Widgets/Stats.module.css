@@ -14,3 +14,11 @@
 .barInfo *{
     color: #f1f1f1;
 }
+@media (max-width: 968px) {
+    .statsContainer{
+	justify-content: flex-end;
+    }
+    .barInfo{
+	height: 80%;
+    }
+}

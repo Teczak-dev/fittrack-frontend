@@ -9,6 +9,7 @@ import { ScreenWidthProvider } from './context/ScreenWidthContext.tsx';
 import { ProtectedRoute } from './components/organisms/ProtectedRoute/ProtectedRoute.tsx';
 import { UserProvider } from './context/UserContext.tsx';
 import { WorkoutsProvider } from './context/WorkoutsContext.tsx';
+import { WorkoutCategoryProvider } from './context/WorkoutCategoryContext.tsx';
 import { Login } from './pages/Login.tsx';
 import { Register } from './pages/Register.tsx';
 import { ForgotPassword } from './pages/ForgotPassword.tsx';
@@ -64,7 +65,9 @@ const router = createBrowserRouter([
 		<ProtectedRoute>
 		    <UserProvider> 
 			<WorkoutsProvider>
-			    <MainAppLayout />
+			    <WorkoutCategoryProvider>
+				<MainAppLayout />
+			    </WorkoutCategoryProvider>
 			</WorkoutsProvider>
 		    </UserProvider>
 		</ProtectedRoute>

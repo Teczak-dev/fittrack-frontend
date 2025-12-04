@@ -1,6 +1,5 @@
 import { useTheme } from '../../../hooks/useTheme';
 import { Typography } from '../../atoms/Typography/Typography';
-import { Data } from '../../organisms/Widgets/Data';
 import { LastWorkout } from '../../organisms/Widgets/LastWorkout';
 import { Motto } from '../../organisms/Widgets/Motto';
 import { SoonAdded } from '../../organisms/Widgets/SoonAdded';
@@ -21,15 +20,15 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ className }) =
     const {theme} = useTheme();
     const currentDate = getCurrentDate();
     const gridItemBG = theme === 'dark' ? '#0D442F' : '#4E1BB4';
-
+    const headerTextColorClass = theme === 'dark' ? styles.headerDark : styles.headerLight;
 
     return (
         <div className={`${styles.container} ${className || ''}`}>
-            <div className={styles.header}>
+            <div className={`${styles.header} ${headerTextColorClass}`}>
                 <Typography variant='h2'>Pulpit</Typography>
                 <div>
-                    <p style={{marginRight: '20px', cursor: 'pointer', textDecoration: 'underline'}}>Edytuj (prace wciąż trwają)</p>
-                    <p>{currentDate}</p>
+                    <Typography variant='body' className={styles.editBtn}>Edytuj (prace wciąż trwają)</Typography>
+                    <Typography variant='body'>{currentDate}</Typography>
                 </div>
             </div>
             
@@ -38,7 +37,6 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ className }) =
 		<div className={styles.gridItem} style={{gridArea: 'last_workout', backgroundColor: gridItemBG}}><LastWorkout/> </div>
 		<div className={styles.gridItem} style={{gridArea: 'streak', backgroundColor: gridItemBG}}><Streak /> </div>
 		{/* Wiersz 2*/}
-		<div className={styles.gridItem} style={{gridArea: 'data', backgroundColor: gridItemBG}}><Data/></div>
 		<div className={styles.gridItem} style={{gridArea: 'motto', backgroundColor: gridItemBG}} ><Motto /></div>
 		<div className={styles.gridItem} style={{gridArea: 'stats', backgroundColor: gridItemBG}}><Stats/></div>
 		{/* Wiersz 3*/}
