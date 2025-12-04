@@ -22,11 +22,12 @@ import { Calories } from './pages/Calories.tsx';
 import VerifyAccount from './pages/VerifyAccont.tsx';
 import { ResetPassword } from './pages/ResetPassword.tsx';
 import { Account } from './pages/Account.tsx';
+import { WrongAdress } from './pages/WrongAdress.tsx';
 
 const router = createBrowserRouter([
     {
 	path: "/",
-	errorElement: <div>Oops! An error occurred.</div>,
+	errorElement: <WrongAdress />,
 	children: [
 	{
 	    index: true,
@@ -61,6 +62,7 @@ const router = createBrowserRouter([
     },
     {
 	path: "/me",
+	errorElement: <WrongAdress />,
 	element: (
 		<ProtectedRoute>
 		    <UserProvider> 
@@ -72,7 +74,6 @@ const router = createBrowserRouter([
 		    </UserProvider>
 		</ProtectedRoute>
 		) ,
-	errorElement: <div>Oops! An error occurred.</div>,
 	children: [
 	    {
 		index: true,
