@@ -28,6 +28,7 @@ export const DeleteAccount: React.FC<{closeDelete:()=>void}> = ({closeDelete}) =
 	logout();
 	const navigator = useNavigate();
 	navigator('/login');
+	window.location.reload();
     }
 
     const handleClose = () => {
