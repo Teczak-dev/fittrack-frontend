@@ -42,12 +42,27 @@ export const forgotPassword = async (email: string): Promise<void> => {
     if (!response.ok) throw new Error(data.message || 'Server error');
 
 }
-export const resetPassword = async (newPassword: string): Promise<void> => {
-    const token = localStorage.getItem("token");
+export const resetPassword = async (newPassword: string, token: string): Promise<void> => {
+    if (!token) throw new Error('Missing reset token');
     const response = await fetch(`/api/users/reset-password/${token}`, {
-	method: 'POST',
-	headers,
-	body: JSON.stringify({ newPassword })
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ newPassword })
+    });
+    const data = await safeParseJSON(response);
+    if (!response.ok) throw new Error(data.message || 'Server error');
+}
+
+export const changePassword = async (oldPassword: string, newPassword: string): Promise<void> => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error('Not authenticated');
+    const response = await fetch('/api/users/change-password', {
+    method: 'POST',
+    headers: {
+        Authorization: `Bearer ${token}`,
+        ...headers,
+    },
+    body: JSON.stringify({ oldPassword, newPassword })
     });
     const data = await safeParseJSON(response);
     if (!response.ok) throw new Error(data.message || 'Server error');

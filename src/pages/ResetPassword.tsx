@@ -13,15 +13,15 @@ export const ResetPassword : React.FC = () => {
 	if (!token) navigate('/home');
     }, [token]);
     
-    const handleSubmit = (password:string) => {
+	const handleSubmit = async (password:string) => {
 	try{
-	    resetPassword(password);
-	    setError('Hasło zostało zresetowane pomyślnie. Za chwilę nastąpi przekierowanie do strony logowania.');
-	    setTimeout(()=>{ navigate('/login'); }, 2000);
+		await resetPassword(password, token as string);
+		setError('Hasło zostało zresetowane pomyślnie. Za chwilę nastąpi przekierowanie do strony logowania.');
+		setTimeout(()=>{ navigate('/login'); }, 2000);
 	}catch(err: any){
-	    setError(err.message);
+		setError(err.message);
 	}
-    }
+	}
 
     return ( <ResetPasswordLayout handleSubmit={handleSubmit} msg={error}/> );
 }
