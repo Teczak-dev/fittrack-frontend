@@ -40,11 +40,11 @@ form{
     border: none;
     cursor: pointer;
     transition: ease-in-out 0.3s;
-    color: #f1f1f1;
+    color: #f1f1f1 !important;
 }
 .header{
     font-size: 24px;
-    color: #f1f1f1;
+    color: #f1f1f1 !important;
     margin-bottom: 10px;
 }
 .closeButton:hover{
@@ -53,9 +53,12 @@ form{
 .label{
     width: 100%;
     font-size: 18px;
-    color: #f1f1f1;
+    color: #f1f1f1 !important;
     height: fit-content;
     padding: 2px;
+}
+.label p{
+    color: #f1f1f1 !important;
 }
 .input{
     width: 90%;
@@ -65,7 +68,7 @@ form{
     padding: 0 10px;
     font-size: 14px;
     margin-left: 10px;
-    color: #000;
+    color: #000 !important;
     border: none;
 }
 .input:focus{
@@ -76,7 +79,7 @@ form{
     height: 40px;
     border-radius: 30px;
     border: none;
-    background-color: #f1f1f1;
+    background-color: #f1f1f1 !important;
     color: #000;
     font-size: 16px;
     cursor: pointer;
