@@ -25,28 +25,35 @@ export const HomePageLayout: React.FC<{goToLogIn: () => void}> = ({goToLogIn}) =
     }
     const {width} = useScreenWidth();    
     
-    return (
+
+	return (
 	<>
-	    <div style={{width: '100svw', minHeight: '100svh', flexDirection: 'column', display: 'flex'}}>
-		<div ref={bannerSectionRef}>
-		    <Banner />
+		<div style={{width: '100svw', minHeight: '100svh', flexDirection: 'column', display: 'flex'}}>
+			<BrowserView>
+				{width > 900 ? (
+					<HeaderHome home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing} />
+				) : (
+					<HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing} />
+				)}
+			</BrowserView>
+			<MobileView>
+				<HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing} />
+			</MobileView>
+
+			<div ref={bannerSectionRef}>
+				<Banner />
+			</div>
+
+			<div ref={discoverSectionRef}>
+				<Discover />
+			</div>
+
+			<div ref={pricingSectionRef}>
+				<Pricing onClick={goToLogIn} />
+			</div>
+
+			<Footer />
 		</div>
-		<BrowserView>
-		    {width > 900 ?
-		    (<HeaderHome home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>) :
-		    (<HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>)}
-		</BrowserView>
-		<MobileView>
-		    <HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing}/>
-		</MobileView>
-		<div ref={discoverSectionRef}>
-		    <Discover />
-		</div>
-		<div ref={pricingSectionRef}>
-		    <Pricing onClick={goToLogIn} />
-		</div>
-		<Footer />
-	    </div>
 	</>
-    );
+	);
 }

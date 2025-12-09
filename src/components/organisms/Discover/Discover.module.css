@@ -1,8 +1,11 @@
 .discover{
     width: 100svw;
-    height: 200svh;
-    position: relative;
-    background-color: transparent;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    align-items: center;
+    padding: 3rem 4vw;
 }
 .discover *{
     overflow: hidden;
@@ -13,102 +16,70 @@
 .textWBG{
     text-wrap: wrap;
     font-size: 20px;
-    background-color: transparent;
-    border: none;
+}
+.discover *{ 
+    overflow: visible;
+}
+.discover div{
+    position: static; 
 }
 .discoverImage{
     width: 40%;
 }
-.discoverSectionLeftTop{
-    width: 40%;
-    height: 30%;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px
+.discover{
+  width: 100svw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  gap: 20px;
+  align-items: center;
+  padding: 3rem 4vw;
 }
-.discoverSectionRightTop{
-    width: 60%;
-    height: 30%;
-    top: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px
-}
-.discoverSectionRightTop .discoverImage{
-    width: 25%;
-}
-.discoverSectionLeftBottom{
-    width: 60%;
-    height: 70%;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px
-}
-.discoverSectionRightBottom{
-    width: 40%;
-    height: 70%;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px
 
+.discover * {
+    overflow: visible;
 }
+
+.textWBG{
+  text-wrap: wrap;
+  font-size: 20px;
+  border: none;
+}
+
+.discoverImage{
+  width: 40%;
+  max-width: 260px;
+  height: auto;
+}
+
+.discoverSectionLeftTop,
+.discoverSectionRightTop,
+.discoverSectionLeftBottom,
+.discoverSectionRightBottom{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+}
+
+.discoverSectionRightTop .discoverImage{ 
+    width: 25%; 
+}
+
 @media (max-width: 1078px) {
-    .textWBG{
-        font-size: 24px;
-        padding: 20px 20px;
-	text-align: center;
-    }
-    .discoverSectionLeftTop,
-    .discoverSectionRightTop,
-    .discoverSectionLeftBottom,
-    .discoverSectionRightBottom{
-        width: 100%;
-        height: 25%;
-        top: unset;
-        bottom: unset;
-        left: unset;
-        right: unset;
-    }
-    .discoverSectionLeftTop{
-        top: 0;
-    }
-    .discoverSectionRightTop{
-        top: 50%;
-    }
-    .discoverSectionLeftBottom{
-        bottom: 50%;
-    }
-    .discoverSectionRightBottom{
-        bottom: 0;
-    }
-    .discoverImage{
-	width: 25%;
-    }
+  .discover{
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    padding: 2rem 3vw;
+  }
+  .textWBG{ font-size: 22px; text-align: center; padding: 12px; }
+  .discoverImage{ width: 60%; max-width: 280px; }
+  .discoverSectionRightTop .discoverImage{ width: 60%; }
 }
+
 @media (max-width: 480px) {
-    .textWBG{
-	font-size: 18px;
-	padding: 10px 10px;
-    }
-    .discoverImage{
-	width: 60%;
-    }
-    .discoverSectionRightTop .discoverImage{
-	width: 60%;
-    }
+  .textWBG{ font-size: 18px; padding: 8px; }
+  .discoverImage{ width: 80%; }
 }

@@ -9,6 +9,6 @@ interface ImageProps {
 
 export const Image: React.FC<ImageProps> = ({src, alt, className, onClick}) =>{
     return(
-	<img src={src} alt={alt} className={`${styles.Img} ${className}`} style={styles} onClick={onClick}/>
+    	<img src={src} alt={alt} className={`${styles.Img || ''} ${className || ''}`} onClick={onClick}/>
     );
 }

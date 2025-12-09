@@ -40,11 +40,11 @@ form{
     border: none;
     cursor: pointer;
     transition: ease-in-out 0.3s;
-    color: #f1f1f1;
+    color: #f1f1f1 !important;
 }
 .header{
     font-size: 24px;
-    color: #f1f1f1;
+    color: #f1f1f1 !important;
     margin-bottom: 10px;
 }
 .closeButton:hover{
@@ -52,13 +52,13 @@ form{
 }
 .label{
     font-size: 18px;
-    color: #f1f1f1;
+    color: #f1f1f1 !important;
     height: fit-content;
     padding: 2px;
 }
 .select:focus option{
-    background-color: #ddd;
-    color: #000;
+    background-color: #ddd !important;
+    color: #000 !important;
 }
 .input, .select{
     width: 160px;
@@ -68,7 +68,7 @@ form{
     padding: 0 10px;
     font-size: 14px;
     margin-left: 10px;
-    color: #000;
+    color: #000 !important;
     border: none;
 }
 .input:focus, .select:focus{
@@ -80,7 +80,7 @@ form{
     border-radius: 30px;
     border: none;
     background-color: #f1f1f1;
-    color: #000;
+    color: #000 !important;
     font-size: 16px;
     cursor: pointer;
     transition: ease-in-out 0.3s;

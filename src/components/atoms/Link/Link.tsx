@@ -22,8 +22,18 @@ export const Link: React.FC<LinkProps> = ({text, url, className, style=styles}) 
 }
 
 export const NavigationLink: React.FC<NavigationLinkProps> = ({children, url, className, style=styles}) =>{
+    // Ensure all navigation links get the global `pill` class while preserving
+    // module-local classes or className functions provided by callers.
+    const computeClass = (c?: string | ((arg: { isActive: boolean }) => string)) => {
+        if (!c) return 'pill';
+        if (typeof c === 'function') {
+            return (args: { isActive: boolean }) => `pill ${c(args)}`;
+        }
+        return `pill ${c}`;
+    };
+
     return(
-	<NavLink to={url} className={className} style={style}>{children}</NavLink> 
+    <NavLink to={url} className={computeClass(className as string)} style={style}>{children}</NavLink> 
     );
 }
 

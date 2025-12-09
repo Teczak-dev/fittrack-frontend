@@ -13,7 +13,7 @@ export const WorkoutsLayout: React.FC<{}> = () => {
     const { workouts } = useWorkouts();
     const {theme} = useTheme();
     const [displayAddWorkout, setDisplayAddWorkout] = useState(false);
-    const bgColor = theme === 'dark' ? '#0D442F' : '#4E1BB4';
+	const bgColor = theme === 'dark' ? '#4E1BB4' : '#a9dc94';
     const btnTheme = theme === 'light' ? styles.addWorkoutBtnLight : '';
     const switchDisplay = () => {
 	setDisplayAddWorkout(!displayAddWorkout);

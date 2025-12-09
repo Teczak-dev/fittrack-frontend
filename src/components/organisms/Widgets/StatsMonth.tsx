@@ -7,6 +7,7 @@ import { useWorkouts } from '../../../hooks/useWorkouts';
 import { useEffect, useMemo, useState } from 'react';
 import type { Workout } from '../../../types/workout';
 import { ErrorMessage } from '../../atoms/ErrorMessage/ErrorMessage';
+import { useTheme } from '../../../hooks/useTheme';
 
 const fillMonthDays = (daysInMonth: number): string[] => {
     const month_days = [];
@@ -17,7 +18,8 @@ const fillMonthDays = (daysInMonth: number): string[] => {
 }
 
 export const StatsMonth = () => {
-    
+ 
+    const { theme } = useTheme();
     const { workouts } = useWorkouts();
 
     const month_days = fillMonthDays(getMonthDays());
@@ -67,6 +69,8 @@ export const StatsMonth = () => {
 	kalorie: sumCaloriesPerMonth(index),
 	minuty: sumMinutesPerMonth(index),
     }));
+    
+    const fillColor = theme === 'light' ? '#000' : '#fff';
 
     return (
 	<div className={mainStyles.container}>
@@ -74,9 +78,21 @@ export const StatsMonth = () => {
 	    <div className={styles.statsContainer}>
 		<BarChart className={styles.barInfo} responsive data={data}>
 		    <CartesianGrid strokeDasharray="3 3" />
-		    <XAxis dataKey="name" tick={{fill: 'white'}} />
-		    <YAxis width='auto' tick={{fill: 'white'}} />
-		    <Tooltip itemStyle={{backgroundColor:'#222'}}  wrapperStyle={{borderRadius:'20px', backgroundColor:'#222'}} labelStyle={{backgroundColor:'#222'}} contentStyle={{backgroundColor:'#222', borderRadius:'20px'}} />
+		    <XAxis dataKey="name" tick={{fill: fillColor}} />
+		    <YAxis width='auto' tick={{fill: fillColor}} />
+		    {theme === 'dark' ?(
+		    <Tooltip 
+			itemStyle={{backgroundColor:'#222'}}  
+			wrapperStyle={{borderRadius:'20px', backgroundColor:'#222'}} 
+			labelStyle={{backgroundColor:'#222'}} 
+			contentStyle={{backgroundColor:'#222', borderRadius:'20px'}} /> 
+		    ): (
+		    <Tooltip 
+			itemStyle={{backgroundColor:'#fff'}}  
+			wrapperStyle={{borderRadius:'20px', backgroundColor:'#fff'}} 
+			labelStyle={{backgroundColor:'#fff'}} 
+			contentStyle={{backgroundColor:'#fff', borderRadius:'20px'}} />
+		    )}
 		    <Legend  />
 		    <Bar dataKey="kalorie" fill="#f41" isAnimationActive={true}/>
 		    <Bar dataKey="minuty" fill="#28f" isAnimationActive={true}/>

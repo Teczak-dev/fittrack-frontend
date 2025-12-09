@@ -167,6 +167,7 @@ export const HeaderApp: React.FC = () => {
   };
     const handleAccount = () => {
 	navigation("/me/account");
+	setOpenSettings(false);
     };
 
   const ImageSrc = theme === "light" ? logoBlack : logoWhite;
@@ -186,7 +187,7 @@ export const HeaderApp: React.FC = () => {
 	    {width > 1200 ? (<Navigation />):(<NavigationDesktopMedium />) }
 	    <div>
 		<span>Hej, {user?.name}! 👋🏻</span>
-		<Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
+		<Image src={logoBlack} alt="User Avatar" onClick={handleAccount} className={styles.avatarApp} />
 		<Button onClick={() => setOpenSettings(!openSettings)} className={styles.buttonApp}>
 		    <Image src={SettingsSrc} alt="Settings" className={` ${styles.settingsIcon} ${settingsMenuActive}`} />
 		</Button>
@@ -241,7 +242,7 @@ export const HeaderAppMobile: React.FC = () => {
 	    />
 	<div>
 	    <span>Hej, {user?.name}! 👋🏻</span>
-	    <Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} />
+	    <Image src={logoBlack} alt="User Avatar" className={styles.avatarApp} onClick={() => navigation('/me/account')} />
 	</div>
 	</header>
     );

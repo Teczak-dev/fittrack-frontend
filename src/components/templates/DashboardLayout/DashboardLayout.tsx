@@ -19,7 +19,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ className }) =
     
     const {theme} = useTheme();
     const currentDate = getCurrentDate();
-    const gridItemBG = theme === 'dark' ? '#0D442F' : '#4E1BB4';
+    const gridItemBG = theme === 'dark' ? '#4E1BB4' : '#a9dc94';
     const headerTextColorClass = theme === 'dark' ? styles.headerDark : styles.headerLight;
 
     return (
@@ -33,15 +33,15 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ className }) =
             </div>
             
             <div className={styles.content}>
-		<div className={styles.gridItem} style={{gridArea: 'today', backgroundColor: gridItemBG}}> <TodaySummary/> </div>
-		<div className={styles.gridItem} style={{gridArea: 'last_workout', backgroundColor: gridItemBG}}><LastWorkout/> </div>
-		<div className={styles.gridItem} style={{gridArea: 'streak', backgroundColor: gridItemBG}}><Streak /> </div>
+            <div className={styles.gridItem} style={{gridArea: 'today', backgroundColor: gridItemBG, color: theme === 'dark' ? '#f1f1f1' : '#000'}}> <TodaySummary/> </div>
+            <div className={styles.gridItem} style={{gridArea: 'last_workout', backgroundColor: gridItemBG, color: theme === 'dark' ? '#f1f1f1' : '#000'}}><LastWorkout/> </div>
+            <div className={styles.gridItem} style={{gridArea: 'streak', backgroundColor: gridItemBG, color: theme === 'dark' ? '#f1f1f1' : '#000'}}><Streak /> </div>
 		{/* Wiersz 2*/}
-		<div className={styles.gridItem} style={{gridArea: 'motto', backgroundColor: gridItemBG}} ><Motto /></div>
-		<div className={styles.gridItem} style={{gridArea: 'stats', backgroundColor: gridItemBG}}><Stats/></div>
+        <div className={styles.gridItem} style={{gridArea: 'motto', backgroundColor: gridItemBG, color: theme === 'dark' ? '#f1f1f1' : '#000'}} ><Motto /></div>
+        <div className={styles.gridItem} style={{gridArea: 'stats', backgroundColor: gridItemBG, color: theme === 'dark' ? '#f1f1f1' : '#000'}}><Stats/></div>
 		{/* Wiersz 3*/}
-		<div className={styles.gridItem} style={{gridArea: 'limit_cal', backgroundColor: gridItemBG}}><SoonAdded text='Limit Kalorii' /></div>
-		<div className={styles.gridItem} style={{gridArea: 'food', backgroundColor: gridItemBG}}><SoonAdded text='Jedzenie' /></div>
+        <div className={styles.gridItem} style={{gridArea: 'limit_cal', backgroundColor: gridItemBG, color: theme === 'dark' ? '#f1f1f1' : '#000'}}><SoonAdded text='Limit Kalorii' /></div>
+        <div className={styles.gridItem} style={{gridArea: 'food', backgroundColor: gridItemBG, color: theme === 'dark' ? '#f1f1f1' : '#000'}}><SoonAdded text='Jedzenie' /></div>
             </div>
         </div>
     );

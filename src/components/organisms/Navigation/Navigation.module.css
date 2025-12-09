@@ -25,17 +25,17 @@
     transform: scale(1.05);
 }
 .navLinkActiveDark{
-    background-color: #0D442F !important;
-    transform: scale(1.05);
-    color: #fff;
-}
-.navLinkActiveLight{
     background-color: #4E1BB4 !important;
     transform: scale(1.05);
     color: #fff;
 }
+.navLinkActiveLight{
+    background-color: #a9dc94 !important;
+    transform: scale(1.05);
+    color: #000;
+}
 .navLinkActiveLight .navImg{
-    filter: invert(1);
+    filter: invert(0);
 }
 .navImg{
     width: 25px;

@@ -1,4 +1,4 @@
-import { safeParseJSON } from "./auth";
+import { safeParseJSON } from "../utils/safeParseJson";
 
 const headers = { "Content-Type": "application/json" };
 

@@ -100,6 +100,7 @@ export const NavigationMobile: React.FC = () => {
 
     const handleAccount = () => {
 	navigation("/me/account");
+	setOpenSettings(false);
     };
 
 

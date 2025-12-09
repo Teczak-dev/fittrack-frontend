@@ -22,20 +22,21 @@
     padding: 10px 20px;
     border: none;
     border-radius: 30px;
-    background-color: #0D442F;
+    background-color: #4E1BB4;
     color: #f1f1f1;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 .addWorkoutBtn:hover{
-    background-color: #0A2E20;
+    background-color: #3E1490;
 }
 .addWorkoutBtnLight{
-    background-color: #4E1BB4;
+    background-color: #a9dc94;
+    color: #000;
 }
 .addWorkoutBtnLight:hover{
-    background-color: #3A1280;
+    background-color: #88c06a;
 }
 .content{
     width: 100%;

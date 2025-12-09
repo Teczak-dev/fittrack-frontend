@@ -1,10 +1,8 @@
 import type { User } from "../types/user";
+import { safeParseJSON } from "../utils/safeParseJson";
 const headers = { "Content-Type": "application/json" };
 
-export const safeParseJSON = async (response: Response) => {
-    const text = await response.text();
-    return text ? JSON.parse(text) : {};
-};
+
 
 export const login = async (email: string, password: string): Promise<void> => {
     const response = await fetch("/api/users/login", {

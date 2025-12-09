@@ -20,7 +20,7 @@
 }
 .div{
     min-width: 45%;
-    height: 100%;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -60,54 +60,33 @@
     transition: ease-in-out 0.3s;
     text-decoration: none;
     text-align: center;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-.Register:hover{
-    transform: scale(0.95);
-}
-.RegisterDark{
-    background-color: #0D442F;
-    color: #FFF;
-}
-.RegisterDark:hover{
-    background-color: #0B3A27;
-}
-.RegisterLight{
-    background-color: #8250E5;
-    color: #FFF;
-}
-.RegisterLight:Hover{
-    background-color: #6B3FCC;
 }
 .Login{
-    width: fit-content;
     padding: 12px 30px;
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
-
     transition: ease-in-out 0.3s;
     text-decoration: none;
     text-align: center;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.Login:hover{
+.Register:hover,.Login:hover{
     transform: scale(0.95);
 }
-.LoginDark{    
-    background-color: rgba(46,116,255,0.61);
+.RegisterDark,.LoginDark{
+    background-color: #8250E5;
     color: #FFF;
 }
-.LoginDark:hover{
-    background-color: #19232E;
+.RegisterDark:Hover, LoginDark:hover{
+    background-color: #6139C9;
 }
-.LoginLight{
-    background-color: #4E1BB4;
-    color: #FFF;
+.RegisterLight, .LoginLight{
+    background-color: #a9dc94;
+    color: #000;
 }
-.LoginLight:hover{
-    background-color: #3E1490;
+.RegisterLight:Hover, LoginLight:hover{
+    background-color: #88c06a;
 }
 .links{
     font-size: 16px;

@@ -5,7 +5,7 @@
     padding: 20px;
     flex-direction: column;
     gap: 20px;
-    background-color: #4E1BB4;
+    background-color: #a9dc94;
     position: relative;
     border-radius: 10px;
     -webkit-box-shadow: 20px 20px 19px 11px rgba(0, 0, 0, 1);
@@ -13,11 +13,12 @@
     box-shadow: 20px 20px 19px 11px rgba(0, 0, 0, 1);
 }
 .loginFormDark{
-    background-color: rgba(46,116,255,0.61);
-    
+    background-color: rgba(78,27,180,0.14);
+    color: #f1f1f1;
 }
 .loginFormLight{
-    background-color: #4E1BB4;
+    background-color: #a9dc94;
+    color: #000;
 }
 .title{
     font-size: 32px;
@@ -27,12 +28,12 @@
     color: #f1f1f1;
 }
 .titleLight{
-    color: #f1f1f1;
+    color: #000;
 }
 .label{
     font-size: 18px;
     font-weight: 500;
-    color: #FFF;
+    color: inherit;
     width: 90%
 }
 .input{
@@ -56,10 +57,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .buttonDark{
-    background-color: #0D442F;
+    background-color: #4E1BB4;
 }
 .buttonDark:hover{
-    background-color: #0B3A27;
+    background-color: #3E1490;
 }
 .buttonLight{
     background-color: #8250E5;
@@ -69,7 +70,7 @@
 }
 .forgotPassword{
     font-size: 14px;
-    color: #FFF;
+    color: inherit;
     text-decoration: underline;
     cursor: pointer;
     align-self: flex-end;
@@ -80,23 +81,23 @@
 }
 .registerText, .loginText{
     font-size: 14px;
-    color: #FFF;
+    color: inherit;
     text-align: center;
 }
 .loginBack{
     font-size: 16px;
-    color: #fff;
+    color: inherit;
     text-align: left;
     width: 90%;
 }
 .registerLink, .loginLink{
     text-decoration: underline;
     cursor: pointer;
-    color: #FFF;
+    color: inherit;
     transition: ease-in-out 0.3s;
 }
 .registerLink:hover, .loginLink:hover{
-    color: #CCC;
+    color: inherit;
 }
 @media (max-width: 480px) {
     .loginForm{
@@ -117,7 +118,7 @@
 .errorText {
     width: 90%;
     text-wrap: wrap;
-    color: #f1f1f1;
+    color: #dc2626;
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: block;

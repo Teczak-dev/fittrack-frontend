@@ -19,9 +19,9 @@ export const Button: React.FC<ButtonProps> = ({
     const { theme } = useTheme();
     const textColorClass = theme === 'dark' ? styles.buttonTextDark : styles.buttonTextLight;
     return (
-	    <button className={`${styles.button} ${styles[variant]} ${textColorClass} ${className}`} onClick={onClick} disabled={disabled} >
-	        {children}
-	    </button>
+    	    <button className={`btn ${styles.button} ${styles[variant]} ${textColorClass} ${className || ''}`} onClick={onClick} disabled={disabled} >
+        {children}
+    	</button>
     );
 };
 
@@ -33,13 +33,13 @@ export const ThemeButton: React.FC<ButtonProps> = ({
 }) => {
     const { theme } = useTheme();
 
-    const classNames = ` ${className} ${styles.themeButton}`;
+    const classNames = `btn ${className || ''} ${styles.themeButton} ${theme === 'dark' ? styles.themeButtonDark : styles.themeButtonLight}`;
 
     return (
-	    <button 
-	        className={`${classNames} ${theme === 'dark' ? styles.themeButtonDark : styles.themeButtonLight}`} 
-	        onClick={onClick} disabled={disabled}>
-	        {children}
-	    </button>
+    	    <button 
+    	        className={`${classNames} ${theme === 'dark' ? styles.themeButtonDark : styles.themeButtonLight}`} 
+    	        onClick={onClick} disabled={disabled}>
+    	        {children}
+    	    </button>
     );
 }

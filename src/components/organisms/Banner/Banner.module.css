@@ -1,82 +1,137 @@
 .banner{
-    width: 100svw;
-    height: 110svh;
-    position: relative;
-    background-color: transparent;
-    margin-top: 20vsh;
-}
-.bannerText{
-    font-weight: 700;
-    text-wrap: text-wrap;
-    width: 300px;
-    min-height: 200px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    margin-top: 80px;
+    padding: 6vh 4vw;
+    min-height: calc(100vh - 80px);
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     align-items: center;
-    position: absolute;
-    flex-direction: column;
-    top: 20vh;
-    right: 7vw;
-    border: none;
-    background-color: transparent;
+    justify-items: center;
 }
-.bannerDark{
-    background-color: rgba(46,116,255,0.61);
-}
-.bannerLight{
-    background-color: #4E1BB4;
-}
-.Text{
-    text-align: center;
-    color: #FFF;
-    font-size: 38px;
+.banner * {
+    overflow: hidden;
 }
 .appNameTextColorLight{
-    color: #4E1BB4;
+    color: #a9dc94 !important;
 }
 .appNameTextColorDark{
-    color: rgba(46,116,255,0.61);
+    color: #4E1BB4 !important;
 }
+
+.bannerText{
+    font-weight: 700;
+    width: 100%;
+    max-width: 560px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    color: #FFF;
+}
+
+.Text{
+    padding: 10px 20px;
+    color: #FFF;
+    font-size: 38px;
+    line-height: 1.05;
+    margin: 0;
+}
+
 .bannerImage{
-    width: 65vw;
-    border-radius: 10px;
-    position: absolute;
-    bottom: 13vw;
-    left: 7vw;
+    width: 100%;
+    max-width: 900px;
 }
+
+.bannerImage img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
 .subtextColorLight{
     color: #111;
 }
 .subtextColorDark{
     color: #f1f1f1;
 }
+
 .imageDark{
-    -webkit-box-shadow:0px 0px 170px 14px rgba(46,116,255,0.61);
-    -moz-box-shadow: 0px 0px 170px 14px rgba(46,116,255,0.61);
-    box-shadow: 0px 0px 170px 14px rgba(46,116,255,0.61);
-}
-.imageLight{
     -webkit-box-shadow:0px 0px 170px 14px rgba(78,27,180,0.61);
     -moz-box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
     box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
 }
-@media (max-width: 868px){
+.imageLight{
+    -webkit-box-shadow:0px 0px 170px 14px rgba(169,220,148,0.61);
+    -moz-box-shadow: 0px 0px 170px 14px rgba(169,220,148,0.61);
+    box-shadow: 0px 0px 170px 14px rgba(169,220,148,0.61);
+}
+
+@media (min-width: 900px) {
+    .banner{
+        grid-template-columns: 1fr 1fr;
+        padding: 8vh 6vw;
+        min-height: calc(100vh - 80px);
+        justify-items: stretch;
+    }
     .bannerImage{
-	width: 80svw;
-	bottom: 30vw;
+        justify-self: start;
+        align-self: center;
+    }
+    .bannerText{
+        justify-self: end;
+        align-self: start;
+        padding-top: 3.5rem; 
+        text-align: left;
+    }
+    .Text{ font-size: 48px; }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+    .banner{ padding: 6vh 5vw; }
+    .Text{ font-size: 34px; text-align: center; }
+    .bannerText{ align-items: center; }
+    .imageDark{
+	-webkit-box-shadow:0px 0px 100px -5px rgba(78,27,180,0.61);
+	-moz-box-shadow: 0px 0px 100px -5px rgba(78,27,180,0.61);
+	box-shadow: 0px 0px 100px -5px rgba(78,27,180,0.61);
+    }
+    .imageLight{
+	-webkit-box-shadow:0px 0px 100px -5px rgba(169,220,148,0.61);
+	-moz-box-shadow: 0px 0px 100px -5px rgba(169,220,148,0.61);
+	box-shadow: 0px 0px 100px -5px rgba(169,220,148,0.61);
     }
 }
-@media (max-width: 480px) {
+
+@media (max-width: 768px) {
+    .banner{
+        padding: 4vh 3vw;
+        margin-top: 64px;
+        grid-template-columns: 1fr;
+    }
     .bannerText{
-        width: 90svw;
-        height: 120px;
-	top: 20vh;
-	right: 5vw;
+        width: 100%;
+        max-width: 90vw;
+        margin: 0 auto 12px auto;
+        align-items: center;
+        text-align: center;
     }
     .bannerImage{
-	width: 90svw;
-	bottom: 50vw;
-	left: 5vw;
+        width: 90vw;
+        max-width: 90vw;
+        margin: 0 auto;
+    }
+    .Text{ font-size: 28px; }
+    .imageDark{
+	-webkit-box-shadow:0px 0px 100px -5px rgba(78,27,180,0.61);
+	-moz-box-shadow: 0px 0px 100px -5px rgba(78,27,180,0.61);
+	box-shadow: 0px 0px 100px -5px rgba(78,27,180,0.61);
+    }
+    .imageLight{
+	-webkit-box-shadow:0px 0px 100px -5px rgba(169,220,148,0.61);
+	-moz-box-shadow: 0px 0px 100px -5px rgba(169,220,148,0.61);
+	box-shadow: 0px 0px 100px -5px rgba(169,220,148,0.61);
     }
 }

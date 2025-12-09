@@ -74,10 +74,12 @@
 }
 
 .editButtonLight{
-    background-color: #4E1BB4;
+    background-color: #a9dc94;
+    color: #000;
 }
 .editButtonDark{
-    background-color: #0D442F;
+    background-color: #4E1BB4;
+    color: #fff;
 }
 .deleteButton{
     background-color: #FF4C4C;

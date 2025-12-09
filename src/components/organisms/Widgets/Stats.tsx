@@ -7,9 +7,11 @@ import { useWorkouts } from '../../../hooks/useWorkouts';
 import { useEffect, useMemo, useState } from 'react';
 import type { Workout } from '../../../types/workout';
 import { ErrorMessage } from '../../atoms/ErrorMessage/ErrorMessage';
+import { useTheme } from '../../../hooks/useTheme';
 
 export const Stats = () => {
     
+    const { theme } = useTheme();
     const { workouts } = useWorkouts();
 
     const days = ['Pon', 'Wto', 'Śro', 'Czw', 'Pią', 'Sob', 'Nie'];
@@ -59,6 +61,8 @@ export const Stats = () => {
 	kalorie: sumCaloriesPerDay(index),
 	minuty: sumMinutesPerDay(index),
     }));
+    
+    const fillColor = theme === 'light' ? '#000' : '#fff';
 
     return (
 	<div className={mainStyles.container}>
@@ -66,13 +70,20 @@ export const Stats = () => {
 	    <div className={styles.statsContainer}>
 		<BarChart className={styles.barInfo} responsive data={data}>
 		    <CartesianGrid strokeDasharray="3 3" />
-		    <XAxis dataKey="name" tick={{fill: 'white'}} />
-		    <YAxis width='auto' tick={{fill: 'white'}} />
-		    <Tooltip 
+		    <XAxis dataKey="name" tick={{fill: fillColor}} />
+		    <YAxis width='auto' tick={{fill: fillColor}} />
+		    {theme === 'dark' ? 
+		    (<Tooltip 
 			itemStyle={{backgroundColor:'#222'}}  
 			wrapperStyle={{borderRadius:'20px', backgroundColor:'#222'}} 
 			labelStyle={{backgroundColor:'#222'}} 
-			contentStyle={{backgroundColor:'#222', borderRadius:'20px'}} />
+			contentStyle={{backgroundColor:'#222', borderRadius:'20px'}} />)
+		    :(<Tooltip 
+			itemStyle={{backgroundColor:'#fff'}}  
+			wrapperStyle={{borderRadius:'20px', backgroundColor:'#222'}} 
+			labelStyle={{backgroundColor:'#fff'}} 
+			contentStyle={{backgroundColor:'#fff', borderRadius:'20px'}} />
+		    )}
 		    <Legend  />
 		    <Bar dataKey="kalorie" fill="#f41" isAnimationActive={true}/>
 		    <Bar dataKey="minuty" fill="#28f" isAnimationActive={true}/>
