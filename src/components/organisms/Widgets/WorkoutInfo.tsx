@@ -6,6 +6,7 @@ import styles from "./WorkoutInfo.module.css";
 import { useWorkouts } from "../../../hooks/useWorkouts";
 import { useWorkoutCategory } from "../../../hooks/useWorkoutCategory";
 import { deleteWorkoutToDB } from "../../../api/workouts";
+import { useTheme } from "../../../hooks/useTheme";
 
 interface WorkoutInfoProps{
     Workout: Workout;
@@ -15,6 +16,7 @@ interface WorkoutInfoProps{
 
 export const WorkoutInfo: React.FC<WorkoutInfoProps> = ({Workout, className, bgColor}) => {
 
+    const { theme } = useTheme();
     const { deleteWorkout } = useWorkouts();
     const { workoutCategory } = useWorkoutCategory();
     
@@ -35,7 +37,7 @@ export const WorkoutInfo: React.FC<WorkoutInfoProps> = ({Workout, className, bgC
     return (
 	<div className={` ${styles.workoutContainer} ${className}`} style={{backgroundColor: bgColor} }>
 	    <div className={styles.workoutHeader}>
-		<Image src={`${imageSrc}`} alt="Workout Image" className={styles.workoutImage}/>
+		<Image src={`${imageSrc}`} alt="Workout Image" className={` ${styles.workoutImage} ${theme === 'light'? styles.workoutImageLight :''}`}/>
 		<Typography variant='body' className={styles.workoutName}>
 		    {Workout.name}
 		</Typography>

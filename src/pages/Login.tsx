@@ -6,12 +6,13 @@ import { useState } from "react";
 export const Login: React.FC = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
+
     const loginFunction = async(email: string, password: string) => {
 	try{
 	    await login(email, password);
 	    navigate('/me');
 	}catch(err: any){
-	    setError(err.message);
+	    setError(err.message || 'Server error');
 	}
     }
 

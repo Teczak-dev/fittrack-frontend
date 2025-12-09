@@ -10,16 +10,16 @@ export const Register: React.FC = () => {
     const navigate = useNavigate();
     
 
-    const registerFunction = (email: string, password: string, username: string) => {
+    const registerFunction = async (email: string, password: string, username: string) => {
 	try{
-	    register(username, email, password);
+	    await register(username, email, password);
 	    setError('Uzytkownik zarejestrowany pomyślnie. Teraz możesz się zalogować.');
 	    setTimeout(() => {
 		setError('');
 		navigate('/login');
 	    }, 2000);
 	}catch(err: any){
-	    setError(err.message);
+	    setError(err.message || 'Server error');
 	}
     }
 

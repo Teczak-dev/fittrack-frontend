@@ -27,12 +27,15 @@
 .navLinkActiveDark{
     background-color: #4E1BB4 !important;
     transform: scale(1.05);
-    color: #fff;
+    color: #fff !important;
 }
 .navLinkActiveLight{
     background-color: #a9dc94 !important;
     transform: scale(1.05);
-    color: #000;
+    color: #333 !important;
+}
+.navLinkActiveLight *{
+    color: #000 !important;
 }
 .navLinkActiveLight .navImg{
     filter: invert(0);
@@ -77,16 +80,20 @@
 .mobileNavLinkLight{
     color: #000 !important;
 }
-.navLinkActiveLight .mobileNavLinkLight{
-    color: #f1f1f1 !important;
+.navLinkActiveDark .mobileNavLink{
+	color: #fff !important;
+}
+.mobileNavLinkLight{
+    color: #000 !important;
 }
 .buttonApp{
-    width: fit-content;
-    height: fit-content;
+    min-width: 30px;
+    min-height: 30px;
     background-color: transparent;
     border: none;
     cursor: pointer;
     transition: ease-in-out 0.3s;
+    padding: 0;
 }
 .buttonAppActive{
     transform: rotate(90deg) !important;

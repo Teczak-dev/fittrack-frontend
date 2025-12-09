@@ -86,7 +86,7 @@ export const Stats = () => {
 		    )}
 		    <Legend  />
 		    <Bar dataKey="kalorie" fill="#f41" isAnimationActive={true}/>
-		    <Bar dataKey="minuty" fill="#28f" isAnimationActive={true}/>
+		    <Bar dataKey="minuty" fill="#ce7e00" isAnimationActive={true}/>
 		</BarChart>
 	    </div>
 	</div>

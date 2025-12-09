@@ -32,7 +32,7 @@ export const WheelOfWorkouts = () => {
 		cx="50%"
 		cy="50%"
 		outerRadius="50%"
-		fill="#28f"
+		fill="#ce7e00"
 		isAnimationActive={true}
 	    />
 	    <Tooltip 

@@ -11,13 +11,12 @@ export const ForgotPassword: React.FC = () => {
     
     const sendResetLink = async(email: string) => {
 	try{
-	    forgotPassword(email);
+	    await forgotPassword(email);
 	    setMsg('Link do resetowania hasła został wysłany na Twój email.');
 	    setTimeout(() => { navigate('/login'); }, 2000);
 	}catch(err: any){
-	    setMsg(err.message);
+	    setMsg(err.message || 'Server error');
 	}
-
     }
    
     return(

@@ -2,8 +2,6 @@ import type { User } from "../types/user";
 import { safeParseJSON } from "../utils/safeParseJson";
 const headers = { "Content-Type": "application/json" };
 
-
-
 export const login = async (email: string, password: string): Promise<void> => {
     const response = await fetch("/api/users/login", {
 	method: "POST",
@@ -13,6 +11,7 @@ export const login = async (email: string, password: string): Promise<void> => {
     const data = await safeParseJSON(response);
     if (!response.ok) throw new Error(data.message || "Server error");
     if (data.token) localStorage.setItem("token", data.token);
+    return data;
 };
 
 export const register = async (
@@ -38,6 +37,7 @@ export const forgotPassword = async (email: string): Promise<void> => {
     });
     const data = await safeParseJSON(response);
     if (!response.ok) throw new Error(data.message || 'Server error');
+    return data;
 
 }
 export const resetPassword = async (newPassword: string, token: string): Promise<void> => {
@@ -49,6 +49,7 @@ export const resetPassword = async (newPassword: string, token: string): Promise
     });
     const data = await safeParseJSON(response);
     if (!response.ok) throw new Error(data.message || 'Server error');
+    return data;
 }
 
 export const changePassword = async (oldPassword: string, newPassword: string): Promise<void> => {
@@ -64,6 +65,7 @@ export const changePassword = async (oldPassword: string, newPassword: string): 
     });
     const data = await safeParseJSON(response);
     if (!response.ok) throw new Error(data.message || 'Server error');
+    return data;
 }
 
 
@@ -98,6 +100,7 @@ export const resendVerificationEmail = async () => {
     });
     const data = await safeParseJSON(response);
     if (!response.ok) throw new Error(data.message || 'Server error');
+    return data;
 }
 
 export const deleteAccount = async (password:string) => {
@@ -112,4 +115,5 @@ export const deleteAccount = async (password:string) => {
     });
     const data = await safeParseJSON(response);
     if (!response.ok) throw new Error(data.message || 'Server error');
+    return data;
 }

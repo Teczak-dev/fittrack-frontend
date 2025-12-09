@@ -1,28 +1,38 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { lazy, Suspense } from 'react';
 import './global.css';
-import App from './App.tsx'
-import { Home } from './pages/Home.tsx'
+import App from './App.tsx';
+import { LoadingPage } from './pages/LoadingPage.tsx';
 import { ThemeProvider } from './context/ThemeContext.tsx';
 import { ScreenWidthProvider } from './context/ScreenWidthContext.tsx';
 import { ProtectedRoute } from './components/organisms/ProtectedRoute/ProtectedRoute.tsx';
-import { UserProvider } from './context/UserContext.tsx';
-import { WorkoutsProvider } from './context/WorkoutsContext.tsx';
-import { WorkoutCategoryProvider } from './context/WorkoutCategoryContext.tsx';
-import { Login } from './pages/Login.tsx';
-import { Register } from './pages/Register.tsx';
-import { ForgotPassword } from './pages/ForgotPassword.tsx';
-import { Dashboard } from './pages/Dashboard.tsx';
-import { MainAppLayout } from './components/templates/MainAppLayout/MainAppLayout.tsx';
-import { Me } from './pages/Me.tsx';
-import { Workouts } from './pages/Workouts.tsx';
-import { Analize } from './pages/Analize.tsx';
-import { Calories } from './pages/Calories.tsx';
-import VerifyAccount from './pages/VerifyAccont.tsx';
-import { ResetPassword } from './pages/ResetPassword.tsx';
-import { Account } from './pages/Account.tsx';
 import { WrongAdress } from './pages/WrongAdress.tsx';
+const Home = lazy(() => import('./pages/Home.tsx')
+			    .then(module => ({ default: module.Home }) ) );
+const Login = lazy(() => import('./pages/Login.tsx')
+			    .then(module => ({ default: module.Login }) ) );
+const Register = lazy(() => import('./pages/Register.tsx')
+			    .then(module => ({ default: module.Register }) ) );
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword.tsx')
+			    .then(module => ({ default: module.ForgotPassword }) ) );
+const Dashboard = lazy(() => import('./pages/Dashboard.tsx')
+			    .then(module => ({ default: module.Dashboard }) ) );
+const Me = lazy(() => import('./pages/Me.tsx')
+			    .then(module => ({ default: module.Me }) ) );
+const Workouts = lazy(() => import('./pages/Workouts.tsx')
+			    .then(module => ({ default: module.Workouts }) ) );
+const Analize = lazy(() => import('./pages/Analize.tsx')
+			    .then(module => ({ default: module.Analize }) ) );
+const Calories = lazy(() => import('./pages/Calories.tsx')
+			    .then(module => ({ default: module.Calories }) ) );
+const VerifyAccount = lazy(() => import('./pages/VerifyAccont.tsx')
+			    .then(module => ({ default: module.VerifyAccount }) ) );
+const ResetPassword = lazy(() => import('./pages/ResetPassword.tsx')
+			    .then(module => ({ default: module.ResetPassword }) ) );
+const Account = lazy(() => import('./pages/Account.tsx')
+			    .then(module => ({ default: module.Account }) ) );
 
 const router = createBrowserRouter([
     {
@@ -31,31 +41,31 @@ const router = createBrowserRouter([
 	children: [
 	{
 	    index: true,
-	    element: <App />,
+	    element: <Suspense fallback={<LoadingPage />}> <App /> </Suspense>,
 	},
 	{
 	    path: '/home',
-	    element: <Home />
+	    element: <Suspense fallback={<LoadingPage />}> <Home /> </Suspense>
 	},
 	{
 	    path: "/login",
-	    element: <Login />
+	    element: <Suspense fallback={<LoadingPage />}> <Login /> </Suspense>
 	},
 	{
 	    path: '/register',
-	    element: <Register />
+	    element: <Suspense fallback={<LoadingPage />}> <Register /> </Suspense>
 	},
 	{
 	    path: '/forgot-password',
-	    element: <ForgotPassword />
+	    element: <Suspense fallback={<LoadingPage />}> <ForgotPassword /> </Suspense>
 	},
 	{
 	    path: '/verify/:token',
-	    element: <VerifyAccount />
+	    element: <Suspense fallback={<LoadingPage />} > <VerifyAccount /> </Suspense>
 	},
 	{
 	    path: '/reset-password/:token',
-	    element: <ResetPassword />
+	    element: <Suspense fallback={<LoadingPage />}> <ResetPassword /> </Suspense>
 	}
 	    
 	]
@@ -63,41 +73,31 @@ const router = createBrowserRouter([
     {
 	path: "/me",
 	errorElement: <WrongAdress />,
-	element: (
-		<ProtectedRoute>
-		    <UserProvider> 
-			<WorkoutsProvider>
-			    <WorkoutCategoryProvider>
-				<MainAppLayout />
-			    </WorkoutCategoryProvider>
-			</WorkoutsProvider>
-		    </UserProvider>
-		</ProtectedRoute>
-		) ,
+	element: <Suspense fallback={<LoadingPage />}> <ProtectedRoute/> </Suspense>,
 	children: [
 	    {
 		index: true,
-		element: <Me />,
+		element: <Suspense fallback={<LoadingPage />}><Me /></Suspense>,
 	    },
 	    {
 		path: '/me/dashboard',
-		element: <Dashboard />
+		element: <Suspense fallback={<LoadingPage />}><Dashboard /></Suspense>,
 	    },
 	    {
 		path: '/me/workouts',
-		element: <Workouts />
+		element: <Suspense fallback={<LoadingPage />}><Workouts /></Suspense>,
 	    },
 	    { 
 		path: '/me/analize',
-		element: <Analize />
+		element: <Suspense fallback={<LoadingPage />}><Analize /></Suspense>,
 	    },
 	    { 
 		path: '/me/calories',
-		element: <Calories />
+		element: <Suspense fallback={<LoadingPage />}><Calories /></Suspense>,
 	    },
 	    {
 		path: '/me/account',
-		element: <Account />
+		element: <Suspense fallback={<LoadingPage />}><Account /></Suspense>,
 	    }
 	]
     }

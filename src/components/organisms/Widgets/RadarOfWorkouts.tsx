@@ -12,7 +12,7 @@ export const RadarOfWorkouts = () => {
 
     const {theme} = useTheme();
     const bgColor = theme === 'dark' ? '#222' : '#fff';
-
+    const fillColor = theme === 'dark' ? '#fff' : '#000';
     return (
 	<div className={mainStyles.container} style={{alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
 	    <Typography variant="h2" className={mainStyles.header}>Radar Treningów</Typography>
@@ -23,13 +23,13 @@ export const RadarOfWorkouts = () => {
 	    ) : (
 	    <RadarChart style={{ width: '90%', height: '200px',aspectRatio: 1 }} responsive data={data}>
 		<PolarGrid />
-		<PolarAngleAxis dataKey="name" tick={{fill: 'white'}} />
-		<PolarRadiusAxis angle={60} domain={[0, data.sort((a:any,b:any) => b.value - a.value)[0].value]} tick={{fill: 'white'}} />
+		<PolarAngleAxis dataKey="name" tick={{fill: fillColor}} />
+		<PolarRadiusAxis angle={60} domain={[0, data.sort((a:any,b:any) => b.value - a.value)[0].value]} tick={{fill: fillColor}} />
 		<Radar
 		    name="Typ"
 		    dataKey="value"
-		    stroke="#21F"
-		    fill="#21F"
+		    stroke="#ce7e00"
+		    fill="#ce7e00"
 		    fillOpacity={0.6}
 		    isAnimationActive={true}
 		/>

@@ -1,13 +1,26 @@
 import { Navigate } from "react-router-dom";
+import { MainAppLayout } from "../../templates/MainAppLayout/MainAppLayout";
+import { UserProvider } from "../../../context/UserContext";
+import { WorkoutsProvider } from "../../../context/WorkoutsContext";
+import { WorkoutCategoryProvider } from "../../../context/WorkoutCategoryContext";
 
-interface ProtectedRouteProps {
-    children: React.ReactNode;
-}
-
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+export const ProtectedRoute = () => {
+    
     const token = localStorage.getItem('token');
+    
     if (!token) {
 	return <Navigate to="/home" replace />;
     }
-    return <>{children}</>;
+    
+    return (
+	<>
+	    <UserProvider> 
+		<WorkoutsProvider>
+		    <WorkoutCategoryProvider>
+			<MainAppLayout />
+		    </WorkoutCategoryProvider>
+		</WorkoutsProvider>
+	    </UserProvider>
+	</>
+    );
 }

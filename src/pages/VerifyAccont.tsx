@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { VerifyAccountLayout } from '../components/templates/VerifyAccountLayout/VerifyAccountLayout';
 
-export default function VerifyAccount() {
+export const VerifyAccount = () => {
     const { token } = useParams<{ token: string }>();
     const [message, setMessage] = useState('Weryfikuję konto...');
     const navigate = useNavigate();

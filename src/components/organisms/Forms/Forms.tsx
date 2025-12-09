@@ -93,7 +93,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({login, error}) => {
 				/>
 				{passwordError && <Typography variant="small" className={styles.errorText}>{passwordError}</Typography>}
 			</label>
-			{error && <Typography variant="small" className={styles.errorText}>Błędny adress e-mail lub hasło</Typography>}
+			{error && <Typography variant="small" className={styles.errorText}>{error}</Typography>}
 			<Button className={` ${styles.button} ${buttonTheme} `} onClick={handleLogin}>Zaloguj się</Button>
 			<Typography variant="body" className={styles.registerText}>Nie masz konta? <Link url='/register' text='Zarejestruj się' className={styles.registerLink} /></Typography>
 			<Link url='/forgot-password' className={styles.forgotPassword} text='Nie pamiętasz hasła?' />
@@ -153,7 +153,6 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
     };
 
     const handleRegister = () => {
-        // Sprawdzamy każde pole osobno
         const emailValidation = validateEmail(email);
         const passwordValidation = validatePassword(password);
         const usernameValidation = validateUsername(username);

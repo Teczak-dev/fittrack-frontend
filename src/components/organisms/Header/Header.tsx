@@ -19,6 +19,10 @@ import { useScreenWidth } from "../../../hooks/useScreenWidth";
 import { useUser } from "../../../hooks/useUser";
 import { getProfile, logout } from "../../../api/auth";
 
+
+{/*
+	      Header for desktop view on home page
+*/}
 export const HeaderHome: React.FC<{
   home: () => void;
   discover: () => void;
@@ -73,6 +77,11 @@ export const HeaderHome: React.FC<{
     </header>
   );
 };
+
+{/*
+    	      Header for mobile view on home page
+*/}
+
 export const HeaderHomeMobile: React.FC<{
   home: () => void;
   discover: () => void;
@@ -141,7 +150,9 @@ export const HeaderHomeMobile: React.FC<{
     </header>
   );
 };
-
+{/*
+	      Header for logged in users in main app
+*/}
 export const HeaderApp: React.FC = () => {
   const { user, updateUser } = useUser();
   const { theme, toggleTheme } = useTheme();
@@ -215,7 +226,9 @@ export const HeaderApp: React.FC = () => {
     );
 }
 
-
+{/*
+    	      Header for logged in users in main app - mobile version
+*/}
 export const HeaderAppMobile: React.FC = () => {
     const { theme } = useTheme();
     const { user, updateUser } = useUser();
