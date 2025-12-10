@@ -1,5 +1,8 @@
 import type { Workout } from "../types/workout";
 
+// Fetch user's workouts from the backend
+// Requires authentication token in localStorage
+// Returns a promise that resolves to an array of Workout objects
 export const getUserWorkouts = async () : Promise<Workout[]> => {
     const token = localStorage.getItem("token");
     const response = await fetch('/api/workouts', {
@@ -12,6 +15,9 @@ export const getUserWorkouts = async () : Promise<Workout[]> => {
     return data;
 }
 
+// Add a new workout to the backend
+// Requires authentication token in localStorage
+// Accepts a Workout object and returns a promise that resolves to the added Workout object
 export const addWorkoutToDB = async (workout: Workout): Promise<Workout> => {
     const token = localStorage.getItem("token");
     const response = await fetch('/api/workouts', {
@@ -29,6 +35,9 @@ export const addWorkoutToDB = async (workout: Workout): Promise<Workout> => {
     return data;
 }
 
+// Delete a workout from the backend
+// Requires authentication token in localStorage
+// Accepts a workoutId and returns a promise that resolves when the workout is deleted
 export const deleteWorkoutToDB = async (workoutId: number | null): Promise<void> => {
     const token = localStorage.getItem("token");
     const response = await fetch(`/api/workouts/${workoutId}`, {

@@ -12,10 +12,3 @@ Krótki opis architektury frontendowej FitTrack.
 
 3. Stylowanie
 - CSS Modules per-komponent oraz `src/global.css` dla utility classes (przyciski, shadow, rounded).
-
-4. Narzędzia i procesy
-- Vite jako bundler / dev server.
-- TypeScript dla bezpieczniejszego typowania.
-
-Wskazówki do rozwoju
-- Utrzymuj komponenty “czyste” — unikać side-effectów w renderze, przenieś logikę do hooków.

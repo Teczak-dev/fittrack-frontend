@@ -13,6 +13,8 @@ export const WorkoutCategoryContext = createContext<WorkoutCategoryContextType |
 export const WorkoutCategoryProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [workoutCategory, setWorkoutCategoty] = useState<WorkoutCategory[] | []>([]);
 
+
+    // Fetch workout categories on mount if token exists
     useEffect(() => {
 	const token = localStorage.getItem('token');
 	if (token) {

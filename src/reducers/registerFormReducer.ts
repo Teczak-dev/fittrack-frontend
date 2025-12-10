@@ -11,9 +11,10 @@ export type RegisterState = {
   };
 };
 
-// Small alias used in actions and elsewhere for clarity
+// Define the fields that can be updated in the register form
 export type RegisterField = 'username' | 'email' | 'password' | 'confirmPassword';
 
+// Define the actions that can be dispatched to the reducer
 export type RegisterAction =
   | { type: 'SET_FIELD'; field: RegisterField; value: string }
   | { type: 'SET_ERROR'; field: keyof RegisterState['errors']; error?: string }

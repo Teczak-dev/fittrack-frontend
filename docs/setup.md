@@ -12,7 +12,7 @@ Instalacja
 1. Sklonuj repozytorium (jeśli jeszcze tego nie zrobiłeś):
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Teczak-dev/fittrack-frontend.git
 cd fittrack-frontend
 ```
 
@@ -32,37 +32,4 @@ Budowanie produkcyjne
 
 ```bash
 npm run build
-```
-
-Testy
-
-Projekt nie zawiera aktualnie automatycznych testów. Dodanie testów jednostkowych i integracyjnych jest zalecane.
-# Setup i uruchomienie
-
-Ten plik zawiera szczegółową instrukcję instalacji i uruchomienia projektu lokalnie.
-
-1) Klonowanie repozytorium
-```bash
-git clone <repo-url>
-cd fittrack-frontend
-```
-
-2) Instalacja zależności
-```bash
-npm install
-```
-
-3) Uruchomienie w trybie deweloperskim
-```bash
-npm run dev
-```
-
-4) Przeglądanie aplikacji
-- Vite wypisze URL w terminalu (np. `http://localhost:5173`)
-- Otwórz go w przeglądarce
-
-5) Budowanie produkcyjne
-```bash
-npm run build
-npm run preview
 ```

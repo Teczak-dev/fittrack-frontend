@@ -1,6 +1,8 @@
 import { useWorkoutCategory } from "../hooks/useWorkoutCategory";
 import type { Workout } from "../types/workout";
 
+
+// Helper functions to get the start and end of the current week
 const getMonday = () : Date => {
     const today = new Date();
     const day = today.getDay();
@@ -8,6 +10,8 @@ const getMonday = () : Date => {
     today.setHours(0, 0, 0, 0);
     return new Date(today.setDate(diff));
 }
+
+// Helper function to get Sunday of the current week
 const getSunday = () : Date => {
     const monday = getMonday();
     const sunday = new Date(monday);
@@ -16,6 +20,7 @@ const getSunday = () : Date => {
     return sunday;
 }
 
+// Function to filter workouts by day
 export const filterWorkoutByDay = (workouts: any[]) => {
     const new_workouts = workouts.sort( (a, b) => {
 	const dateCompare = new Date(a.date).getTime() - new Date(b.date).getTime();
@@ -27,6 +32,8 @@ export const filterWorkoutByDay = (workouts: any[]) => {
     
     return  new_workouts.reverse();
 }
+
+// Function to filter workouts by the current week
 export const filterWorkoutByWeek = (workouts: any[]) => {
     const weekStart = getMonday();
     const weekEnd = getSunday();
@@ -36,6 +43,7 @@ export const filterWorkoutByWeek = (workouts: any[]) => {
     });
 };
 
+// Function to filter workouts by the current month
 export const filterWorkoutByMonth = (workouts: any[]) => {
     const today = new Date();
     const month = today.getMonth();
@@ -46,6 +54,7 @@ export const filterWorkoutByMonth = (workouts: any[]) => {
     });
 }
 
+// Function to get the number of days in the current month
 export const getMonthDays = () : number => {
     const today = new Date();
     const month = today.getMonth();
@@ -53,6 +62,7 @@ export const getMonthDays = () : number => {
     return new Date(year, month + 1, 0).getDate();
 }
 
+// Function to calculate today's total calories burned
 export const calculateTodaysCalories = (workouts: any[]) : number => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -64,12 +74,14 @@ export const calculateTodaysCalories = (workouts: any[]) : number => {
     return todaysWorkouts.reduce((total, workout) => total + workout.calories, 0);
 };
 
-export const getMostRecentWorkout = (workouts: any[]): Workout[] => {
+// Function to get the two most recent workouts
+export const getMostRecentWorkout = (workouts: Workout[]): Workout[] => {
     if (workouts.length === 0) return [];
     const sortedWorkouts = [...workouts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     return sortedWorkouts.slice(0, 2);
 };
 
+// Function to get total workouts per category
 export const getTotalWorkoutsPerCategoty = (workouts: any[]): any => {
     const { workoutCategory } = useWorkoutCategory(); 
     if (workouts.length === 0) return [];
@@ -83,6 +95,7 @@ export const getTotalWorkoutsPerCategoty = (workouts: any[]): any => {
     return data;
 }
 
+// Function to get total workouts per kind
 export const getTotalWorkoutsPerKind = (workouts: any[]): any  => {
     if (workouts.length === 0) return [];
     const kinds = new Set(workouts.map((item) => item.name));

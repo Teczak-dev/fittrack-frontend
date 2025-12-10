@@ -1,13 +1,10 @@
-// Walidacja formularzy
-
-
-// interface ValidationResult definiuje strukturę wyniku walidacji
 export interface ValidationResult {
     isValid: boolean;
     error: string;
 }
 
-// Walidacja emaila zwraca obiekt ValidationResult
+// email validation returns ValidationResult object
+// argument: email string
 export const validateEmail = (email: string): ValidationResult => {
     if (!email) {
         return { isValid: false, error: 'Email jest wymagany' };
@@ -19,7 +16,8 @@ export const validateEmail = (email: string): ValidationResult => {
     return { isValid: true, error: '' };
 };
 
-// Walidacja hasła zwraca obiekt ValidationResult
+// Password validation returns ValidationResult object
+// argument: password string
 export const validatePassword = (password: string): ValidationResult => {
     if (!password) {
         return { isValid: false, error: 'Hasło jest wymagane' };
@@ -38,7 +36,8 @@ export const validatePassword = (password: string): ValidationResult => {
     return { isValid: true, error: '' };
 };
 
-// Walidacja nazwy użytkownika zwraca obiekt ValidationResult
+// Username validation returns ValidationResult object
+// argument: username string
 export const validateUsername = (username: string): ValidationResult => {
     if (!username) {
         return { isValid: false, error: 'Nazwa użytkownika jest wymagana' };
@@ -49,7 +48,7 @@ export const validateUsername = (username: string): ValidationResult => {
     if (username.length > 20) {
         return { isValid: false, error: 'Nazwa użytkownika może mieć maksymalnie 20 znaków' };
     }
-    // Sprawdzenie czy nazwa zawiera tylko litery, cyfry i podkreślenia
+    
     const usernameRegex = /^[a-zA-Z0-9_]+$/;
     if (!usernameRegex.test(username)) {
         return { isValid: false, error: 'Nazwa może zawierać tylko litery, cyfry i podkreślenia' };
@@ -57,7 +56,8 @@ export const validateUsername = (username: string): ValidationResult => {
     return { isValid: true, error: '' };
 };
 
-// Walidacja potwierdzenia hasła zwraca obiekt ValidationResult
+// Password confirmation validation returns ValidationResult object
+// arguments: password string, confirmPassword string
 export const validatePasswordConfirm = (password: string, confirmPassword: string): ValidationResult => {
     if (!confirmPassword) {
         return { isValid: false, error: 'Potwierdzenie hasła jest wymagane' };
@@ -68,7 +68,8 @@ export const validatePasswordConfirm = (password: string, confirmPassword: strin
     return { isValid: true, error: '' };
 };
 
-// Walidacja całego formularza logowania zwraca obiekt z informacją o poprawności i błędach
+
+// Validate entire login form returns an object with validity and errors
 export const validateLoginForm = (
     email: string, 
     password: string
@@ -88,7 +89,8 @@ export const validateLoginForm = (
     };
 };
 
-// Walidacja całego formularza rejestracji zwraca obiekt z informacją o poprawności i błędach
+
+// Validate entire register form returns an object with validity and errors
 export const validateRegisterForm = (
   email: string, 
   password: string, 
@@ -118,7 +120,7 @@ export const validateRegisterForm = (
     };
 };
 
-// Walidacja formularza resetowania hasła zwraca obiekt z informacją o poprawności i błędach
+// Validate reset password form returns an object with validity and errors
 export const validateResetPasswordForm = (email: string): { isValid: boolean; errors: Record<string, string> } => {
     const emailValidation = validateEmail(email);
     const errors: Record<string, string> = {};

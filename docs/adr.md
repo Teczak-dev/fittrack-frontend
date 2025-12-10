@@ -7,7 +7,10 @@ Zbiór istotnych decyzji architektonicznych (Architecture Decision Records).
 
 2. State management
 - Lokalny stan formularzy w hookach + reducer dla bardziej złożonych formularzy (rejestracja).
-- Nie wprowadzono globalnego store (Redux) — aktualne wymagania nie wymagają skomplikowanego zarządzania stanem.
 
-3. Bundler
-- Vite wybrano ze względu na szybki restart i prostą konfigurację z TypeScript.
+3. Atomic Design
+- umożliwia edycję pomniejszych komponentów bez edycji większych komponentów.
+
+4. TypeScript
+- statyczne typowanie, czytelny kod.
+

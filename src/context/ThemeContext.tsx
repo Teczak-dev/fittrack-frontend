@@ -16,7 +16,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 	let systemTheme: Theme = 'light';
 	if(window.matchMedia('(prefers-color-scheme: dark)').matches) systemTheme = 'dark';
 	return localTheme ?? systemTheme;
-
     });
 
     const toggleTheme = () => {

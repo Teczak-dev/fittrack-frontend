@@ -1,7 +1,11 @@
 import type { User } from "../types/user";
 import { safeParseJSON } from "../utils/safeParseJson";
+
+// Common headers for JSON requests
 const headers = { "Content-Type": "application/json" };
 
+// Login function
+// Sends email and password to the server and stores the returned token
 export const login = async (email: string, password: string): Promise<void> => {
     const response = await fetch("/api/users/login", {
 	method: "POST",
@@ -14,6 +18,8 @@ export const login = async (email: string, password: string): Promise<void> => {
     return data;
 };
 
+// Register function
+// Sends name, email, and password to the server to create a new user
 export const register = async (
     name: string,
     email: string,
@@ -29,6 +35,8 @@ export const register = async (
     return data.message;
 };
 
+// Forgot password function
+// Sends email to the server to initiate password reset process
 export const forgotPassword = async (email: string): Promise<void> => {
     const response = await fetch('/api/users/forgot-password',{
 	method: 'POST',
@@ -40,6 +48,9 @@ export const forgotPassword = async (email: string): Promise<void> => {
     return data;
 
 }
+
+// Reset password function
+// Sends new password and reset token to the server to update the password
 export const resetPassword = async (newPassword: string, token: string): Promise<void> => {
     if (!token) throw new Error('Missing reset token');
     const response = await fetch(`/api/users/reset-password/${token}`, {
@@ -52,6 +63,8 @@ export const resetPassword = async (newPassword: string, token: string): Promise
     return data;
 }
 
+// Change password function
+// Sends old and new passwords to the server to update the password for authenticated user
 export const changePassword = async (oldPassword: string, newPassword: string): Promise<void> => {
     const token = localStorage.getItem("token");
     if (!token) throw new Error('Not authenticated');
@@ -68,7 +81,8 @@ export const changePassword = async (oldPassword: string, newPassword: string): 
     return data;
 }
 
-
+// Get profile function
+// Retrieves the profile of the authenticated user
 export const getProfile = async (): Promise<User> => {
     const token = localStorage.getItem("token");
     const response = await fetch("/api/users/me", {
@@ -82,13 +96,13 @@ export const getProfile = async (): Promise<User> => {
     return data;
 };
 
+// Logout function
 export const logout = (): void => {
     localStorage.removeItem("token");
 };
 
-
-// delete and resend email verification
-
+// Resend verification email function
+// Sends a request to resend the verification email to the authenticated user
 export const resendVerificationEmail = async () => {
     const token = localStorage.getItem("token");
     const response = await fetch('/api/users/resend-verification', {
@@ -103,6 +117,8 @@ export const resendVerificationEmail = async () => {
     return data;
 }
 
+// Delete account function
+// Sends password to the server to delete the authenticated user's account
 export const deleteAccount = async (password:string) => {
     const token = localStorage.getItem("token");
     const response = await fetch('/api/users/me',{

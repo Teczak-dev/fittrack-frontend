@@ -16,6 +16,8 @@ export const WorkoutsContext = createContext<WorkoutsContextType | undefined>(un
 export const WorkoutsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [workouts, setWorkout] = useState<Workout[] | []>([]);
 
+
+    // Fetch workouts on mount if token exists
     useEffect(() => {
 	const token = localStorage.getItem('token');
 	if (token) {
