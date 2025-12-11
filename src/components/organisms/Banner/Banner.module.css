@@ -117,6 +117,9 @@
     .bannerImage{
         width: 90vw;
         max-width: 90vw;
+	height: fit-content;
+	object-fit: cover;
+	aspect-ratio: 16 / 9;
         margin: 0 auto;
     }
     .Text{ font-size: 28px; }
