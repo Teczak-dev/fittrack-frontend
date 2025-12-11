@@ -85,6 +85,14 @@ Spis znanych problemów w `docs/known_issues.md`.
 - Instrukcja dodawania funkcjonalności: `docs/contribution.md`.
 - [contribution](./docs/contribution.md)
 
+## Q&A
+#### Co sprawiło największe problemy i jak je rozwiązałeś?
+Największym problemem okazały się operacje na zbiorach danych (ćwiczenia). To na nich spędziłem najwięcej czasu. Poradziłem sobie dzięki korzystaniu z dokumentacji JS/TS, zasobów na StackOverflow oraz rozrysowaniu problemu.
+
+#### Czy powtórzyłbyś taki projekt?
+Nie!
+
+
 ## Live demo
 - https://mikolaj-sobczak.pl/app/fittrack/
 
