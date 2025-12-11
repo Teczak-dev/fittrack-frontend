@@ -15,7 +15,7 @@ export const VerifyAccount = () => {
 	    .then(data => {
 	    if (data.message) {
 		setMessage('Konto zostało zweryfikowane!');
-		setTimeout(() => navigate('/login'), 2500);
+		setTimeout(() => navigate('/me'), 2500);
 	    } else {
 		setMessage('Nieprawidłowy lub wygasły link.');
 		setTimeout(() => navigate('/home'), 2500);

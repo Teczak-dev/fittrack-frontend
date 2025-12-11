@@ -74,10 +74,21 @@ src
 │   ├── workoutCategoryContext.tsx  # Context typów ćwiczeń
 │   └── WorkoutsContext.tsx         # Context ćwiczeń
 ├── hooks
+│   ├── useAccountData.ts           # Custom hook do podsumowania danych użytkownika
+│   ├── useAddWorkout.ts            # Custom hook do dodawania nowego ćwiczenia 
+│   ├── useChangePassword.ts        # Custom hook do formularza zmiany hasła 
+│   ├── useDeleteAccount.ts         # Custom hook do usuwania konta 
+│   ├── useDeleteWorkout.ts         # Custom hook do usuwania ćwiczenia 
+│   ├── useLastWorkout.ts           # Custom hook do wydobycia ostatnich dwóch ćwiczeń
 │   ├── useLoginForm.ts             # Custom hook do formularza logowania
 │   ├── useRegisterForm.ts          # Custom hook do formularza rejestracji
+│   ├── useResetPasswordForm.ts     # Custom hook do formularza resetu hasła
 │   ├── useScreenWidth.ts
+│   ├── useStatsData.ts             # Custom hook do wyświetlenia ćwiczeń z tygodnia
+│   ├── useStatsMonth.ts            # Custom hook do wyświetlenia ćwiczeń z miesiąca
+│   ├── useStreak.ts                # Custom hook do zdobycia streaku użytkownika 
 │   ├── useTheme.ts
+│   ├── useTodaySummary.ts          # Custom hook do wyświetlenia ilości kalorii z dnia dzisiejszego
 │   ├── useUser.ts
 │   ├── useWorkoutCategoty.ts
 │   └── useWorkouts.ts

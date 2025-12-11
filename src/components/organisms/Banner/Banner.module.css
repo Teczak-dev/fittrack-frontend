@@ -42,13 +42,9 @@
 
 .bannerImage{
     width: 100%;
-    max-width: 900px;
-}
-
-.bannerImage img{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+    height: fit-content;
+    border-radius: 20px;
+    object-fit: cover;
 }
 
 .subtextColorLight{
@@ -59,7 +55,7 @@
 }
 
 .imageDark{
-    -webkit-box-shadow:0px 0px 170px 14px rgba(78,27,180,0.61);
+    -webkit-box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
     -moz-box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
     box-shadow: 0px 0px 170px 14px rgba(78,27,180,0.61);
 }

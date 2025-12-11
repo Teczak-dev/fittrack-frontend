@@ -34,7 +34,6 @@ export const Navigation: React.FC = () => {
 
     return (
 	<nav className={`${styles.nav} ${navBackgroundClass}`}>
-
 	    <NavigationLink url='/me/dashboard' className={ ({ isActive }: { isActive: boolean }) => `${styles.navLink} ${isActive ? selectedLinkClass : ""} `} >
 		<Image src={dashboardImgSrc} alt="" className={styles.navImg}/>Pulpit
 	    </NavigationLink>

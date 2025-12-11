@@ -2,66 +2,17 @@ import mainStyles from './Widgets.module.css';
 import styles from './Stats.module.css';
 import { Typography } from '../../atoms/Typography/Typography';
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
-import { filterWorkoutByWeek} from '../../../utils/workoutsManipulation';
-import { useWorkouts } from '../../../hooks/useWorkouts';
-import { useEffect, useMemo, useState } from 'react';
-import type { Workout } from '../../../types/workout';
+import { useStatsData } from '../../../hooks/useStatsData';
 import { ErrorMessage } from '../../atoms/ErrorMessage/ErrorMessage';
 import { useTheme } from '../../../hooks/useTheme';
 
 export const Stats = () => {
     
     const { theme } = useTheme();
-    const { workouts } = useWorkouts();
-
-    const days = ['Pon', 'Wto', 'Śro', 'Czw', 'Pią', 'Sob', 'Nie'];
-    const [workoutData, setWorkoutData] = useState<Workout[]>([]);
-    const [error, setError] = useState<string | null>(null);
-
-    const fetchWorkoutData = useMemo(() => async () =>{
-	try {
-	    const filteredWorkouts = filterWorkoutByWeek(workouts);
-	    setWorkoutData(filteredWorkouts);
-	} catch (err: any) {
-	    setError(err.message);
-	    setWorkoutData([]);
-	}
-    }, [workouts]);
+    const { error, data } = useStatsData();
 
     if (error) return <ErrorMessage message="Nie udało się pobrać danych o treningach." />;
-    
-    useEffect(() => {
-	fetchWorkoutData();
-    }, [fetchWorkoutData]);
-
-    const sumCaloriesPerDay = (dayIndex: number) => {
-	let sum = 0;
-	workoutData.forEach( workout => {
-	    const workoutDate = new Date(workout.date);
-	    if (workoutDate.getDay() === ((dayIndex + 1) % 7)) {
-		sum += workout.calories;
-	    }
-	});
-	return sum;
-    }
-
-    const sumMinutesPerDay = (dayIndex: number) => {
-	let sum = 0;
-	workoutData.forEach( workout => {
-	    const workoutDate = new Date(workout.date);
-	    if (workoutDate.getDay() === ((dayIndex + 1) % 7)) {
-		sum += workout.duration;
-	    }
-	});
-	return sum;
-    }
-
-    const data = days.map( (day, index) => ({
-	name: day,
-	kalorie: sumCaloriesPerDay(index),
-	minuty: sumMinutesPerDay(index),
-    }));
-    
+   
     const fillColor = theme === 'light' ? '#000' : '#fff';
 
     return (

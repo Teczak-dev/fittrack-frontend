@@ -148,7 +148,7 @@ Query params: `limit` (optional)
 Response (200)
 
 ```json
-{ "data": [ { "id": "w1", "title": "Leg day" } ] }
+{ "data": [ { "id": "1", "title": "Leg day" } ] }
 ```
 
 ---
@@ -194,7 +194,7 @@ GET /api/workout-types
 Response (200)
 
 ```json
-[ { "id": "c1", "name": "Strength"} ]
+[ { "id": "1", "name": "Strength"} ]
 ```
 
 ---

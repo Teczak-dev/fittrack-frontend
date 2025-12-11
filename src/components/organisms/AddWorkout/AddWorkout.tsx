@@ -1,85 +1,14 @@
-import {  useState } from 'react';
 import { useWorkoutCategory } from '../../../hooks/useWorkoutCategory';
 import styles from './AddWorkout.module.css';
-import { addWorkoutToDB, getUserWorkouts } from '../../../api/workouts';
 import { Button } from 'react-bootstrap';
 import { Typography } from '../../atoms/Typography/Typography';
-import { useWorkouts } from '../../../hooks/useWorkouts';
+import { useAddWorkout } from '../../../hooks/useAddWorkout';
 
-const validateMinutes = (value: number): boolean => {
-    return value > 0;
-}
-const validateCalories = (value: number): boolean =>{
-    return value > 0;
-}
-
-export const AddWorkout: React.FC<{switchDisplay:() => void}> = ({
-    switchDisplay
-}) => {
+export const AddWorkout: React.FC<{switchDisplay:() => void}> = ({ switchDisplay }) => {
     
-    const { updateWorkouts } = useWorkouts();
-    const {workoutCategory} = useWorkoutCategory();
-
-    const [minutes, setMinutes] = useState<number>(0);
-    const [minutesError, setMinutesError] = useState<string | null>(null);
-    const [calories, setCalories] = useState<number>(0);
-    const [caloriesError, setCaloriesError] = useState<string | null>(null);
-    const [workoutName, setWorkoutName] = useState<string>(workoutCategory[0]?.name || '');
-    
-    const clearValues = () => {
-	setMinutes(1);
-	setCalories(1);
-	setWorkoutName('');
-    };
-
-    const handleMinutes = (e: React.ChangeEvent<HTMLInputElement>) => {
-	const targetValue = e.target.value;
-	if (targetValue[0] === '0') targetValue.replace('0','');
-	setMinutesError(null);
-	const value = parseInt(targetValue);
-	if (!validateMinutes(value)) 
-	    setMinutesError('Czas trwania musi być większy niż 0');
-	setMinutes(value);
-    }
-
-    const handleCalories = (e: React.ChangeEvent<HTMLInputElement>) => {
-	const targetValue = e.target.value;
-	if (targetValue[0] === '0') targetValue.replace('0','');
-	setCaloriesError(null);
-	const value = parseInt(targetValue);
-	if (!validateCalories(value)) 
-	    setCaloriesError('Liczba spalonych kalorii musi być większa niż 0');
-	setCalories(value);
-    }
-    
-    const handleAdd = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-	e.preventDefault();
-	console.log('Adding workout:', workoutName, minutes, calories);
-	if (!validateMinutes(minutes) || !validateCalories(calories)) {
-	    if (!validateMinutes(minutes)) setMinutesError('Czas trwania musi być większy niż 0');
-	    if (!validateCalories(calories)) setCaloriesError('Liczba spalonych kalorii musi być większa niż 0');
-	    return;
-	}
-	const newWorkout = {
-	    id: null,
-	    name: workoutName, 
-	    duration: minutes,
-	    calories: calories,
-	    category: workoutCategory.find( (item) => item.name === workoutName)?.category || 'Inne',
-	    date: new Date().toISOString().split('T')[0],
-	};
-	await addWorkoutToDB(newWorkout);
-	await getUserWorkouts().then( (workouts) => {
-	    updateWorkouts(workouts);
-	});
-	window.location.reload();
-	clearValues();
-	switchDisplay();
-    }
-    const handleClose = () => {
-	clearValues();
-	switchDisplay();
-    }
+    const { workoutCategory } = useWorkoutCategory();
+    const { minutes, calories, workoutName, minutesError, caloriesError,
+	    setWorkoutName, handleMinutes, handleCalories, handleAddClick, handleClose } = useAddWorkout(switchDisplay);
 
     return (
 	<div className={styles.overlay}>
@@ -97,15 +26,15 @@ export const AddWorkout: React.FC<{switchDisplay:() => void}> = ({
 		    </label><br/>
 		    <label className={styles.label}>
 			Czas trwania (minuty):
-			<input className={styles.input} value={minutes} onChange={handleMinutes} type="number" name="duration" max='100000' required />
+			<input className={styles.input} value={minutes} onChange={(e) => handleMinutes(e.target.value)} type="number" name="duration" max='100000' required />
 			{minutesError && <Typography variant='body' className={styles.caption}>{minutesError}</Typography> }
 		    </label><br/>
 		    <label className={styles.label}>
 			Spalone kalorie:
-			<input className={styles.input} value={calories} onChange={handleCalories} type="number" name="calories" max='100000' required />
+			<input className={styles.input} value={calories} onChange={(e) => handleCalories(e.target.value)} type="number" name="calories" max='100000' required />
 			{caloriesError && <Typography variant='body' className={styles.caption}>{caloriesError}</Typography> }
 		    </label><br/>
-		    <button className={styles.submitButton} onClick={handleAdd} type="submit">Dodaj trening</button>
+		    <button className={styles.submitButton} onClick={handleAddClick} type="submit">Dodaj trening</button>
 		</form>
 	    </div>
 	</div>

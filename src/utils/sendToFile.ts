@@ -5,6 +5,9 @@ import type { SavedData } from "../types/savedData";
 // Usage:
 // sendToFile(data, 'backup.json');
 export const sendToFile = (data: SavedData, filename: string) => {
+    for(let i = 0; i < data.workouts.length; i++) {
+	data.workouts[i].id = i;
+    }
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: 'application/json' });
     const href = URL.createObjectURL(blob);

@@ -3,9 +3,8 @@ import { Button } from "../../atoms/Button/Button";
 import { Image } from "../../atoms/Image/Image";
 import { Typography } from "../../atoms/Typography/Typography";
 import styles from "./WorkoutInfo.module.css";
-import { useWorkouts } from "../../../hooks/useWorkouts";
+import { useDeleteWorkout } from '../../../hooks/useDeleteWorkout';
 import { useWorkoutCategory } from "../../../hooks/useWorkoutCategory";
-import { deleteWorkoutToDB } from "../../../api/workouts";
 import { useTheme } from "../../../hooks/useTheme";
 
 interface WorkoutInfoProps{
@@ -17,19 +16,11 @@ interface WorkoutInfoProps{
 export const WorkoutInfo: React.FC<WorkoutInfoProps> = ({Workout, className, bgColor}) => {
 
     const { theme } = useTheme();
-    const { deleteWorkout } = useWorkouts();
     const { workoutCategory } = useWorkoutCategory();
-    
-    const handleDelete = async () => {
-	try{
-	    if (!Workout.id) {
-		throw new Error('Invalid workout ID');
-	    }
-	    await deleteWorkoutToDB(Workout.id);
-	    deleteWorkout(Workout.id);
-	} catch (error) {
-	    console.error('Error deleting workout:', error);
-	}
+    const { handleDelete } = useDeleteWorkout();
+
+    const onDelete = async () => {
+	await handleDelete(Workout.id ?? null);
     }
 
     const imageSrc = workoutCategory.find( (item) => item.name === Workout.name )?.image || '/api/images/icons/exercise.svg';
@@ -56,7 +47,7 @@ export const WorkoutInfo: React.FC<WorkoutInfoProps> = ({Workout, className, bgC
 		    Typ: {Workout.category}
 		</Typography>
 	    </div>
-	    <Button variant="secondary" className={styles.button} onClick={handleDelete}>
+	    <Button variant="secondary" className={styles.button} onClick={onDelete}>
 		Usuń
 	    </Button>
 	</div>

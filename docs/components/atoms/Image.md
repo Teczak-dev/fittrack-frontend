@@ -10,7 +10,8 @@ Opis:
 - Lekki wrapper dla elementu `img` z dopasowanymi klasami stylów komponentu.
 
 Props:
-- `src: string`, `alt: string`, `className?: string`, `onClick?: () => void`
+- `src: string`, `alt: string`, `className?: string`, `onClick?: () => void`, `srcSet?: string`, `sizes?: string`
+
 
 Użycie:
 ```tsx

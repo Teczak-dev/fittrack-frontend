@@ -3,39 +3,14 @@ import { useScreenWidth } from '../../../hooks/useScreenWidth';
 import { Typography } from '../../atoms/Typography/Typography';
 import styles from './LastWorkout.module.css';
 import mainStyles from './Widgets.module.css';
-import type { Workout } from '../../../types/workout';
-import { useWorkouts } from '../../../hooks/useWorkouts';
-import { getMostRecentWorkout } from '../../../utils/workoutsManipulation';
-import { useMemo, useEffect, useState } from 'react';
 import { LoadingSpinner } from '../../atoms/LoadingSpinner/LoadingSpinner';
 import { ErrorMessage } from '../../atoms/ErrorMessage/ErrorMessage';
+import { useLastWorkout } from '../../../hooks/useLastWorkout';
 
 export const LastWorkout = () => {
     const {width} = useScreenWidth();
-    const { workouts } = useWorkouts();
-    const [lastWorkoutData, setLastWorkoutData] = useState<Workout[] | []>([]);
-    const [loaded, setLoaded] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-
-    const fetchLastWorkout = useMemo(() => async () => {
-	try {
-	    if (workouts.length === 0) {
-		setLastWorkoutData([]);
-		return;
-	    }
-	    const mostRecentWorkout = getMostRecentWorkout(workouts);
-	    setLastWorkoutData(mostRecentWorkout);
-	} catch (err: any) {
-	    setError(err.message);
-	    setLastWorkoutData([]);
-	} finally {
-	    setLoaded(true);
-	}
-    }, [workouts]);
-
-    useEffect(() => {
-	fetchLastWorkout();
-    }, [fetchLastWorkout]);
+    
+    const { lastWorkoutData, loaded, error } = useLastWorkout();
 
     if (!loaded) return <LoadingSpinner />;
     if (error) return <ErrorMessage message="Nie udało się pobrać danych o ostatnim treningu." />;
@@ -44,7 +19,7 @@ export const LastWorkout = () => {
 	<div className={mainStyles.container}>
 	    <Typography variant='h2' className={`${mainStyles.header} ${styles.headerLastWorkout}`}>Ostatni{width < 1000 ? '' : 'e'} trening</Typography>
 	    {( () =>  {
-		if (width < 1000){
+		if (width < 1000){ // mobile view
 		    if(lastWorkoutData.length > 0 ) {
 			return (
 			    <div key={lastWorkoutData[0].id} className={styles.workoutContainer}>
@@ -62,7 +37,7 @@ export const LastWorkout = () => {
 			</div>
 		    );
 		}
-		else{
+		else{ // desktop view
 		    if(lastWorkoutData.length > 0 ) {
 			return (
 			    <div className={styles.workoutsContainer}>

@@ -1,11 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { LoginLayout } from "../components/templates/LoginLayout/LoginLayout";
 import { login } from "../api/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Login: React.FC = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
+    
+    useEffect(() =>{
+	if(localStorage.getItem('token')){
+	    navigate('/me');
+	}
+    }, [])
 
     const loginFunction = async(email: string, password: string) => {
 	try{

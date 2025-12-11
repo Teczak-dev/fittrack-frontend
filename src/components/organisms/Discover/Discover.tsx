@@ -8,27 +8,39 @@ import { Typography } from '../../atoms/Typography/Typography';
 import { useTheme } from '../../../hooks/useTheme';
 
 export const Discover: React.FC = () => {
-    
-    const {theme} = useTheme();
+    const { theme } = useTheme();
 
-    return(
-	<div className={`${styles.discover} ${theme === 'light' ? 'light-mode' : ''}`}>
-        <div className={styles.discoverSectionLeftTop}>
-        	<Typography variant='body' className={`card ${styles.textWBG}`} >Sprawdzone sposoby w nowym wydaniu</Typography>
-        	<Image src={discover1} alt="Discover Image 1" className={styles.discoverImage}/>
-        </div>
-        <div className={styles.discoverSectionRightTop}>
-        	<Typography variant='body' className={`card ${styles.textWBG}`} >Wszystko co potrzebne w jednym miejscu</Typography>
-        	<Image src={discover2} alt="Discover Image 1" className={styles.discoverImage}/>
-        </div>
-        <div className={styles.discoverSectionLeftBottom}>
-        	<Typography variant='body' className={`card ${styles.textWBG}`}>Zaprojektowane z myślą o komputerach i telefonach</Typography>
-        	<Image src={discover3} alt="Discover Image 1" className={styles.discoverImage}/>
-        </div>
-        <div className={styles.discoverSectionRightBottom}>
-        	<Typography variant='body' className={`card ${styles.textWBG}`} >Nie przekładaj tego na jutro, zacznij już dziś</Typography>
-        	<Image src={discover4} alt="Discover Image 1" className={styles.discoverImage}/>
-        </div>
-	</div>
+    const makeSrcSet = (src: string) => `${src} 1x, ${src} 2x`;
+    const desktopPreferred = '(min-width:1079px) 480px, (max-width:1078px) 60vw, (max-width:480px) 80vw';
+    return (
+        <section className={`${styles.discover} ${theme === 'light' ? 'light-mode' : ''}`}>
+            <article className={styles.card}>
+                <div className={styles.cardText}><Typography variant='h3'>Sprawdzone sposoby w nowym wydaniu</Typography></div>
+                <div className={styles.cardMedia}>
+                    <Image src={discover1} srcSet={makeSrcSet(discover1)} sizes={desktopPreferred} alt="Discover Image 1" className={styles.discoverImage} />
+                </div>
+            </article>
+
+            <article className={styles.card}>
+                <div className={styles.cardText}><Typography variant='h3'>Wszystko co potrzebne w jednym miejscu</Typography></div>
+                <div className={styles.cardMedia}>
+                    <Image src={discover2} srcSet={makeSrcSet(discover2)} sizes={desktopPreferred} alt="Discover Image 2" className={styles.discoverImage} />
+                </div>
+            </article>
+
+            <article className={styles.card}>
+                <div className={styles.cardText}><Typography variant='h3'>Zaprojektowane z myślą o komputerach i telefonach</Typography></div>
+                <div className={styles.cardMedia}>
+                    <Image src={discover3} srcSet={makeSrcSet(discover3)} sizes={desktopPreferred} alt="Discover Image 3" className={styles.discoverImage} />
+                </div>
+            </article>
+
+            <article className={styles.card}>
+                <div className={styles.cardText}><Typography variant='h3'>Nie przekładaj tego na jutro, zacznij już dziś</Typography></div>
+                <div className={styles.cardMedia}>
+                    <Image src={discover4} srcSet={makeSrcSet(discover4)} sizes={desktopPreferred} alt="Discover Image 4" className={styles.discoverImage} />
+                </div>
+            </article>
+        </section>
     );
 }

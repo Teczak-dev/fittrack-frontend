@@ -3,40 +3,19 @@ import "react-circular-progressbar/dist/styles.css";
 import { Typography } from '../../atoms/Typography/Typography';
 import styles from './TodaySummary.module.css';
 import mainStyles from './Widgets.module.css';
-import { calculateTodaysCalories } from '../../../utils/workoutsManipulation';
-import { useWorkouts } from '../../../hooks/useWorkouts';
-import { useEffect, useMemo, useState } from 'react';
+import { useTodaySummary } from '../../../hooks/useTodaySummary';
 import { ErrorMessage } from '../../atoms/ErrorMessage/ErrorMessage';
 import { LoadingSpinner } from '../../atoms/LoadingSpinner/LoadingSpinner';
 import { useTheme } from '../../../hooks/useTheme';
 export const TodaySummary = () => {
 
     const {theme} = useTheme();
-    const { workouts } = useWorkouts();
-    const [caloriesBurned, setCaloriesBurned] = useState(0);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    
-    const fetchCaloriesBurned = useMemo(() => async () =>{
-	try{
-	    setLoading(true);
-	    const data = calculateTodaysCalories(workouts);
-	    setCaloriesBurned(data);
-	}catch (err:any){
-	    setError(err.message);
-	    setCaloriesBurned(0);
-	}finally{
-	    setLoading(false);
-	}
-    }, [workouts]);
-
-    useEffect( () => {
-    	fetchCaloriesBurned();
-    }, [fetchCaloriesBurned]);
+    const { caloriesBurned, loading, error } = useTodaySummary();
 
     const caloriesGoal = 800;
     const percentage = (caloriesBurned / caloriesGoal) * 100;
     const textColor = theme === 'light' ? '#000' : '#fff';
+    
     if (loading) return <LoadingSpinner />;
     if (error) return <ErrorMessage message="Nie udało się pobrać danych o dzisiejszych spalonych kaloriach." />;
 
