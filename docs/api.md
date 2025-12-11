@@ -1,5 +1,7 @@
 # API — dokumentacja endpointów z `src/api/`
 
+[← Powrót do README](../README.md)
+
 ---
 
 ```http
@@ -14,7 +16,7 @@ POST /api/users/login
 Response (200)
 
 ```json
-{ "token": "<jwt>", "user": { "id": "u1", "email": "..." } }
+{ "token": "<jwt>", "user": { "id": "1", "email": "..." } }
 ```
 
 ---
@@ -32,7 +34,7 @@ POST /api/users/register
 Response (201)
 
 ```json
-{ "id": "u2", "email": "new@example.com" }
+{ "status": "ok", "message": "Użytkownik zarejestrowany" }
 ```
 
 ---
@@ -48,7 +50,7 @@ POST /api/users/forgot-password
 Response (200)
 
 ```json
-{ "status": "ok", "message": "Reset link sent if email exists" }
+{ "status": "ok", "message": "Reset link został wysłany" }
 ```
 
 ---
@@ -65,7 +67,7 @@ POST /api/users/reset-password/{token}
 Response (200)
 
 ```json
-{ "status": "ok", "message": "Password updated" }
+{ "status": "ok", "message": "Hasło zaaktualizowane" }
 ```
 
 ---
@@ -98,7 +100,7 @@ Headers: `Authorization: Bearer <token>`
 Response (200)
 
 ```json
-{ "id": "u1", "email": "user@example.com", "name": "Jan" }
+{ "id": "1", "email": "user@example.com", "name": "Jan" }
 ```
 
 ---
@@ -192,7 +194,7 @@ GET /api/workout-types
 Response (200)
 
 ```json
-[ { "id": "c1", "name": "Strength", ... } ]
+[ { "id": "c1", "name": "Strength"} ]
 ```
 
 ---
@@ -204,7 +206,7 @@ GET /api/workout-types/categories
 Response (200)
 
 ```json
-[ "strength", "cardio", ... ]
+[ "strength", "cardio" ]
 ```
 
 ---

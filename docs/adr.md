@@ -1,6 +1,8 @@
 # ADR — Decisions
 
-Zbiór istotnych decyzji architektonicznych (Architecture Decision Records).
+[← Powrót do README](../README.md)
+
+## Zbiór istotnych decyzji architektonicznych (Architecture Decision Records).
 
 1. Stylowanie
 - Użycie CSS Modules + `src/global.css` dla powtarzalnych utility classes.

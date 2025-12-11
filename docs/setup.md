@@ -1,6 +1,8 @@
 # Setup i uruchomienie
 
-Instrukcje jak uruchomić projekt lokalnie.
+[← Powrót do README](../README.md)
+
+## Instrukcje jak uruchomić projekt lokalnie.
 
 Wymagania
 

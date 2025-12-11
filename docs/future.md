@@ -1,9 +1,12 @@
 # Przyszłe prace / roadmap
 
-Pomysły na dalszy rozwój:
+[← Powrót do README](../README.md)
 
-- Dodać testy jednostkowe i integracyjne (Jest + React Testing Library).
-- Dodać CI (GitHub Actions) z testami i buildem produkcyjnym.
-- Rozszerzyć dokumentację komponentów o przykładowe props i stories (Storybook).
-- Integracja z innymi językami przez Internationalization (i18n)  
+## Pomysły na dalszy rozwój:
 
+1. Dodać testy jednostkowe i integracyjne (Jest + React Testing Library).
+2. Dodać CI (GitHub Actions) z testami i buildem produkcyjnym.
+3. Integracja z innymi językami przez Internationalization (i18n)  
+4. Dodanie zmiany ikony profilu
+5. Dodanie zmiany celu kalorii na dzień
+6. Dodanie Systemu kalorii jedzienia etc.

@@ -1,15 +1,15 @@
 # Fittrack
-> **Czas spędzony nad projektem:** ~73h
+> **Czas spędzony nad projektem:** ~80h
 
 ## Krótki opis
 FitTrack to prosty front-end aplikacji śledzącej aktywność fizyczną (React + TypeScript + Vite). Aplikacja prezentuje pulpit użytkownika z widgetami, stronę główną z bannerem/promocją, ekran ćwiczeń oraz formularze logowania/rejestracji/resetu hasła.
 
 ## Screenshots
-- ![pulpit](./public/img1.png)
-- ![analiza](./public/img2.png)
+![pulpit](./public/img1.png)
+![analiza](./public/img2.png)
 
 ## Video demo
-- WIDEO 
+![Video](./public/wideo.webp) 
 
 ## Funkcjonalności
 - Strona główna z bannerem i sekcjami Discover i Pricing
@@ -20,19 +20,6 @@ FitTrack to prosty front-end aplikacji śledzącej aktywność fizyczną (React 
 - Prosty system widgetów (przykładowe widgety)
 
 ### Krótki przewodnik po frontendzie aplikacji FitTrack.
-
-## Struktura projektu
-
-Zobacz `docs/structure.md` dla szczegółowego opisu struktury projektu i lokalizacji ważnych plików.
-
-Przydatne pliki
-
-- `src/global.css` — globalne utility (przyciski, rounded, shadow)
-- `src/hooks/` — niestandardowe hooki (np. `useLoginForm`, `useRegisterForm`)
-- `src/reducers/` — reducery (np. `registerFormReducer`)
-- `src/components/` — komponenty aplikacji (atoms/molecules/organisms/templates)
-
-Pełna dokumentacja znajduje się w folderze `docs/`.
 
 ## Szybki start
 1. Sklonuj repozytorium
@@ -57,9 +44,10 @@ npm run preview
 ```
 
 ## Konfiguracja
-- Projekt nie wymaga kluczy API w tym repo, API jest prywatnym projektem, dostęp do backendu możliwy po kontakcie prywatnym 
+- Projekt nie wymaga kluczy API w tym repo, API jest prywatnym projektem, dostęp do backendu możliwy po kontakcie prywatnym, jeżeli masz własne API to zmień lokalizację w vite.config.ts 
 
 - Wyjasnienie endpointów API znajdują się w `docs/api.md`
+- [API](./docs/api.md)
 
 ## Struktura projektu (krótko)
 - `src/` — kod źródłowy
@@ -71,23 +59,31 @@ npm run preview
   - `assets/` — obrazy i zasoby publiczne
 
 Pełna dokumentacja znajduje się w katalogu `docs/structure`.
+- [structure](./docs/structure.md)
 
-## Biblioteki (wybrane)
-- React + TypeScript — bezpieczny, typowany front-end
-- Vite — szybki bundler i dev server
-- react-router-dom — routowanie 
+## Biblioteki
+
+- `hamburger-react` ^2.5.2 - do menu hamburget na stronie /home
+- `react-circular-progressbar` ^2.2.0 - do renderowania kółka
+- `react-device-detect` ^2.2.3 - do wykrywania typu urządzenia ( telefon / komputer )
+- `recharts` ^3.5.1 - użyte do wyświetlania statystyk
 
 ## Known issues
 Spis znanych problemów w `docs/known_issues.md`.
+-[known_issues](./docs/known_issues.md)
 
 ## Architektura i komponenty
 - Diagram architektury i opis kluczowych komponentów: `docs/architecture.md` i `docs/components.md`.
+- [architecture](./docs/architecture.md)
+- [components](./docs/components.md)
 
 ## Co sprawiło trudność
 - Krótkie omówienie problemów i rozwiązań: `docs/adr.md`.
+- [adr](./docs/adr.md')
 
 ## Contribution
 - Instrukcja dodawania funkcjonalności: `docs/contribution.md`.
+- [contribution](./docs/contribution.md)
 
 ## Live demo
 - https://mikolaj-sobczak.pl/app/fittrack/
