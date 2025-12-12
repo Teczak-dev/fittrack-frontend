@@ -5,7 +5,7 @@
 FitTrack to prosty front-end aplikacji śledzącej aktywność fizyczną (React + TypeScript + Vite). Aplikacja prezentuje pulpit użytkownika z widgetami, stronę główną z bannerem/promocją, ekran ćwiczeń oraz formularze logowania/rejestracji/resetu hasła.
 
 ## Live demo
-- [Link do live demo ->](https://mikolaj-sobczak.pl/app/fittrack/)
+- [Link do live demo ->](https://fittrack.mikolaj-sobczak.pl)
 
 ## Screenshots
 ![pulpit](./public/img1.png)
