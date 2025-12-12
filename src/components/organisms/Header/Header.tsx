@@ -158,8 +158,16 @@ export const HeaderApp: React.FC = () => {
 
     useEffect(() => {
 	getProfile()
-	    .then(updateUser)
-	    .catch(() => navigation("/login"));
+	  .then(updateUser)
+	  .catch((err: any) => {
+	    // Only navigate to login if the error is an authentication issue.
+	    if (err?.status === 401 || err?.status === 403) {
+	      navigation('/login');
+	    } else {
+	      console.error('Failed to fetch profile:', err?.message || err);
+	      // Do not navigate on rate-limit (429) or server errors to avoid redirect loops.
+	    }
+	  });
     }, []);
 
     const handleToggleTheme = () => {
@@ -233,8 +241,14 @@ export const HeaderAppMobile: React.FC = () => {
 
     useEffect(() => {
 	getProfile()
-	    .then(updateUser)
-	    .catch(() => navigation("/login"));
+	  .then(updateUser)
+	  .catch((err: any) => {
+	    if (err?.status === 401 || err?.status === 403) {
+	      navigation('/login');
+	    } else {
+	      console.error('Failed to fetch profile:', err?.message || err);
+	    }
+	  });
     }, []);
 
 

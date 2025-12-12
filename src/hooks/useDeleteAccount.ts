@@ -22,9 +22,14 @@ export const useDeleteAccount = ( closeDelete:()=>void ) => {
 	    return;
 	}
 	console.log('Password to delete account:', password);
-	await deleteAccount(password);
-	logout();
-	navigator('/login');
+	try {
+	    await deleteAccount(password);
+	    logout();
+	    navigator('/login');
+	} catch (err: any) {
+	    console.error('Failed to delete account:', err?.message || err);
+	    setError(err?.message || 'Nie udało się usunąć konta. Spróbuj ponownie.');
+	}
     }
 
     const handleClose = () => {

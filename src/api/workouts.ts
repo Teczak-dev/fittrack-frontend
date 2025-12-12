@@ -11,8 +11,16 @@ export const getUserWorkouts = async () : Promise<Workout[]> => {
 	},
     });
 
-    const data = await response.json();
-    return data;
+    const text = await response.text();
+    const data = text ? JSON.parse(text) : {};
+
+    if (!response.ok) {
+        const err: any = new Error(data.message || 'Failed to fetch workouts');
+        err.status = response.status;
+        throw err;
+    }
+
+    return data as Workout[];
 }
 
 // Add a new workout to the backend

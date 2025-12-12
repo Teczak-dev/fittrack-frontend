@@ -4,6 +4,9 @@
 ## Krótki opis
 FitTrack to prosty front-end aplikacji śledzącej aktywność fizyczną (React + TypeScript + Vite). Aplikacja prezentuje pulpit użytkownika z widgetami, stronę główną z bannerem/promocją, ekran ćwiczeń oraz formularze logowania/rejestracji/resetu hasła.
 
+## Live demo
+- [Link do live demo ->](https://mikolaj-sobczak.pl/app/fittrack/)
+
 ## Screenshots
 ![pulpit](./public/img1.png)
 ![analiza](./public/img2.png)
@@ -12,8 +15,8 @@ FitTrack to prosty front-end aplikacji śledzącej aktywność fizyczną (React 
 ![Video](./public/wideo.webp) 
 
 ## Funkcjonalności
-- Strona główna z bannerem i sekcjami Discover i Pricing
-- Formularze: logowanie, rejestracja, reset hasła (z walidacją)
+- Strona główna
+- Formularze: logowanie, rejestracja, reset hasła (z walidacją), weryfikacja maila
 - Dashboard z widgetami (siatka 4x3 na desktopie) ( siatka 2x6 na urządzeniach mobilnych)
 - Responsywne komponenty (desktop / tablet / mobile)
 - Theme (ciemny / jasny) z globalnymi klasami
@@ -46,8 +49,7 @@ npm run preview
 ## Konfiguracja
 - Projekt nie wymaga kluczy API w tym repo, API jest prywatnym projektem, dostęp do backendu możliwy po kontakcie prywatnym, jeżeli masz własne API to zmień lokalizację w vite.config.ts 
 
-- Wyjasnienie endpointów API znajdują się w `docs/api.md`
-- [API](./docs/api.md)
+- Wyjasnienie endpointów API znajdują się w [docs/api.md](./docs/api.md)
 
 ## Struktura projektu (krótko)
 - `src/` — kod źródłowy
@@ -58,8 +60,7 @@ npm run preview
   - `utils/` — helpery i walidacja
   - `assets/` — obrazy i zasoby publiczne
 
-Pełna dokumentacja znajduje się w katalogu `docs/structure`.
-- [structure](./docs/structure.md)
+Pełna dokumentacja znajduje się w katalogu [docs/structure](./docs/structure.md).
 
 ## Biblioteki
 
@@ -69,21 +70,16 @@ Pełna dokumentacja znajduje się w katalogu `docs/structure`.
 - `recharts` ^3.5.1 - użyte do wyświetlania statystyk
 
 ## Known issues
-Spis znanych problemów w `docs/known_issues.md`.
--[known_issues](./docs/known_issues.md)
+Spis znanych problemów w [docs/known_issues.md](./docs/known_issues.md).
 
 ## Architektura i komponenty
-- Diagram architektury i opis kluczowych komponentów: `docs/architecture.md` i `docs/components.md`.
-- [architecture](./docs/architecture.md)
-- [components](./docs/components.md)
+- Diagram architektury i opis kluczowych komponentów: [docs/architecture.md](./docs/architecture.md) i [docs/components.md](./docs/components.md).
 
 ## Co sprawiło trudność
-- Krótkie omówienie problemów i rozwiązań: `docs/adr.md`.
-- [adr](./docs/adr.md')
+- Krótkie omówienie problemów i rozwiązań: [docs/adr.md](./docs/adr.md').
 
 ## Contribution
-- Instrukcja dodawania funkcjonalności: `docs/contribution.md`.
-- [contribution](./docs/contribution.md)
+- Instrukcja dodawania funkcjonalności: [docs/contribution.md](./docs/contribution.md).
 
 ## Q&A
 #### Co sprawiło największe problemy i jak je rozwiązałeś?
@@ -91,10 +87,6 @@ Największym problemem okazały się operacje na zbiorach danych (ćwiczenia). T
 
 #### Czy powtórzyłbyś taki projekt?
 Nie!
-
-
-## Live demo
-- https://mikolaj-sobczak.pl/app/fittrack/
 
 ## Licencja
 Sprawdź plik `LICENSE` w repozytorium.

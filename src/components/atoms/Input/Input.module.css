@@ -24,7 +24,6 @@
   background-color: #f3f4f6;
 }
 
-/* Style for error state */
 .input.error {
   border-color: #dc2626;
   background-color: #fef2f2;

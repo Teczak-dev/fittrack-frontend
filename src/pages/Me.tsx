@@ -12,17 +12,27 @@ export const Me: React.FC = () => {
     const { updateWorkouts } = useWorkouts();
 
     const load_data = async () => {
-	await getUserWorkouts().then( (workouts) => {
-	    updateWorkouts( filterWorkoutByDay(workouts) );
-	});
-	await getWorkoutCategories().then( (categories) => {
-	    updateWorkoutCategory(categories);
-	});
-    }   
-    useEffect(() => {
-	load_data();
-	navigate('/me/dashboard');
-    }, [])
+	try {
+		const workouts = await getUserWorkouts();
+		updateWorkouts(filterWorkoutByDay(workouts));
+
+		const categories = await getWorkoutCategories();
+		updateWorkoutCategory(categories);
+
+		// only navigate to dashboard after successful data load
+		navigate('/me/dashboard');
+	} catch (err: any) {
+		if (err?.status === 401 || err?.status === 403) {
+			navigate('/login');
+		} else {
+			console.error('Failed to load user data for /me:', err?.message || err);
+		}
+	}
+	}
+
+	useEffect(() => {
+		load_data();
+	}, [])
 
     return (
 	<div>

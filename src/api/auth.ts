@@ -92,8 +92,12 @@ export const getProfile = async (): Promise<User> => {
 	},
     });
     const data = await safeParseJSON(response);
-    if (!response.ok) throw new Error(data.message || "Server error");
-    return data;
+    if (!response.ok) {
+        const err: any = new Error(data.message || "Server error");
+        err.status = response.status;
+        throw err;
+    }
+    return data as User;
 };
 
 // Logout function

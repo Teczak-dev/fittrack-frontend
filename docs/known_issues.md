@@ -7,3 +7,4 @@
 1. Możliwe różnice kontrastu dla niestandardowych treści — (naprawiono większość przypadków).
 2. Możliwe błądne komunikaty przy formularzach
 3. Możliwe błędy przy usuwaniu konta że użytkownika od razu nie wyloguje
+4. Możliwy infinity loop po zalogowaniu 
