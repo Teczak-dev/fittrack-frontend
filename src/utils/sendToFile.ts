@@ -5,19 +5,18 @@ import type { SavedData } from "../types/savedData";
 // Usage:
 // sendToFile(data, 'backup.json');
 export const sendToFile = (data: SavedData, filename: string) => {
-    for(let i = 0; i < data.workouts.length; i++) {
-	data.workouts[i].id = i;
-    }
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    const href = URL.createObjectURL(blob);
+  for (let i = 0; i < data.workouts.length; i++) {
+    data.workouts[i].id = i;
+  }
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const href = URL.createObjectURL(blob);
 
-
-    const link = document.createElement('a');
-    link.href = href;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(href);
-}
+  const link = document.createElement("a");
+  link.href = href;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(href);
+};

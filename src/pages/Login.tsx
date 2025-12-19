@@ -4,25 +4,23 @@ import { login } from "../api/auth";
 import { useEffect, useState } from "react";
 
 export const Login: React.FC = () => {
-    const navigate = useNavigate();
-    const [error, setError] = useState('');
-    
-    useEffect(() =>{
-	if(localStorage.getItem('token')){
-	    navigate('/me');
-	}
-    }, [])
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-    const loginFunction = async(email: string, password: string) => {
-	try{
-	    await login(email, password);
-	    navigate('/me');
-	}catch(err: any){
-	    setError(err.message || 'Server error');
-	}
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/me");
     }
+  }, []);
 
-    return(
-	<LoginLayout login={loginFunction} error={error} />
-    );
-}
+  const loginFunction = async (email: string, password: string) => {
+    try {
+      await login(email, password);
+      navigate("/me");
+    } catch (err: any) {
+      setError(err.message || "Server error");
+    }
+  };
+
+  return <LoginLayout login={loginFunction} error={error} />;
+};

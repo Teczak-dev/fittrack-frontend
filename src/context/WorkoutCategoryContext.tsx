@@ -3,34 +3,41 @@ import { createContext } from "react";
 import type { WorkoutCategory } from "../types/workoutCategory";
 import { getWorkoutCategories } from "../api/workoutCategory";
 
-export interface WorkoutCategoryContextType{
-    workoutCategory: WorkoutCategory[] | [];
-    updateWorkoutCategory: (newWorkoutCategory: WorkoutCategory[]) => void;
+export interface WorkoutCategoryContextType {
+  workoutCategory: WorkoutCategory[] | [];
+  updateWorkoutCategory: (newWorkoutCategory: WorkoutCategory[]) => void;
 }
 
-export const WorkoutCategoryContext = createContext<WorkoutCategoryContextType | undefined>(undefined);
+export const WorkoutCategoryContext = createContext<
+  WorkoutCategoryContextType | undefined
+>(undefined);
 
-export const WorkoutCategoryProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [workoutCategory, setWorkoutCategoty] = useState<WorkoutCategory[] | []>([]);
+export const WorkoutCategoryProvider: React.FC<{
+  children: React.ReactNode;
+}> = ({ children }) => {
+  const [workoutCategory, setWorkoutCategoty] = useState<
+    WorkoutCategory[] | []
+  >([]);
 
-
-    // Fetch workout categories on mount if token exists
-    useEffect(() => {
-	const token = localStorage.getItem('token');
-	if (token) {
-	    getWorkoutCategories().then( (categories) => {
-		updateWorkoutCategory(categories);
-	    });
-	}
-    }, [])
-    
-    const updateWorkoutCategory = (newWorkoutCategory: WorkoutCategory[]) => {
-	setWorkoutCategoty(newWorkoutCategory);
+  // Fetch workout categories on mount if token exists
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      getWorkoutCategories().then((categories) => {
+        updateWorkoutCategory(categories);
+      });
     }
+  }, []);
 
-    return (
-        <WorkoutCategoryContext.Provider value={{ workoutCategory, updateWorkoutCategory }}>
-            {children}
-        </WorkoutCategoryContext.Provider>
-    );
+  const updateWorkoutCategory = (newWorkoutCategory: WorkoutCategory[]) => {
+    setWorkoutCategoty(newWorkoutCategory);
+  };
+
+  return (
+    <WorkoutCategoryContext.Provider
+      value={{ workoutCategory, updateWorkoutCategory }}
+    >
+      {children}
+    </WorkoutCategoryContext.Provider>
+  );
 };

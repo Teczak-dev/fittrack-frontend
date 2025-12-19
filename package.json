@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
+    "cloc": "^2.6.0-cloc",
     "hamburger-react": "^2.5.2",
     "ogl": "^1.0.11",
     "react": "^19.2.0",

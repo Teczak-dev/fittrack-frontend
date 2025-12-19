@@ -5,22 +5,21 @@ import { WorkoutsProvider } from "../../../context/WorkoutsContext";
 import { WorkoutCategoryProvider } from "../../../context/WorkoutCategoryContext";
 
 export const ProtectedRoute = () => {
-    
-    const token = localStorage.getItem('token');
-    
-    if (!token) {
-	return <Navigate to="/home" replace />;
-    }
-    
-    return (
-	<>
-	    <UserProvider> 
-		<WorkoutsProvider>
-		    <WorkoutCategoryProvider>
-			<MainAppLayout />
-		    </WorkoutCategoryProvider>
-		</WorkoutsProvider>
-	    </UserProvider>
-	</>
-    );
-}
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/home" replace />;
+  }
+
+  return (
+    <>
+      <UserProvider>
+        <WorkoutsProvider>
+          <WorkoutCategoryProvider>
+            <MainAppLayout />
+          </WorkoutCategoryProvider>
+        </WorkoutsProvider>
+      </UserProvider>
+    </>
+  );
+};

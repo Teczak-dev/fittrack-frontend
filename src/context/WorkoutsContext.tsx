@@ -26,7 +26,6 @@ export const WorkoutsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             updateWorkouts(workouts);
           })
           .catch((err: any) => {
-            // Don't redirect here; higher-level UI should handle auth redirects.
             // Only clear token on explicit auth failures to avoid redirect loops.
             console.error('Failed to load workouts:', err?.message || err);
             if (err?.status === 401 || err?.status === 403) {

@@ -4,56 +4,75 @@ import { Discover } from "../../organisms/Discover/Discover";
 import { Pricing } from "../../organisms/Pricing/Pricing";
 import { Footer } from "../../organisms/Footer/Footer";
 import type React from "react";
-import { useRef} from "react";
-import {BrowserView, MobileView} from 'react-device-detect';
+import { useRef } from "react";
+import { BrowserView, MobileView } from "react-device-detect";
 import { useScreenWidth } from "../../../hooks/useScreenWidth";
 
-export const HomePageLayout: React.FC<{goToLogIn: () => void}> = ({goToLogIn}) => {
+export const HomePageLayout: React.FC<{ goToLogIn: () => void }> = ({
+  goToLogIn,
+}) => {
+  const bannerSectionRef = useRef<HTMLDivElement>(null);
+  const discoverSectionRef = useRef<HTMLDivElement>(null);
+  const pricingSectionRef = useRef<HTMLDivElement>(null);
 
-    const bannerSectionRef = useRef<HTMLDivElement>(null);
-    const discoverSectionRef = useRef<HTMLDivElement>(null);
-    const pricingSectionRef = useRef<HTMLDivElement>(null);
+  const scrollToBanner = () => {
+    bannerSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToDiscover = () => {
+    discoverSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToPricing = () => {
+    pricingSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const { width } = useScreenWidth();
 
-    const scrollToBanner = () => {
-	bannerSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToDiscover = () => {
-	discoverSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-    const scrollToPricing = () => {
-    	pricingSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-    const {width} = useScreenWidth();    
-    
+  return (
+    <>
+      <div
+        style={{
+          width: "100svw",
+          minHeight: "100svh",
+          flexDirection: "column",
+          display: "flex",
+        }}
+      >
+        <BrowserView>
+          {width > 900 ? (
+            <HeaderHome
+              home={scrollToBanner}
+              discover={scrollToDiscover}
+              price={scrollToPricing}
+            />
+          ) : (
+            <HeaderHomeMobile
+              home={scrollToBanner}
+              discover={scrollToDiscover}
+              price={scrollToPricing}
+            />
+          )}
+        </BrowserView>
+        <MobileView>
+          <HeaderHomeMobile
+            home={scrollToBanner}
+            discover={scrollToDiscover}
+            price={scrollToPricing}
+          />
+        </MobileView>
 
-	return (
-	<>
-		<div style={{width: '100svw', minHeight: '100svh', flexDirection: 'column', display: 'flex'}}>
-			<BrowserView>
-				{width > 900 ? (
-					<HeaderHome home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing} />
-				) : (
-					<HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing} />
-				)}
-			</BrowserView>
-			<MobileView>
-				<HeaderHomeMobile home={scrollToBanner} discover={scrollToDiscover} price={scrollToPricing} />
-			</MobileView>
+        <div ref={bannerSectionRef}>
+          <Banner />
+        </div>
 
-			<div ref={bannerSectionRef}>
-				<Banner />
-			</div>
+        <div ref={discoverSectionRef}>
+          <Discover />
+        </div>
 
-			<div ref={discoverSectionRef}>
-				<Discover />
-			</div>
+        <div ref={pricingSectionRef}>
+          <Pricing onClick={goToLogIn} />
+        </div>
 
-			<div ref={pricingSectionRef}>
-				<Pricing onClick={goToLogIn} />
-			</div>
-
-			<Footer />
-		</div>
-	</>
-	);
-}
+        <Footer />
+      </div>
+    </>
+  );
+};

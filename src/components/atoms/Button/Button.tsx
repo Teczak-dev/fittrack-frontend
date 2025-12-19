@@ -1,45 +1,52 @@
-import { useTheme } from '../../../hooks/useTheme';
-import styles from './Button.module.css';
+import { useTheme } from "../../../hooks/useTheme";
+import styles from "./Button.module.css";
 
 interface ButtonProps {
-    children: React.ReactNode;
-    onClick?: () => void;
-    variant?: 'primary' | 'secondary';
-    disabled?: boolean;
-    className?: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+  variant?: "primary" | "secondary";
+  disabled?: boolean;
+  className?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ 
-    children, 
-    onClick, 
-    variant = 'primary',
-    disabled = false,
-    className
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  variant = "primary",
+  disabled = false,
+  className,
 }) => {
-    const { theme } = useTheme();
-    const textColorClass = theme === 'dark' ? styles.buttonTextDark : styles.buttonTextLight;
-    return (
-    	    <button className={`btn ${styles.button} ${styles[variant]} ${textColorClass} ${className || ''}`} onClick={onClick} disabled={disabled} >
-        {children}
-    	</button>
-    );
+  const { theme } = useTheme();
+  const textColorClass =
+    theme === "dark" ? styles.buttonTextDark : styles.buttonTextLight;
+  return (
+    <button
+      className={`btn ${styles.button} ${styles[variant]} ${textColorClass} ${className || ""}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
 };
 
-export const ThemeButton: React.FC<ButtonProps> = ({ 
-    children, 
-    onClick,
-    disabled = false,
-    className
+export const ThemeButton: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  disabled = false,
+  className,
 }) => {
-    const { theme } = useTheme();
+  const { theme } = useTheme();
 
-    const classNames = `btn ${className || ''} ${styles.themeButton} ${theme === 'dark' ? styles.themeButtonDark : styles.themeButtonLight}`;
+  const classNames = `btn ${className || ""} ${styles.themeButton} ${theme === "dark" ? styles.themeButtonDark : styles.themeButtonLight}`;
 
-    return (
-    	    <button 
-    	        className={`${classNames} ${theme === 'dark' ? styles.themeButtonDark : styles.themeButtonLight}`} 
-    	        onClick={onClick} disabled={disabled}>
-    	        {children}
-    	    </button>
-    );
-}
+  return (
+    <button
+      className={`${classNames} ${theme === "dark" ? styles.themeButtonDark : styles.themeButtonLight}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
+};
