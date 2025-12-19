@@ -1,8 +1,10 @@
 # Fittrack
-> **Czas spędzony nad projektem:** ~80h
 
 ## Krótki opis
-FitTrack to prosty front-end aplikacji śledzącej aktywność fizyczną (React + TypeScript + Vite). Aplikacja prezentuje pulpit użytkownika z widgetami, stronę główną z bannerem/promocją, ekran ćwiczeń oraz formularze logowania/rejestracji/resetu hasła.
+FitTrack to front-end aplikacji śledzącej aktywność fizyczną, stworzony w React, TypeScript i Vite.  
+Aplikacja oferuje pulpit użytkownika z widgetami, stronę główną z bannerami/promocjami, ekran ćwiczeń oraz formularze logowania, rejestracji i resetu hasła.  
+FitTrack komunikuje się z backendowym API, gdzie użytkownik otrzymuje token JWT po zalogowaniu, aby uzyskać dostęp do chronionych funkcji aplikacji .
+Front-end obsługuje również przypadki brzegowe, takie jak nieważne tokeny, błędy w żądaniach czy walidacja formularzy, zapewniając płynne i bezpieczne doświadczenie użytkownika.
 
 ## Live demo
 - [Link do live demo ->](https://fittrack.mikolaj-sobczak.pl)
@@ -47,7 +49,7 @@ npm run preview
 ```
 
 ## Konfiguracja
-- Projekt nie wymaga kluczy API w tym repo, API jest prywatnym projektem, dostęp do backendu możliwy po kontakcie prywatnym, jeżeli masz własne API to zmień lokalizację w vite.config.ts 
+- Projekt nie wymaga kluczy API w tym repo, API jest prywatnym projektem do którego nie ma dostępu publicznego ze względów bezpieczeństwa, jeżeli masz własne API to zmień lokalizację w vite.config.ts 
 
 - Wyjasnienie endpointów API znajdują się w [docs/api.md](./docs/api.md)
 
@@ -75,8 +77,10 @@ Spis znanych problemów w [docs/known_issues.md](./docs/known_issues.md).
 ## Architektura i komponenty
 - Diagram architektury i opis kluczowych komponentów: [docs/architecture.md](./docs/architecture.md) i [docs/components.md](./docs/components.md).
 
-## Co sprawiło trudność
-- Krótkie omówienie problemów i rozwiązań: [docs/adr.md](./docs/adr.md').
+## ADR — Decisions
+- dokładny opis: [docs/adr.md](./docs/adr.md).
+
+Projekt stosuje atomic design oraz stylowanie za pomocą modułów
 
 ## Contribution
 - Instrukcja dodawania funkcjonalności: [docs/contribution.md](./docs/contribution.md).
@@ -84,9 +88,6 @@ Spis znanych problemów w [docs/known_issues.md](./docs/known_issues.md).
 ## Q&A
 #### Co sprawiło największe problemy i jak je rozwiązałeś?
 Największym problemem okazały się operacje na zbiorach danych (ćwiczenia). To na nich spędziłem najwięcej czasu. Poradziłem sobie dzięki korzystaniu z dokumentacji JS/TS, zasobów na StackOverflow oraz rozrysowaniu problemu.
-
-#### Czy powtórzyłbyś taki projekt?
-Nie!
 
 ## Licencja
 Sprawdź plik `LICENSE` w repozytorium.
@@ -101,6 +102,3 @@ Sprawdź plik `LICENSE` w repozytorium.
 - 💼 **LinkedIn:** [Mikołaj Sobczak](https://www.linkedin.com/in/mikołaj-sobczak-27b0a429a)
 - 📧 **Contact:** poprzez GitHub Issues
 
----
-
-*Projekt stworzony w celach edukacyjnych jako demonstracja nowoczesnych technik frontend development.*

@@ -12,11 +12,11 @@ import {
 } from "recharts";
 import { ErrorMessage } from "../../atoms/ErrorMessage/ErrorMessage";
 import { useTheme } from "../../../hooks/useTheme";
-import { useStatsData } from "../../../hooks/useStatsData";
+import { useStastMonth } from "../../../hooks/useStatsMonth";
 
 export const StatsMonth = () => {
   const { theme } = useTheme();
-  const { data, error } = useStatsData();
+  const { data, error } = useStastMonth();
 
   if (error)
     return <ErrorMessage message="Nie udało się pobrać danych o treningach." />;
