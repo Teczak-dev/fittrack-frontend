@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
         <ul className={styles.list}>
           <ListElement className={styles.listElement}>
             <Link
-              url="https://mikolaj-sobczak.pl/"
+              url="https://miksob.dev"
               text="Moja strona"
               className={styles.link}
             />

@@ -7,14 +7,14 @@ FitTrack komunikuje się z backendowym API, gdzie użytkownik otrzymuje token JW
 Front-end obsługuje również przypadki brzegowe, takie jak nieważne tokeny, błędy w żądaniach czy walidacja formularzy, zapewniając płynne i bezpieczne doświadczenie użytkownika.
 
 ## Live demo
-- [Link do live demo ->](https://fittrack.mikolaj-sobczak.pl)
+- [Link do live demo ->](https://fittrack.miksob.dev)
 
 ## Screenshots
-![pulpit](./public/img1.png)
-![analiza](./public/img2.png)
+![pulpit](./docs/mm/img1.png)
+![analiza](./docs/mm/img2.png)
 
 ## Video demo
-![Video](./public/wideo.webp) 
+![Video](./docs/mm/wideo.webp) 
 
 ## Funkcjonalności
 - Strona główna
@@ -98,7 +98,7 @@ Sprawdź plik `LICENSE` w repozytorium.
 
 **Mikołaj Sobczak** - [@Teczak-dev](https://github.com/Teczak-dev)
 
-- 🌐 **Website:** [mikolaj-sobczak.pl](https://mikolaj-sobczak.pl/)
+- 🌐 **Website:** [miksob.dev](https://miksob.dev)
 - 💼 **LinkedIn:** [Mikołaj Sobczak](https://www.linkedin.com/in/mikołaj-sobczak-27b0a429a)
 - 📧 **Contact:** poprzez GitHub Issues
 
