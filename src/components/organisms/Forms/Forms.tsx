@@ -127,6 +127,10 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
     handleSubmit,
   } = useRegisterForm(register);
 
+  // Polityka prywatności - stan checkboxa i błąd
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [privacyError, setPrivacyError] = useState("");
+
   const titleThemeColor =
     theme === "dark" ? styles.titleDark : styles.titleLight;
   const loginFormThemeColor =
@@ -198,6 +202,39 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
           </Typography>
         )}
       </label>
+
+      {/* Checkbox polityki prywatności */}
+      <label
+        className={styles.label}
+        style={{ display: "flex", alignItems: "center", gap: "8px" }}
+      >
+        <input
+          type="checkbox"
+          checked={privacyAccepted}
+          onChange={(e) => {
+            setPrivacyAccepted(e.target.checked);
+            if (e.target.checked) setPrivacyError("");
+          }}
+          style={{ width: "16px", height: "16px" }}
+        />
+        <Typography variant="body">
+          Akceptuję{" "}
+          <a
+            href="/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#007bff", textDecoration: "underline" }}
+          >
+            politykę prywatności
+          </a>
+        </Typography>
+      </label>
+      {privacyError && (
+        <Typography variant="small" className={styles.errorText}>
+          {privacyError}
+        </Typography>
+      )}
+
       {error && (
         <Typography variant="small" className={styles.errorText}>
           {error}
@@ -205,7 +242,14 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
       )}
       <Button
         className={` ${styles.button} ${buttonTheme} `}
-        onClick={handleSubmit}
+        onClick={() => {
+          if (!privacyAccepted) {
+            setPrivacyError("Musisz zaakceptować politykę prywatności.");
+            return;
+          }
+          setPrivacyError("");
+          handleSubmit();
+        }}
       >
         Zarejestruj się
       </Button>

@@ -20,6 +20,11 @@ const Register = lazy(() =>
     default: module.Register,
   })),
 );
+const PrivacyPolicy = lazy(() =>
+  import("./pages/PrivacyPolicy.tsx").then((module) => ({
+    default: module.default,
+  })),
+);
 const ForgotPassword = lazy(() =>
   import("./pages/ForgotPassword.tsx").then((module) => ({
     default: module.ForgotPassword,
@@ -107,6 +112,14 @@ const router = createBrowserRouter([
           <Suspense fallback={<LoadingPage />}>
             {" "}
             <ForgotPassword />{" "}
+          </Suspense>
+        ),
+      },
+      {
+        path: "/privacy-policy",
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <PrivacyPolicy />
           </Suspense>
         ),
       },
