@@ -53,7 +53,7 @@ export const HeaderHome: React.FC<HeaderHomeProps> = ({
         />
         <div className={styles.navLinks} style={styles}>
           <Button onClick={home} className={`${styles.links} ${buttonsColor}`}>
-            Fit tracker
+            LockIn Workout
           </Button>
           <Button
             onClick={discover}

@@ -1,9 +1,9 @@
-# Fittrack
+# LockIn Workout
 
 ## Krótki opis
-FitTrack to front-end aplikacji śledzącej aktywność fizyczną, stworzony w React, TypeScript i Vite.  
+LockIn Workout to front-end aplikacji śledzącej aktywność fizyczną, stworzony w React, TypeScript i Vite.  
 Aplikacja oferuje pulpit użytkownika z widgetami, stronę główną z bannerami/promocjami, ekran ćwiczeń oraz formularze logowania, rejestracji i resetu hasła.  
-FitTrack komunikuje się z backendowym API, gdzie użytkownik otrzymuje token JWT po zalogowaniu, aby uzyskać dostęp do chronionych funkcji aplikacji .
+LockIn Workout komunikuje się z backendowym API, gdzie użytkownik otrzymuje token JWT po zalogowaniu, aby uzyskać dostęp do chronionych funkcji aplikacji .
 Front-end obsługuje również przypadki brzegowe, takie jak nieważne tokeny, błędy w żądaniach czy walidacja formularzy, zapewniając płynne i bezpieczne doświadczenie użytkownika.
 
 ## Live demo
@@ -101,4 +101,3 @@ Sprawdź plik `LICENSE` w repozytorium.
 - 🌐 **Website:** [miksob.dev](https://miksob.dev)
 - 💼 **LinkedIn:** [Mikołaj Sobczak](https://www.linkedin.com/in/mikołaj-sobczak-27b0a429a)
 - 📧 **Contact:** poprzez GitHub Issues
-

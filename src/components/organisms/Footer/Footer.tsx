@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
     <footer className={`${styles.Footer} ${darkStyle}`}>
       <div>
         <Typography variant="body" className={styles.title}>
-          &copy; Mikołaj Sobczak
+          © 2026 Mikołaj Sobczak
         </Typography>
         <ul className={styles.list}>
           <ListElement className={styles.listElement}>

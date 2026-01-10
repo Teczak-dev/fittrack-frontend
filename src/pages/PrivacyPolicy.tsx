@@ -46,7 +46,7 @@ const PrivacyPolicy: React.FC = () => {
       <Typography variant="body" style={{ marginBottom: 18, color: textColor }}>
         Twoja prywatność jest dla nas bardzo ważna. Poniżej znajdziesz
         informacje dotyczące przetwarzania Twoich danych osobowych w aplikacji
-        FitTrack.
+        LockIn Workout.
       </Typography>
 
       <Typography variant="h2" style={{ ...sectionStyle, color: textColor }}>
@@ -90,7 +90,7 @@ const PrivacyPolicy: React.FC = () => {
       </Typography>
       <Typography variant="body" style={{ marginBottom: 16, color: textColor }}>
         Dostęp do Twoich danych mają wyłącznie upoważnieni administratorzy
-        aplikacji FitTrack. Dane nie są przekazywane podmiotom trzecim.
+        aplikacji LockIn Workout. Dane nie są przekazywane podmiotom trzecim.
       </Typography>
 
       <Typography variant="h2" style={{ ...sectionStyle, color: textColor }}>

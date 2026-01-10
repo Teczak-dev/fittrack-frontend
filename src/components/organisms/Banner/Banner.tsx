@@ -20,7 +20,7 @@ export const BannerHP: React.FC = () => {
     <div className={styles.banner}>
       <div className={`${styles.bannerText} card`}>
         <Typography variant="body" className={styles.Text}>
-          <i className={appNameTextColor}>Fit Tracker</i>
+          <i className={appNameTextColor}>LockIn Workout</i>
         </Typography>
         <Typography variant="body" className={`${styles.Text} ${subtextColor}`}>
           trenuj mądrzej, nie ciężej.
